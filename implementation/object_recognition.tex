@@ -1,0 +1,10 @@
+\section{Object Recognition}
+\uppercase{this section assumes knowledge of basic object recognition and what libraries used in the system}
+
+The implementation of object recognition in the system is based on openCV's method of template matching, in this section we describe the specific implementation used in the system.
+
+Template matching is based on predefined templates of images that are analysed and the section of the image, which matches the template best, will be returned. 
+Since the system does not need the resulting area, but rather where the best template fitting area is located and where the centre of the area is located, the found section of an image is not needed. Therefore it is only necessary to return the position of the centre of the best fitting area, as this is almost guaranteed to be the centre of the target. 
+For this a matching method and some helper methods for template matching is need and a supporting data structure, the header file for this is shown in \cref{lst:mm_header}. The \emph{matching\_method} method, present on line 11 in \cref{lst:mm_header} takes three inputs, the image to be analysed, the template image which the matching method uses for comparison, and an integer value, the integer value denotes the template matching method used in \emph{matching\_method}.
+
+\lstinputlisting[language=inc_cpp,caption={Header for Matching methods},label=lst:mm_header]{source_files/obj_recogn/matching_method.hpp}

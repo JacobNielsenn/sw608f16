@@ -1,0 +1,6 @@
+\section{Coordinates Specification}\label{sec:coor}
+In order to design the software used to calculate an object's position in 3D space, a global coordinate system must be defined. In \ref{sec:base_setup} it is described that there is a single laser unit and two or more camera units. All the camera units must have a position and direction in the global coordinate system, if an object's position is to be calculated. The laser unit's position and direction relative to the object must also be known for it to point towards the object.
+
+The origin of the system is defined be at the pointing device. Choosing the laser unit as the origin, its position becomes unambiguous. In order to implement this, a specific point of the pointing device must be chosen. 
+
+To use a global coordinate system, the pointing device and camera units must have a procedure for calibration. This calibration ensures that the initial directions of the laser and views are known, which in turn makes it possible to calculate the object's position and have the laser unit point towards it. 

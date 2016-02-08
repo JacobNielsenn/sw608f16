@@ -1,0 +1,47 @@
+\section{Shape Recognition}
+This section describes some of the general issues with shape recognition, and introduces methods to perform shape recognition. Edges are also used in this section, but to distinguish edges in edge detection from edges in shape recognition, the edges in this section will be referred to as contours.
+Shape recognition is seen as a difficult task, the reason being that both simple and complex shapes have not yet been precisely described in computer vision. This is a necessity for giving generalised descriptions of shapes\citep[page 328-329]{obj_recogn_book}.
+Scale is also a big issue, as high resolutions can result in noise in regards to contour detection.
+Furthermore, low resolutions can result in the loss of small details. One way to minimize the issues that scale can give, is to recognise shapes at different resolutions. However, this is more complex, as it requires corresponding shape representations for each resolution.
+
+Despite the difficulty of shape recognition it is still used in various fields. This experience cannot be used for generalizing because the fields use it in different ways, but a set of characteristic can be defined from this experience, and are often considered when planning to perform shape recognition. The characteristics include the following:
+
+	\textit{Input representation form:} Object descriptions can be based on region boundaries or in a more complex manner with knowledge of whole regions.
+
+	\textit{Object reconstruction ability:} If an object's shape can or cannot be reconstructed from the description.
+
+	\textit{Incomplete shape recognition ability:} To what extent an object can be recognised if occluded by other objects, or other reasons for which only partial shape information is available.
+
+	\textit{Local/global description character:} The global description can only be used if there is complete data of the object. The local description characterizes object properties from partial information, which also makes it usable for occluded objects.
+
+Shape detection works with regions, which can be described in different ways, mostly from contours with properties. One way to gain information about these properties is with the use of edge detection.
+There are numerous ways to describe the borders of regions which is mostly done in coordinate systems. \textit{Polar} coordinates is one such way, where border elements are represented as pairs of an angle and some distance.
+A necessity for region description is to have region identification. This can be done in a number of ways, including enumerating each region. This way the total number of regions is equal to the greatest identification number. Another way is to use as few numbers as possible, and simply make sure no two adjacent regions have the same number. Four is the theoretical maximum needed to note regions with this approach. If the enumeration has been done this way, it requires one iteration over all regions to count the total amount of regions in the image.
+
+There are two main ways to perform shape recognition. Being either contour-based or region-based,  both these options include various methods and are introduced here, .
+\subsection{Contour-Based Shape Representation And Description}
+One way to do contour-based shape representation is by \textit{Boundary description using segment sequences}, which represents boundaries(closed borders) by segments using specific properties. A linear line segment can be defined by two points $x_1$ and $x_2$ on the contour. This line can be mangled to follow the contour more, if it does not satisfy some pre-set requirements. One such requirement is the \textit{tolerance interval approach}, where a tolerance distance is defined for how far the contour between the two points may be from the line segment. If the tolerance distance is exceeded, the line segment must be split. A simple way to do this is by searching for the point that is furthest away from the line segment. At that point on the line a new point for the line segment is added, and a new chain of line segments is defined as $x_1 \rightarrow x_3 \rightarrow x_2$.
+
+Another boundary segmentation is \textit{constant curvature} where second order polynomials are used to describe the possible structures that the line segments can have. The issue of scale mentioned in the beginning of this section also applies for these methods, as segmentation of curves can differ across both higher and lower scales. There is however, a \textit{scale-space} approach which ensures that detail is not lost and that new segmentation points only appears at greater resolutions \Citep{obj_recogn_book}.
+
+\subsection{Region-Based Shape Representation And Description}
+Boundary information makes it possible to describe regions, which in turn makes it possible to describe shapes, which is the goal of this kind of shape description. A large set of heuristic approaches to shape description can be used to describe simple shapes such as a circle or square. However, to describe more complex shapes, such as non uniform shapes with holes and a wrinkled contour, other methods must be used. One such method is region decomposition which splits regions into sub-regions that may be simple shapes. These simple shapes can then be described. When using region decomposition, the objects are represented by a planar graph, where no edges cross each other. The nodes represent the sub-regions resulted from decomposition and the edges represent the neighbourhood relations.
+Furthermore, the region shape is lastly described by graph properties, the reason for this being that there is a number of advantages from graph representation, eg; being insensitive to small shape changes, it is fast to search through to gather information and it can be easily visualised.
+
+\subsubsection{Heuristic Shape Descriptors}\label{ssc:heuristic_descr}
+To do region decomposition, it is necessary to describe sub-regions, some basic descriptors can be used to do this, these descriptors include the following:
+
+\textit{Area} is the simplest and most natural descriptor, given by the number of pixels in the region.
+
+\textit{Euler's number} which is given by $\vartheta=S-N$ where S is the number of contiguous parts of an object and N is the number of holes in the object. An object can consist of more than one region, but if it only consists of one region then S=1.
+
+\textit{Projection} is another descriptor which can be defined in any direction, eg. horizontal and vertical. The projections are binary representations of the pixels. If one row is of a length of seven but there is a hole of two pixels in the middle then only five pixels are projected and the hole does not exist in the projection.
+
+\textit{Compactness} is defined by $compactness=\frac{(RegionBorderLength)^2}{area}$. The most compact shape according to this definition is a
+circle, as it has the largest possible area in respect to border length. Compactness in digital images is defined by an inner boundary in the interval $[1,\infty]$.
+
+\subsubsection{Region Decomposition}
+As previously mentioned, region decomposition splits regions into sub-regions of simpler shapes. The idea of region decomposition is based on shape recognition being a hierarchical process. The first step is to decompose the region to get the subregions, representing simple primitive shapes. The second step is then to analyse these primitives, which can be done with the aforementioned heuristic shape descriptors in \cref{ssc:heuristic_descr}. The sub-regions can be noted as primary sub-regions, which can overlap to have the entire region described. The sub-regions can be represented as a graph, furthermore, if the sub-regions are represented by polygons, and not just line segments, graph nodes may carry informations which in turn can be used to specify properties, including if sub-graphs are rotation and size invariance.
+
+\subsubsection{Region Neighbourhood Graphs}
+A benefit from region-based shape recognition, is that it can be described by the use of graphs. With knowledge gathered from region decomposition, either through image decomposition into regions, or region decomposition into sub-regions, the graph can be presented as a region neighbourhood graph. This graph represents every region as a node and nodes of neighbouring regions are connected by edges. In addition, the relative position of two regions can often be used in a description process. However, simple notions such as "being left of" can be ambiguous and must be explicitly defined. For example, "being left of" can be defined as "The center of gravity of A must be positioned to the left of the leftmost point of B and the rightmost pixel of A must be left of the rightmost pixel of B".

@@ -1,0 +1,25 @@
+\thispagestyle{empty}
+\begin{flushright}
+\vspace{3cm}
+
+\phantom{hul}
+
+\phantom{hul}
+
+\phantom{hul}
+
+\textsl{\Huge Lagerstyring og varebestilling} \\ \vspace{1cm}
+
+\rule{13cm}{3mm} \\ \vspace{1.5cm}
+\vspace{1cm}
+
+%\includegraphics[width=0.9\textwidth]{billeder/forside.jpg}
+
+\vspace{2cm} 
+\textsc{\Large P3 Projekt \\
+Gruppe ds307e14 \\
+Software\\
+Aalborg Universitet\\
+Den 19. december 2014\\
+\includegraphics[width=0.25\textwidth]{billeder/AAU-logo-stud-DK-RGB}}
+\end{flushright}

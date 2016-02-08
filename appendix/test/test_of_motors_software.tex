@@ -1,0 +1,129 @@
+\chapter{Speed-timing test software}
+\begin{lstlisting}[language=inc_cpp, caption={Speed-Timing Test software}, label=lst_speed_timing][H]
+#include "Lcd.h"
+#include <Nxt.h>
+#include <Clock.h>
+#include <Usb.h>
+#include <math.h>
+#include <Motor.h>
+#include <vector>
+#include "kernel.h"
+#include "kernel_id.h"
+#include "ecrobot_interface.h"
+#include "my_constants.h"
+
+#define TIME_INTERVAL 1
+#define TEST_COUNT 250
+#define DATA_POINTS 750
+
+using namespace ecrobot;
+
+extern "C" {
+    // nxtOSEK hook to be invoked from an ISR in category 2
+    void user_1ms_isr_type2(void) { }
+    
+    void prepare_packet(char packet_type, char *data, U8 *out, int count) {
+        out[0] = packet_type;
+        for (int i = 0; i < count; ++i) {
+            out[i+1] = data[i];
+        }
+    }
+    Clock clck;
+    Lcd lcd;
+    Nxt nxt;
+    Usb usb;
+    Motor mtr(PORT_C , false);
+
+    TASK(TaskMain) {
+        lcd.cursor(0, 0);
+        // Connection to host over USB
+        lcd.putf("s\n", "Connecting");
+        lcd.disp();
+        do {
+            usb.commHandler();
+            clck.wait(1);
+        } while (!usb.isConnected());
+        lcd.putf("s\n", "Connected");
+        lcd.disp();
+        
+        // Allocate data storage
+        uint64_t *raw_data = new uint64_t[DATA_POINTS];
+        S32 *data = (S32*)raw_data;
+
+        // Acceleration
+        for (int tests = 0; tests < TEST_COUNT; ++tests) {
+            lcd.putf("sd\n", "Starting - ", tests);
+            lcd.disp();
+            clck.wait(16);
+            //Reset the motor so it's ready for a new test run
+            mtr.reset();
+            mtr.setCount(0);
+            clck.reset();
+            mtr.setPWM(Motor::PWM_MAX);
+
+            int i2 = 0;
+            for (; i2 < DATA_POINTS - 250; ++i2) {
+                data[i2*2] = mtr.getCount();
+                data[i2*2 + 1] = clck.now();
+                
+                //TIME_INTERVAL is the time between the snapshots of the accel-
+                //ration process
+                clck.wait(TIME_INTERVAL);
+            }
+            
+            // Deceleration
+            mtr.setPWM(0);
+            mtr.setBrake(true);
+            
+            for (; i2 < DATA_POINTS; ++i2) {
+                data[i2*2] = mtr.getCount();
+                data[i2*2 + 1] = clck.now();
+                //TIME_INTERVAL is the time between the snapshots of the accel-
+                //ration process
+                clck.wait(TIME_INTERVAL);
+            }
+            
+            unsigned bytes_sent = 0;
+            unsigned data_size =  2 * 4 * DATA_POINTS;
+            U8 current_packet[Usb::MAX_USB_DATA_LENGTH];
+            unsigned packet_length;
+
+            while(bytes_sent < data_size) {
+                lcd.putf("s d\n", "Sent", bytes_sent);
+                lcd.disp();
+                
+                // Start
+                if (bytes_sent == 0) {
+                    packet_length = Usb::MAX_USB_DATA_LENGTH - 1;
+                    prepare_packet(PARTIAL_PACKET_START, 
+                    (char*)data, current_packet, packet_length);
+                }
+                // End
+                else if((data_size - bytes_sent) < Usb::MAX_USB_DATA_LENGTH) {
+                    packet_length = data_size - bytes_sent;
+                    prepare_packet(PARTIAL_PACKET_END, 
+                    (char*)data + bytes_sent, current_packet, packet_length);
+                }
+                // Part
+                else {
+                    packet_length = Usb::MAX_USB_DATA_LENGTH - 1;
+                    prepare_packet(PARTIAL_PACKET_PART, 
+                    (char*)data + bytes_sent, current_packet, packet_length);
+                }
+                // Send packet
+                while(usb.send(current_packet, 0, packet_length + 1) == 0) {
+                    clck.wait(1);
+                }
+                bytes_sent += packet_length;
+            }
+            lcd.putf("s\n", "Disconnected");
+            lcd.disp();
+        }
+        //Clean-up and Shut down the connection
+        delete raw_data;
+        //usb.close();
+        lcd.putf("s\n", "Done");
+        lcd.disp();
+    }
+}
+\end{lstlisting}

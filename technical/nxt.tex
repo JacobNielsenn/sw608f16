@@ -1,0 +1,21 @@
+\subsection{\acrlong{nxt}}\label{ss:nxt}
+The \gls{nxt} is a part of the Lego Mindstorms series which offers the possibility to create small robots using the components provided with a Lego Mindstorms NXT 2.0 set\cite{lego_mindstorms}.  This set includes a set of different sensors, actuators and a \gls{nxt} intelligent brick. The \gls{nxt} is a embedded device that can communicate the actuators and sensors included in the \gls{nxt} set. It is also possible for the \gls{nxt} to communicate with other devices with over wired and wireless connections. Some of its hardware specifications are presented in \cref{tbl:nxt_spec}, where it communication protocols also are listed.
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{|l|r|}
+  \hline
+    Main microcontroller & 32-bit Atmel AT91SAM7S256, 256KB Flash memory, 64 KB RAM \\ \hline
+    Microcontroller & 8-Bit Atmel ATmeg48, 4 KB flash memory, 512 Bytes RAM \\ \hline
+    Bluetooth  & CSR BlueCore\textsuperscript{TM} 4 v2.0 +EDR System \\ \hline
+    Wired communication  & RS485, I\textsuperscript{2}C and USB\\ \hline
+    Input ports & Four 6-pin input ports numbered 1 to 4 \\ \hline
+    Output ports & Three 6-pin outputs ports denoted A to C\\  \hline
+  \end{tabular}
+  \caption{\gls{nxt} Intelligent brick specification\cite{lego_hardware}}
+  \label{tbl:nxt_spec}
+\end{table}
+
+One actuator of the \gls{nxt} set is DC motors\cite{lego_mindstorms}, which can be used when designing a target tracking system. The motors can be used for creating the mechanism for pointing to a given target as described in the requirements in \cref{chpt:context_spec}. Each motor has a internal tick counter which have a resolution on one degree, which means that the motors has moved 360 ticks for each turn around\cite{nxt_motor}. The motors are controlled by sending instructions from the \gls{nxt} intelligent brick.
+
+The \gls{nxt} and motors can be used in conjunction with the normal Lego bricks which offers the possibility to easily modify the construction of the laser unit. Since it can easily be modified it offers a good opportunity to experiment on the setup which is an advantages. Both the motors and \gls{nxt} intelligent brick can be used as components which makes it possible to do target tracking. Considering this it has been decided to use the \gls{nxt} set as a part of the laser unit in the hardware solution.

@@ -1,0 +1,102 @@
+\documentclass[10pt, t]{beamer}
+\usetheme[left]{AAUsidebar}
+
+\usepackage[utf8]{inputenc}
+\usepackage[danish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{tabularx}
+
+%\lstset{
+%  language=[Sharp]C,
+%  frame=single,
+%  showspaces=false,
+%  showtabs=false,
+%  breaklines=true,
+%  showstringspaces=false,
+%  breakatwhitespace=true,
+%  escapeinside={(*@}{@*)},
+%  commentstyle=\color{green},
+%  identifierstyle=\color{darkblue},
+%  keywordstyle=\color{blue}\bfseries,
+%  stringstyle=\color{red},
+%  basicstyle=\fontsize{7pt}{7pt}\ttfamily,
+%  morekeywords={get,set}
+%}
+
+
+\lstdefinelanguage{asgard}
+{
+	basicstyle=\small,
+	basicstyle=\ttfamily\scriptsize,
+        captionpos=b,
+	keywords={if,else,elseif,return,		% Keywords
+		bifrost,realm,slice,struct,
+		match, with,and,for,
+		when,true,false, try,
+		catch, readInput, print,
+		getMessage, def, end},
+	keywordstyle=\color{blue},				% Farve på keywords
+	commentstyle=\color{commentGreen},		% Farve på kommentare
+	comment=[s]{\#}{\#},					% Hvordan en kommentar defineres
+	stringstyle=\color{orange},				% String farve
+	string=[s]{\'}{\'},						% Hvordan en streng defineres, defualt er med " "
+	showstringspaces=false,					% Mellemrum i strenge enten vist eller blanke
+	numbers=left, numberstyle=\tiny,		% Linjenumre
+	tabsize=4,								% Hvor meget mellemrum et tab laver
+	frame=single,
+	breaklines=true
+}
+
+\newcommand{\chref}[2]{
+    \href{#1}{{\usebeamercolor[bg]{AAUsidebar}#2}}
+}
+
+\title[(S)PiCams]{P5:Indlejrede systemer}
+\subtitle{(S)PiCams}
+\date{18/01-2016}
+\author[SW508E15]
+{
+Martin Kristjansen\linebreak
+Jonas S. Madsen\linebreak
+Anders L. Matthiassen\linebreak
+Lars Nielsen\linebreak
+Simon A. Pedersen\linebreak
+Christian Stephansen%\linebreak
+    %\href{mailto:csteph13@student.aau.dk}{\textit{<csteph13@student.aau.dk>}}
+}
+
+\institute[
+    Institut For Datalogi\linebreak
+    Selma Lagerlöfs Vej 300\linebreak
+    DK-9220 Aalborg Ø\linebreak
+    http://cs.aau.dk
+]
+{
+    Institut For Datalogi\linebreak
+    Selma Lagerlöfs Vej 300\linebreak
+    DK-9220 Aalborg Ø\linebreak
+    http://cs.aau.dk/
+
+}
+
+\pgfdeclareimage[height=1.5cm]{titlepagelogo}{AAUgraphics/AAU-logo-stud-DK-RGB}
+\titlegraphic{
+    \pgfuseimage{titlepagelogo}
+}
+
+\setbeamertemplate{section page}
+{
+  \thispagestyle{empty}
+  \frame{
+  \aauwavesbg
+  \finalpage{\insertsection\par}
+  }
+}
+\AtBeginSection{\sectionpage}

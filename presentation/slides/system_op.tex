@@ -1,0 +1,64 @@
+\section{System Opsætning}
+\subsection{Definition}  
+\begin{frame}[fragile]{\insertsection}
+  \tableofcontents[currentsection]
+\end{frame}
+
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
+  \begin{itemize}
+    \item System Definition
+    \begin{itemize}
+      \item This project aims to build a security system in connection with embedded devices, with the primary objective of creating a targeting platform that is able to recognise a predefined object. The system will incorporate a secondary objective of tracking the object with the intention of notifying some second system to ensure the safety of the predefined object.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
+  \begin{itemize}
+    \item System Definition
+    \begin{itemize}
+      \item Et sikkerhedssystem som overvåger og følger et prædefineret objekt ved brug af indlejrede systemer.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%Nyt subemne
+\subsection{Fysisk Opsætning}
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
+\includegraphics[width=1\textwidth]{pictures/overblik.pdf}
+\end{frame}
+
+%kamera -> Pi
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
+\begin{itemize}
+	\item Kamera enhed
+		\begin{itemize}
+			\item Kamera rettet imod det prædefinerede objekt
+			\item Pi læser videostream og finder objektet
+		\end{itemize}
+\end{itemize}
+\includegraphics[width=1\textwidth]{pictures/kampi.pdf}
+\end{frame}
+
+%Pi -> Windows
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
+\begin{itemize}
+	\item Sender data pakke med retningsvektor
+	\item Sendt ved brug af ASIO igennem en TCP forbindelse
+\end{itemize}
+\includegraphics[height=.8\textheight]{pictures/piwindows.pdf}
+\end{frame}
+
+%Windows -> Lego
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
+\begin{itemize}
+	\item Videresender modtaget data pakke
+	\item Sendt ved brug af LEGO Fantom driver
+\end{itemize}
+\includegraphics[width=1\textwidth]{pictures/windowslego.pdf}
+\end{frame}
+
+%Det hele
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
+\includegraphics[width=1\textwidth]{pictures/opsaetning.pdf}
+\end{frame}

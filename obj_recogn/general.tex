@@ -1,0 +1,21 @@
+\section{Computer Vision}\label{sc:com_vision}
+The field of computer vision looks to mechanically duplicate the sight of a human, including how vision is perceived and understood.
+Many difficulties are connected to computer vision. This section introduces a subset of these. In extension, it is the same problems that are connected to image analysis and thereby object recognition in general. It is because of this connection that the problems are covered.
+
+\subsection{Dimension Transformation}
+When an image is captured, the 3D world that humans see is transformed into a 2D space. As a result of this, properties such as depth and actual size is lost. Thus, small objects close to the capturing device can seem as big as large objects placed further from the capturing device.
+
+\subsection{Interpretation}
+The human mind is able to see a new setting in an image and reason about its content. An example could be that we can recognise a river in a image regardless of the dimensions and flow of the river. A computer is not able to do the same recognition without support. One way to support this feature is by using \gls{ai}, which can learn from some settings and recognise new settings which furthermore can be used to expand its knowledge base.
+
+\subsection{Noise}
+Noise in images includes a dusty lens that causes white noise, poor focus, as it also can be caused by too little or too great illumination. Noise can have a negative impact on the result and is difficult to avoid, hence mathematical methods have been developed to cope with noise, but this makes image analysis more complex if included.
+
+\subsection{Big Datasets}
+The greater the quality of images the larger the size of the data. Furthermore, if working with a stream of data eg. streaming a certain amount of frames per second, the amount of data can quickly become much greater. This in turn can have a negative impact if working with real-time systems, as the data will take longer to analyse. 
+
+\subsection{Brightness}
+Shadows in an image can influence how similar objects are presented and analysed, an example being that a colour in a shaded area can seem much different if it is in a bright area. Other aspects that can change how the image can be interpret are the direction of one or more light sources, and the surface structure and reflective properties of objects in the image.
+
+\subsection{Local and global view}\label{ssc:loc_glo_view}
+One of the reasons it is complex to recognise objects with machine vision is because of the input domain of the used algorithms, as they are designed to analyse a local area, such as a pixel and it's neighbourhood, much like looking through a keyhole. With only a few keyholes any object can become difficult to recognise, even for the human mind. This could possibly be solved by creating algorithms which can analyse from a global view, but this includes the use of \gls{ai} and covers an area in that field, in which it has been argued that a formalisation context is crucial in making the needed generalisation, but formalisation of eg. complex shapes is a very difficult task. Hence making the dependencies for implementing \gls{ai} just as difficult. \citep[page 5]{obj_recogn_book}

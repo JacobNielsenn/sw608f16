@@ -1,0 +1,72 @@
+% Dette er LaTeX-versionen af titelbladet for TNB studenterrapporter
+% Filen kræver:
+% Universitetets logo:  AAU-logo-stud-UK eller AAU-logo-stud-DK
+% Synopsis: En fil ved navn synopsis.tex
+
+% Udarbejdet af: Jesper Nørgaard (jesper@noergaard.eu) 10. april 2012
+
+\phantomsection
+\pdfbookmark[0]{Titelblad}{titelblad}
+\thispagestyle{empty}
+
+\begin{minipage}[t]{0.48\textwidth}
+\vspace*{-25pt}			%\vspace*{-9pt}
+\includegraphics[height=4cm]{billeder/AAU-logo-stud-DK-RGB}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+{\small
+\textbf{Datalogisk Institut}\\
+Software \\
+Selma Lagerlöfs Vej 300 \\
+9220 Aalborg Øst \\
+https://www.cs.aau.dk}
+\end{minipage}
+
+\vspace*{1cm}
+
+\begin{minipage}[t]{0.48\textwidth}
+\textbf{Titel:} \\[5pt]\bigskip\hspace{2ex}
+Lagerstyring og varebestilling
+
+\textbf{Projekt:} \\[5pt]\bigskip\hspace{2ex}
+P3-projekt
+
+\textbf{Projektperiode:} \\[5pt]\bigskip\hspace{2ex}
+September 2014 - December 2014
+
+\textbf{Projektgruppe:} \\[5pt]\bigskip\hspace{2ex}
+ds307e14 
+
+\textbf{Deltagere:} \\[5pt]\hspace*{2ex}
+Martin Kristjansen \\\hspace*{2ex}
+Lars Nielsen \\\hspace*{2ex}
+Jacob Nielsen \\\hspace*{2ex}
+Jonas S. Madsen \\\hspace*{2ex}
+Simon A. Pedersen \\\hspace*{2ex}
+Lasse J. Petersen
+
+\textbf{Vejledere:} \\[5pt]\hspace*{2ex}
+Thomas Bøgholm
+
+
+\vspace*{1cm}
+
+\textbf{Oplagstal: 8} \\
+\textbf{Sidetal: 80} \\
+\textbf{Bilag: 3} \\
+\textbf{Afsluttet 19-12-2014}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.483\textwidth}
+Synopsis: \\[5pt]
+\fbox{\parbox{7cm}{\bigskip\input{formalia/synopsis}\bigskip}}
+\end{minipage}
+
+\vfill
+
+{\footnotesize\itshape Rapportens indhold er frit tilgængeligt, men offentliggørelse (med kildeangivelse) må kun ske efter aftale med forfatterne.}
+
+% Rapportens indhold er frit tilgængeligt, men offentliggørelse (med kildeangivelse) må kun ske efter aftale med forfatterne.
+% The content of the report is freely available, but publication (with source reference) may only take place in agreement with the authors.

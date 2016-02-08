@@ -1,0 +1,23 @@
+\chapter*{Forord}
+
+\textbf{Læsevejledning}
+Denne rapport er beregnet til personer med kendskab til softwareudvikling og udviklingsterminologier. Projektet er udviklet på baggrund af det objektorienterede paradigme og system designs processer. Det er en fordel for læseren, at have tidligere erfaring med design af systemer. 
+
+Der bliver i projektet benyttet en metode med navnet \emph{OOA\&D}, som beskrives i bogen \emph{Objekt Orienteret Analyse \& Design}\cite{OOAD1}. Dette er gjort for at skabe en struktur for både udviklingsprocessen og rapporten, og samtidig skabe et fælles tilgangsvinkel for alle medlemmer af projektgruppen. Dette gør at folk med kendskab til systemudvikling og objektorienteret analyse og design, kan springe de teoretiske underafsnit i designet over, og blot læse opsamlingen på disse afsnit. 
+
+Kilder bliver i rapporten angivet efter Vancouver metoden, som vises i følgende eksempel \emph{"Madspild er i dag et stort problem, både på globalt plan~\cite{fvm_madspild_verden},..".}.
+\phantom{Luft}
+
+\phantom{Luft}
+
+\begin{table}[h]
+	\centering
+		\begin{tabular}{c c c}
+			\underline{\phantom{mmmmmmmmmmmmmm}} & \underline{\phantom{mmmmmmmmmmmmmm}} & \underline{\phantom{mmmmmmmmmmmmmm}} \\
+			Martin Kristjansen	             & Lars Nielsen                         & Jacob Nielsen 			\\
+			&&\\
+			&&\\
+			\underline{\phantom{mmmmmmmmmmmmmm}} & \underline{\phantom{mmmmmmmmmmmmmm}} & \underline{\phantom{mmmmmmmmmmmmmm}} \\
+			Jonas S. Madsen			     & Simon A. Pedersen                    & Lasse J. Petersen
+		\end{tabular}
+\end{table}

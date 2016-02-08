@@ -1,0 +1,80 @@
+\section{Objektgenkendelse}
+\begin{frame}[fragile]{\insertsection}
+    \begin{itemize}
+	    \item Betydning af valg af kamera
+	    \item Bestemmelse af linjer i billede
+	    \item Fra linjer til former
+	    \item Repræsentation af former 
+    \end{itemize}
+\end{frame}
+
+\subsection{Kamera}
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
+  \begin{itemize}
+    \item Aspekter
+        \begin{itemize}
+          \item Støj
+          \item Kvalitet - opløsning
+          \item Lysstyrke
+        \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\subsection{Process}
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
+  \begin{itemize}
+    \item Fremgangsmåde:
+        \begin{itemize}
+          \item Analysér template-billede
+          \item Beskriv objekter fra template-billede
+          \item Analysér input-billede
+          \item Beskriv objekter fra input-billede
+          \item Foretag sammenligning baseret på beskrivelse
+        \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\subsection{Edge-recognition}
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
+\begin{figure}[ht]\centering
+\begin{minipage}{.95\textwidth}
+\includegraphics[scale=0.2]{pictures/Simon/pool_ball.jpg}
+\caption{https://upload.wikimedia.org/wikipedia/commons/a/a2/Russian\_\ and\_\ American\_\ pool\_\ ball\_\ comparison.jpg}
+\end{minipage}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{\insertsection}{Pixel mask}
+\begin{figure}[ht]
+\includegraphics[scale=0.4]{pictures/Simon/presentation_mask}
+\centering
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{\insertsection}{Edge Chaining}
+\begin{figure}[ht]
+\includegraphics[scale=0.4]{pictures/Simon/chain_mask}
+\centering
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{\insertsection}{Edge Relaxation}
+\begin{figure}[ht]
+\includegraphics[scale=0.45]{pictures/Simon/crack_edges}
+\centering
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{\insertsection}{Shape Recognition}
+        \begin{itemize}
+          \item Contour-based description
+          \item Region-based description
+        \end{itemize}
+        \begin{figure}[ht]
+\includegraphics[scale=0.1]{pictures/Simon/pool_ball_edges.jpg}
+\centering
+\begin{itemize}
+\item Online værktøj www.photo-kako.com med Laplacian operator
+\end{itemize}
+\end{figure}
+\end{frame}

@@ -1,0 +1,354 @@
+\documentclass[a4paper,11pt,fleqn,dvipsnames,twoside, openright ]{memoir} 	% Openright aabner kapitler paa hoejresider (openany begge)
+
+%%%% PACKAGES %%%%
+
+% ¤¤ Oversaettelse og tegnsaetning ¤¤ %
+\usepackage[utf8]{inputenc}					% Input-indkodning af tegnsaet (UTF8)
+\usepackage[english]{babel}					% Dokumentets sprog
+\usepackage[T1]{fontenc}					% Output-indkodning af tegnsaet (T1)
+\usepackage{ragged2e,anyfontsize}			% Justering af elementer
+\usepackage{fixltx2e}						% Retter forskellige fejl i LaTeX-kernen
+\usepackage{lscape}                         % For portræt mode i sideopsætning
+
+% ¤¤ Figurer, tabeller (floats) og listings ¤¤ %
+\usepackage{graphicx} 						% Haandtering af eksterne billeder (JPG, PNG, EPS, PDF)
+\usepackage{epstopdf}
+%\usepackage{eso-pic}						% Tilfoej billedekommandoer paa hver side
+%\usepackage{wrapfig}						% Indsaettelse af figurer omsvoebt af tekst. \begin{wrapfigure}{Placering}{Stoerrelse}
+\usepackage{multirow}                		% Fletning af raekker og kolonner (\multicolumn og \multirow)
+\usepackage{multicol}         	        	% Muliggoer output i spalter
+\usepackage{rotating}						% Rotation af tekst med \begin{sideways}...\end{sideways}
+\usepackage{colortbl} 						% Farver i tabeller (fx \columncolor og \rowcolor)
+\usepackage[table]{xcolor}					% Definer farver med \definecolor. Se mere: http://en.wikibooks.org/wiki/LaTeX/Colors
+\definecolor{lightgray}{gray}{0.9}
+\usepackage{flafter}						% Soerger for at floats ikke optraeder i teksten foer deres reference
+\let\newfloat\relax 						% Justering mellem float-pakken og memoir
+\usepackage{float}							% Muliggoer eksakt placering af floats, f.eks. \begin{figure}[H]
+\usepackage{placeins}                       % \FloatBarrier
+\usepackage{bytefield}                      %% Use for drwawing network packages
+\usepackage{gensymb}
+\usepackage{etex}                           % Er med for at få bytefields til at virke med hele gruppens LaTeX installationer.
+\usepackage{listings}						% Placer kildekode i dokumentet med \begin{lstlisting}...\end{lstlisting}
+
+
+% ¤¤ Matematik mm. ¤¤
+\usepackage{amsmath,amssymb,stmaryrd} 		% Avancerede matematik-udvidelser
+\usepackage{mathtools}						% Andre matematik- og tegnudvidelser
+\usepackage{textcomp}                 		% Symbol-udvidelser (f.eks. promille-tegn med \textperthousand )
+\usepackage{rsphrase}						% Kemi-pakke til RS-saetninger, f.eks. \rsphrase{R1}
+\usepackage[version=3]{mhchem} 				% Kemi-pakke til flot og let notation af formler, f.eks. \ce{Fe2O3}
+\usepackage{siunitx}						% Flot og konsistent praesentation af tal og enheder med \si{enhed} og \SI{tal}{enhed}
+\sisetup{output-decimal-marker = {,}}		% Opsaetning af \SI (DE for komma som decimalseparator)
+
+% ¤¤ Referencer og kilder ¤¤ %
+\usepackage[english]{varioref}				% Muliggoer bl.a. krydshenvisninger med sidetal (\vref)
+%\usepackage{natbib}							% Udvidelse med naturvidenskabelige citationsmodeller
+\usepackage[style=numeric,natbib=true,backend=bibtex,bibencoding=ascii,sorting=none,maxnames=99,maxcitenames=1]{biblatex}
+\usepackage{csquotes}
+%\usepackage{xr}							% Referencer til eksternt dokument med \externaldocument{<NAVN>}
+\usepackage[toc]{glossaries}					% Terminologi- eller symbolliste (se mere i Daleifs Latex-bog)
+
+% ¤¤ Misc. ¤¤ %
+\usepackage{lipsum}							% Dummy text \lipsum[..]
+\usepackage[shortlabels]{enumitem}			% Muliggoer enkelt konfiguration af lister
+\usepackage{pdfpages}						% Goer det muligt at inkludere pdf-dokumenter med kommandoen \includepdf[pages={x-y}]{fil.pdf}
+\pdfoptionpdfminorversion=6					% Muliggoer inkludering af pdf dokumenter, af version 1.6 og hoejere
+\pretolerance=2500 							% Justering af afstand mellem ord (hoejt tal, mindre orddeling og mere luft mellem ord)
+
+% Kommentarer og rettelser med \fxnote. Med 'final' i stedet for 'draft' udloeser hver note en error i den faerdige rapport.
+\usepackage[footnote,draft,english,silent,nomargin]{fixme}
+
+
+%%%% CUSTOM SETTINGS %%%%
+
+% ¤¤ Marginer ¤¤ %
+\setlrmarginsandblock{3.5cm}{2.5cm}{*}		% \setlrmarginsandblock{Indbinding}{Kant}{Ratio}
+\setulmarginsandblock{2.5cm}{3.0cm}{*}		% \setulmarginsandblock{Top}{Bund}{Ratio}
+\checkandfixthelayout 						% Oversaetter vaerdier til brug for andre pakker
+
+%	¤¤ Afsnitsformatering ¤¤ %
+\setlength{\parindent}{0mm}           		% Stoerrelse af indryk
+\setlength{\parskip}{3mm}          			% Afstand mellem afsnit ved brug af double Enter
+\linespread{1,1}							% Linie afstand
+
+% ¤¤ Litteraturlisten ¤¤ %
+%\bibpunct[,]{[}{]}{;}{a}{,}{,} 				% Definerer de 6 parametre ved Harvard henvisning (bl.a. parantestype og seperatortegn)
+%\bibliographystyle{bibtex/harvard}			% Udseende af litteraturlisten.
+%\bibliographystyle{unsrt}
+\addbibresource{bib.bib}
+
+% ¤¤ Indholdsfortegnelse ¤¤ %
+\setsecnumdepth{subsection}		 			% Dybden af nummerede overkrifter (part/chapter/section/subsection)
+\maxsecnumdepth{subsection}					% Dokumentklassens graense for nummereringsdybde
+\settocdepth{subsection} 					% Dybden af indholdsfortegnelsen
+
+% ¤¤ Lister ¤¤ %
+\setlist{
+  topsep=0pt,								% Vertikal afstand mellem tekst og listen
+  itemsep=-1ex,								% Vertikal afstand mellem items
+}
+
+% ¤¤ Visuelle referencer ¤¤ %
+\usepackage[colorlinks]{hyperref}			% Danner klikbare referencer (hyperlinks) i dokumentet.
+\hypersetup{colorlinks = true,				% Opsaetning af farvede hyperlinks (interne links, citeringer og URL)
+    linkcolor = black,
+    citecolor = black,
+    urlcolor = black
+}
+
+% ¤¤ Opsaetning af figur- og tabeltekst ¤¤ %
+\captionnamefont{\small\bfseries\itshape}	% Opsaetning af tekstdelen ('Figur' eller 'Tabel')
+\captiontitlefont{\small}					% Opsaetning af nummerering
+\captiondelim{. }							% Seperator mellem nummerering og figurtekst
+\hangcaption								% Venstrejusterer flere-liniers figurtekst under hinanden
+\captionwidth{\linewidth}					% Bredden af figurteksten
+\setlength{\belowcaptionskip}{0pt}			% Afstand under figurteksten
+
+
+% ¤¤ Opsaetning af commands til semantic ¤¤ %
+% Pil
+
+\newcommand{\ra}[1][\relax]{\ensuremath \rightarrow_{#1}}
+\newcommand{\Ra}[1][\relax]{\ensuremath \Rightarrow_{#1}}
+\newcommand{\Raa}{\ensuremath \Rightarrow_{a}}
+\newcommand{\Rab}{\ensuremath \Rightarrow_{b}}
+\newcommand{\ram}{\ensuremath \rightarrow_{M}}
+\newcommand{\Raexp}{\ensuremath \Rightarrow_{exp}}
+\newcommand{\raexp}{\ensuremath \rightarrow_{exp}}
+\newcommand{\RaS}{\ensuremath \Rightarrow_{S}}
+\newcommand{\raS}{\ensuremath \rightarrow_{S}}
+\newcommand{\rhu}{\ensuremath \rightharpoonup}
+
+% Logiske konnektiver
+
+\newcommand{\logand}{\wedge}
+\newcommand{\logor}{\vee}
+\newcommand{\sand}{t\!\!t}
+\newcommand{\falsk}{f\!\!f}
+
+% Kantede parenteser
+
+\newcommand{\lag}{\langle}
+\newcommand{\rag}{\rangle}
+
+% Next
+
+\newcommand{\nexte}{\textrm{next}}
+
+% Syntaks
+
+\newcommand{\while}[2]{\texttt{while}\;#1 \; \texttt{do}\; #2}
+\newcommand{\ifs}[3]{\texttt{if}\;\;#1 \; \texttt{then}\; #2 \; \texttt{else}\; #3}
+
+
+% Regler
+
+% Med sidebetingelse
+
+\newcommand{\newcondinfrule}[3]
+           {\parbox{5.5cm}{$$ {\frac{#1}{#2}}{\qquad
+            #3} \hfill  $$}}
+
+% Uden sidebetingelse
+
+\newcommand{\infrule}[2]
+           {\parbox{4.5cm}{$$ \frac{#1}{#2}\hspace{.5cm}$$}}
+
+% Navne på regler
+
+\newcommand{\runa}[1]{\mbox{\textsc{\protect{(#1})}}}
+\newcommand{\runatt}[2]{$[{\mbox{\textsc{#1}}}_{\mbox{\textsc{\small #2}}}]$}
+
+% Forkortelse for environments
+
+\newcommand{\envv}{env_{v}}
+\newcommand{\envp}{env_{P}}
+\newcommand{\envm}{env_{m}}
+\newcommand{\envf}{env_{f}}
+\newcommand{\envs}{env_{s}}
+\newcommand{\envi}{env_{i}}
+\newcommand{\envvsf}{env_{vsf}}
+\newcommand{\envl}{env_{l}}
+\newcommand{\stoenvl}[2]{\ensuremath sto^{#1}, \envl^{#2}}
+\newcommand{\ve}{\vdash_{E}}
+\newcommand{\ev}{E \vdash}
+
+% ¤¤ Opsaetning af listings ¤¤ %
+
+\usepackage{mathdots} %Ensures that dots (especially the \vdots used in the lstlistings) are scaled along with the text size.
+\newcommand{\csharp}{C\texttt{\#} } % C#
+\newcommand{\codeDots}{\tiny{\raisebox{-2pt}[0pt][0pt]{$\vdots$}}} % Code dots
+
+
+\definecolor{commentGreen}{RGB}{34,139,24}
+\definecolor{stringPurple}{RGB}{208,76,239}
+
+\lstdefinelanguage{inc_C}
+{
+	basicstyle=\small,
+	basicstyle=\ttfamily\scriptsize,
+	captionpos=b,
+	showstringspaces=false,					% Mellemrum i strenge enten vist eller blanke
+	numbers=left, numberstyle=\tiny,		% Linjenumre
+	tabsize=4,
+	frame=single,
+	language=C
+}
+
+\lstdefinelanguage{our_bash}
+{
+	basicstyle=\small,
+	basicstyle=\ttfamily\scriptsize,
+        captionpos=b,
+	showstringspaces=false,					% Mellemrum i strenge enten vist eller blanke
+	numbers=left, numberstyle=\tiny,		% Linjenumre
+	tabsize=4,
+        frame=single,
+        language=bash
+}
+
+\lstdefinelanguage{inc_cpp}
+{
+	basicstyle=\small,
+	basicstyle=\ttfamily\scriptsize,
+	captionpos=b,
+	showstringspaces=false,					% Mellemrum i strenge enten vist eller blanke
+	numbers=left, numberstyle=\tiny,		% Linjenumre
+	tabsize=4,
+	frame=single,
+        keywordstyle=\color{blue}\ttfamily,
+        stringstyle=\color{red}\ttfamily,
+        commentstyle=\color{green}\ttfamily,
+	language=C++
+}
+
+
+
+% ¤¤ Navngivning ¤¤ %
+\addto\captionsenglish{
+	\renewcommand\appendixname{Appendix}
+	\renewcommand\contentsname{Table of Content}
+	\renewcommand\appendixpagename{Appendix}
+	\renewcommand\appendixtocname{Appendix}
+	\renewcommand\cftchaptername{\chaptername~}				% Skriver "Kapitel" foran kapitlerne i indholdsfortegnelsen
+	\renewcommand\cftappendixname{\appendixname~}			% Skriver "Appendiks" foran appendiks i indholdsfortegnelsen
+}
+
+% ¤¤ Kapiteludssende ¤¤ %
+\definecolor{numbercolor}{gray}{0.7}		% Definerer en farve til brug til kapiteludseende
+\newif\ifchapternonum
+
+\makechapterstyle{jenor}{					% Definerer kapiteludseende frem til ...
+  \renewcommand\beforechapskip{0pt}
+  \renewcommand\printchaptername{}
+  \renewcommand\printchapternum{}
+  \renewcommand\printchapternonum{\chapternonumtrue}
+  \renewcommand\chaptitlefont{\fontfamily{pbk}\fontseries{db}\fontshape{n}\fontsize{25}{35}\selectfont\raggedleft}
+  \renewcommand\chapnumfont{\fontfamily{pbk}\fontseries{m}\fontshape{n}\fontsize{1in}{0in}\selectfont\color{numbercolor}}
+  \renewcommand\printchaptertitle[1]{%
+    \noindent
+    \ifchapternonum
+    \begin{tabularx}{\textwidth}{X}
+    {\let\\\newline\chaptitlefont ##1\par}
+    \end{tabularx}
+    %\par\vskip-2.5mm\hrule
+    \else
+    \begin{tabularx}{\textwidth}{Xl}
+    {\parbox[b]{\linewidth}{\chaptitlefont ##1}} & \raisebox{-15pt}{\chapnumfont \thechapter}
+    \end{tabularx}
+    %\par\vskip2mm\hrule
+    \fi
+  }
+}											% ... her
+
+\chapterstyle{jenor}						% Valg af kapiteludseende - Google 'memoir chapter styles' for alternativer
+
+% ¤¤ Sidehoved ¤¤ %
+
+\makepagestyle{AAU}							% Definerer sidehoved og sidefod udseende frem til ...
+\makepsmarks{AAU}{%
+	\createmark{chapter}{left}{shownumber}{}{. \ }
+	\createmark{section}{right}{shownumber}{}{. \ }
+	\createplainmark{toc}{both}{\contentsname}
+	\createplainmark{lof}{both}{\listfigurename}
+	\createplainmark{lot}{both}{\listtablename}
+	\createplainmark{bib}{both}{\bibname}
+	\createplainmark{index}{both}{\indexname}
+	\createplainmark{glossary}{both}{\glossaryname}
+}
+\nouppercaseheads											% Ingen Caps oenskes
+
+\makeevenhead{AAU}{sw403f15}{}{\leftmark}				% Definerer lige siders sidehoved (\makeevenhead{Navn}{Venstre}{Center}{Hoejre})
+\makeoddhead{AAU}{\rightmark}{}{Aalborg University}		% Definerer ulige siders sidehoved (\makeoddhead{Navn}{Venstre}{Center}{Hoejre})
+\makeevenfoot{AAU}{\thepage}{}{}							% Definerer lige siders sidefod (\makeevenfoot{Navn}{Venstre}{Center}{Hoejre})
+\makeoddfoot{AAU}{}{}{\thepage}								% Definerer ulige siders sidefod (\makeoddfoot{Navn}{Venstre}{Center}{Hoejre})
+\makeheadrule{AAU}{\textwidth}{0.5pt}						% Tilfoejer en streg under sidehovedets indhold
+\makefootrule{AAU}{\textwidth}{0.5pt}{1mm}					% Tilfoejer en streg under sidefodens indhold
+
+\copypagestyle{AAUchap}{AAU}								% Sidehoved for kapitelsider defineres som standardsider, men med blank sidehoved
+\makeoddhead{AAUchap}{}{}{}
+\makeevenhead{AAUchap}{}{}{}
+\makeheadrule{AAUchap}{\textwidth}{0pt}
+\aliaspagestyle{chapter}{AAUchap}							% Den ny style vaelges til at gaelde for chapters
+															% ... her
+
+\pagestyle{AAU}												% Valg af sidehoved og sidefod
+
+
+%%%% CUSTOM COMMANDS %%%%
+
+% ¤¤ Billede hack ¤¤ %
+\newcommand{\figur}[5]{
+		\begin{figure}[#1] \centering
+			\includegraphics[width=#2\textwidth]{graphics/#3}
+			\caption{#4}\label{#5}
+		\end{figure}
+}
+
+%%%% SIGNATUR %%%%%
+\newcommand{\signature}[1]{
+\begin{minipage}[c]{\textwidth}
+\vspace{2cm}
+
+\makebox[7cm][c]{
+\hfill \makebox[7cm] {\hrulefill}
+}
+
+\makebox[7cm][c]{
+ \hfill #1 \hfill
+}
+\end{minipage}
+}
+
+%%%% Personlige FixMes %%%%
+\newcommand{\mfx}[1]{
+\fxnote[author=Martin]{#1}
+}
+\newcommand{\jfx}[1]{
+\fxnote[author=Jonas]{#1}
+}
+\newcommand{\afx}[1]{
+\fxnote[author=Anders]{#1}
+}
+\newcommand{\lfx}[1]{
+\fxnote[author=Lars]{#1}
+}
+\newcommand{\sfx}[1]{
+\fxnote[author=Simon]{#1}
+}
+\newcommand{\cfx}[1]{
+\fxnote[author=Christian]{#1}
+}
+% ¤¤ Specielle tegn ¤¤ %
+\newcommand{\decC}{^{\circ}\text{C}}
+\newcommand{\dec}{^{\circ}}
+\newcommand{\m}{\cdot}
+
+\usepackage[noabbrev]{cleveref}						% Tillader brug af \cref, skal stå efter hyperref for at virke
+
+%%%% ORDDELING %%%%
+
+\hyphenation{}
+
+%%Glossary
+\makeglossaries

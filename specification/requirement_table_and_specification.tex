@@ -1,0 +1,41 @@
+\section{Requirements}\label{sec:requirements}
+\Cref{tbl:requirement} lists the requirements in prioritised groupings, with the most essential requirement as \textit{Must have}. The requirements will be specified in the following.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|}
+    \hline
+     \textbf{Must have} \\ \hline
+     Object Recognition \\ \hline
+     Target Tracking \\ \hline\hline
+     \textbf{Good to have} \\ \hline
+     Advanced Object Recognition \\ \hline
+     Advanced Target Tracking \\ \hline
+     Advanced Target Acquisition\\ \hline\hline
+     \textbf{Stretch Goal} \\ \hline
+     Turning Cameras \\ \hline 
+    \end{tabular}
+    \caption{Requirement table}
+    \label{tbl:requirement}
+\end{table}
+
+The requirements have been chosen and prioritised doing a brainstorm session, based on the context described earlier and represents different features that will support the problem definition.
+
+\emph{Object Recognition}\\
+Means to recognise a predetermined object in a image, and to determine the position in said image. 
+
+\emph{Target Tracking}\\
+When a camera has recognised the predefined object, the specific position of the object, in respect to the camera, is calculated. When the pointing device has information from multiple cameras, the position of the object, in regards to the pointing device, is calculate and the pointing device is instructed to move the pointer in the direction of the object.
+
+\emph{Advanced Object Recognition}\\
+This requirement specifies the attribute of recognising different objects in a single image from one camera.
+
+\emph{Advanced Target Tracking}\\
+If the system recognises multiple objects simultaneously, the system must be able to utilise the same amount of pointing devices, such that all objects are tracked.
+
+\emph{Advanced target Acquisition}\\
+The system can use more than two cameras in order to acquire a target. The use of multiple cameras allows the system to cover rooms larger than what is possible with two cameras. The accuracy of the pointing device can be improved as the position is based on multiple sources and thereby it is possible to discard positions that, according to the system, stands out.
+
+
+\emph{Turning Cameras}\\
+By expanding the system to include cameras that are able to turn, the amount of cameras needed to cover a room is decreased because each camera is able to cover a bigger area.
