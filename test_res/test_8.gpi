@@ -1,9 +1,0 @@
-set title 'motor 1 test data'
-set ylabel 'Occurrences'
-set xlabel 'Degrees'
-set boxwidth 0.5
-set style fill solid
-set grid
-set terminal postscript eps enhanced color font 'Helvetica,10'
-set output 'test_engine_minus_360_4.eps'
-plot "test_engine_minus_360_4.data" using 1:3:xtic(2) with boxes

@@ -1,6 +1,0 @@
-\subsection{nxtOSEK}
-The \gls{nxt} comes with a \gls{os} written by the Lego Corporation. It could be beneficial to change the firmware of the \gls{nxt} in order to more control. An example is have more control of how resources are managed.
-
-In order to get this control of the \gls{nxt}, the nxtOSEK \gls{os} is used as it can used to utilise the processors, schedule tasks and so forth. This \gls{os} is a \gls{rtos} so it is also suitable for fulfilling the real-time requirements. Furthermore, nxtOSEK supports floating-point precision, which will be needed in the calculations for targeting an object. NxtOSEK provides a C and C$++$ API for sensors and actuators that can be used with the \gls{nxt}.
-
-Given that nxtOSEK is a \gls{rtos} relevant real time requirements for target tracking. If the purpose of the system is only to track a target there might be soft real time requirements. The reason for them to be soft is that the system does not fail if a single set of data from the sensors is not handled at the deadline. If several deadlines are missed it could potentially result in loosing track of target. Using a \gls{rtos} it is possible to determine whether or not tracking a target is possible with the designed system.

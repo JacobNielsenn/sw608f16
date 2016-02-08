@@ -1,8 +1,0 @@
-\section{Problem and System Setup}\label{sec:base_setup}
-The simplified problem is that a surveillance system as a primary function must be able to recognise and monitor an object by the use of multiple cameras, secondarily the system should track the object and notify some secondary system of any present intruder.
-
-Cameras capture 2D images and with the use of several cameras, with overlapping \gls{fov}, it is possible to calculate an object's position in 3D space, once the object is in one of the overlapping \glspl{fov}. When an object has been recognised by the system, the secondary focus comes in effect and tracks the object. It is possible to track an object in several ways. For this project the tracking unit is chosen to be a laser pointer which will aim at the object. This gives an easy way of getting immediate feedback by physically visualising what the system recognises. An important aspect of this feedback is that it can be used to easily compare the system's internal representation with the object's actual position. 
-
-The tracking of a recognised object may fail without consequences for the primary functionality, as the system can always fall back to monitoring. The second system will not be developed as part of this project, but will be notified of the intruder's position trough tracking of the predefined object.
-
-The basic setup consists of two types of devices: static camera units and a tracking unit. The tracking unit is able to rotate in order to follow a recognised object. The setup might be expanded in order to fulfil the requirements. With the basic setup defined, the requirements can now be specified. 
