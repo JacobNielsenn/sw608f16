@@ -57,9 +57,10 @@
 
 % Kommentarer og rettelser med \fxnote. Med 'final' i stedet for 'draft' udloeser hver note en error i den faerdige rapport.
 \usepackage[footnote,draft,english,silent,nomargin]{fixme}
-
-
 %%%% CUSTOM SETTINGS %%%%
+
+%%%% New Commands %%%%
+\newcommand{\name}{\#NAME\#}
 
 % ¤¤ Marginer ¤¤ %
 \setlrmarginsandblock{3.5cm}{2.5cm}{*}		% \setlrmarginsandblock{Indbinding}{Kant}{Ratio}
@@ -321,24 +322,19 @@
 }
 
 %%%% Personlige FixMes %%%%
-\newcommand{\mfx}[1]{
-\fxnote[author=Martin]{#1}
+\newcommand{\ofx}[1]{
+\fxnote[author=Oliver]{#1}
 }
 \newcommand{\jfx}[1]{
-\fxnote[author=Jonas]{#1}
+\fxnote[author=Jacob]{#1}
 }
 \newcommand{\afx}[1]{
 \fxnote[author=Anders]{#1}
 }
-\newcommand{\lfx}[1]{
-\fxnote[author=Lars]{#1}
-}
 \newcommand{\sfx}[1]{
 \fxnote[author=Simon]{#1}
 }
-\newcommand{\cfx}[1]{
-\fxnote[author=Christian]{#1}
-}
+
 % ¤¤ Specielle tegn ¤¤ %
 \newcommand{\decC}{^{\circ}\text{C}}
 \newcommand{\dec}{^{\circ}}
