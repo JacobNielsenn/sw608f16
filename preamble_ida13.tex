@@ -46,7 +46,6 @@
 \usepackage[style=numeric,natbib=true,backend=bibtex,bibencoding=ascii,sorting=none,maxnames=99,maxcitenames=1]{biblatex}
 \usepackage{csquotes}
 %\usepackage{xr}							% Referencer til eksternt dokument med \externaldocument{<NAVN>}
-\usepackage[toc]{glossaries}					% Terminologi- eller symbolliste (se mere i Daleifs Latex-bog)
 
 % ¤¤ Misc. ¤¤ %
 \usepackage{lipsum}							% Dummy text \lipsum[..]
@@ -275,7 +274,6 @@
 	\createplainmark{lot}{both}{\listtablename}
 	\createplainmark{bib}{both}{\bibname}
 	\createplainmark{index}{both}{\indexname}
-	\createplainmark{glossary}{both}{\glossaryname}
 }
 \nouppercaseheads											% Ingen Caps oenskes
 
@@ -345,6 +343,3 @@
 %%%% ORDDELING %%%%
 
 \hyphenation{}
-
-%%Glossary
-\makeglossaries

@@ -1,7 +1,6 @@
 \include{preamble_ida13}
 \raggedbottom
 \begin{document}
-\include{glossary}
 \frontmatter													% Forindhold - nummereres med romertal
 \include{formalia/forside}
 \cleardoublepage												% Indsaetter tom side, saa naeste kapitel starter paa hoejre side (hvis noedvendigt)
@@ -13,7 +12,6 @@
 %%%% INTRODUCTION %%%%
 \include{introduction/intro}
 
-
 \phantomsection													% Kunstigt afsnit, som hyperlinks kan 'holde fast i'
 \pdfbookmark[0]{Table of Contents}{Contents}					% Tildeler en klikbar bookmark til den endelige PDF
 \tableofcontents*												% Indholdsfortegnelsen (kaldet ToC)
@@ -22,13 +20,22 @@
 
 \mainmatter	\setcounter{page}{1}													% Hovedindhold - nummereres fra side 1
 
-
 %%Indsæt rapportens filer her!!%%
+%%%% SPRINTS %%%%
+\include{1sprint/chapter_doc}
+\include{2sprint/chapter_doc}
+\include{3sprint/chapter_doc}
+\include{4sprint/chapter_doc}
+
+%%%% COLLABORATION %%%%
+\include{collaboration/collaboration}
+
+%%%% EXPERIENCE %%%%
+\include{experience/experience}
 
 
 %%%% Appendiks %%%%
 \appendix														% Appendiks/bilag start - giver chapter bogstaver i stedet for tal
-\clearforchapter												% Sikrer at pagestylen aktiveres paa den rigtige side
 \phantomsection													% Kunstigt afsnit, som hyperlinks kan 'holde fast i'
 \pdfbookmark[0]{Appendiks}{appendiks}							% Tildeler en klikbar bookmark til den endelige PDF
 
@@ -46,8 +53,8 @@
 \lstlistoflistings
 
 %% List of Fx notes
-%\newpage
-%\listoffixmes
+\newpage
+\listoffixmes
 
 %%%% Kilder %%%%
 \begingroup
