@@ -1,17 +1,20 @@
 \section{System for Monitoring Electronic Mobile Devices}\label{sec:monitoring}
 This section will describe a solution for the problems associated with indoor navigation and monitoring of multiple mobile devices.    
 
-\subsection{Theory ~problems associated with indoor navigation and monitoring of multiple mobile devices~}
-Text
+\subsection{Indoor Monitoring Obstacles}
+When monitoring electronic devises in indoor spaces, a set of obstacles are presented. Some of the popular techniques that can be used in outdoor environments prove themselves obsolete or severely hindered when used in the indoor environment. This can be seen when working with Global Positioning System(GPS) technology as walls, roofs and floors will disrupt the signal received from satellites. This can be verified by anyone who have been in a cement basement and tried to connect to a GPS.
+
+There are ways to overcome the GPS issue and Google presents one possible solution. They have made indoor navigation and tracking possible in several indoor spaces trough their Indoor Maps project which lets users map an building by uploading a floor plan of said building. After the floor plan have been accepted, the system will request information about the location of the Wi-FI access points in the building. By doing so the system is able to triangulate with the access points and combine that information with the GPS location, thereby utilising both technologies to get the position of a device.
+
+Another solution would could be to utilise Radio Frequency Identification(RFID) to create checkpoints throughout a building. These checkpoint would 
+\cite{indoor_bin}
 
 \subsection{Cisco}\label{subsec:cisco}
 Cisco has developed a location aware wireless network system, the Cisco Unified Wireless Network(UWN), which utilises Wi-Fi and other wireless communication protocols in order to develop other indoor location based services\cite{uwn}. We have access to a sever that runs the Cisco UWN software and is set up to monitor the entirety of the university campus building Cassiopeia at Aalborg University. We have chosen to use the data that is available from the campus as it is comprehensible to set the system up in a new environment. 
 
 % billede af hvordan det ser ud?
 % http://www.cisco.com/c/dam/en/us/td/i/200001-300000/270001-280000/276001-277000/276195.tif/jcr:content/renditions/276195.jpg
-The system contains information about the access points that are used to model the building and the devices that are connected to those points. It is possible to get the relative position of any connected devices in 
+The building is modelled by the use of an top-down image of the floor plan that represents the building. The image will be converted to a coordinate system that is placed on top of the model which is then supplied with the positions of the access points that are set up in the building. From there it is possible to get the relative position of any connected devices in relation to the origin of a coordinate system. Such devices could be mobile phones or laptops. 
 
-Hvorfor er det valgt?
-Hvad vil vi havde ud af systemet, og hvordan?
-
-Overgang til server kommunikation?
+It is these positions that will be used in order to track and analyse people.
+%How do we solve the previous stated problems
