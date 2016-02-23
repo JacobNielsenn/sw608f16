@@ -7,7 +7,7 @@
 \usepackage[english]{babel}					% Dokumentets sprog
 \usepackage[T1]{fontenc}					% Output-indkodning af tegnsaet (T1)
 \usepackage{ragged2e,anyfontsize}			% Justering af elementer
-%\usepackage{fixltx2e}						% Retter forskellige fejl i LaTeX-kernen
+\usepackage{fixltx2e}						% Retter forskellige fejl i LaTeX-kernen
 \usepackage{lscape}                         % For portræt mode i sideopsætning
 
 % ¤¤ Figurer, tabeller (floats) og listings ¤¤ %
@@ -321,16 +321,16 @@
 
 %%%% Personlige FixMes %%%%
 \newcommand{\ofx}[1]{
-\fxnote{Oliver: #1}
+\fxnote[author=Oliver]{#1}
 }
 \newcommand{\jfx}[1]{
-\fxnote{Jacob: #1}
+\fxnote[author=Jacob]{#1}
 }
 \newcommand{\afx}[1]{
-\fxnote{Anders: #1}
+\fxnote[author=Anders]{#1}
 }
 \newcommand{\sfx}[1]{
-\fxnote{Simon: #1}
+\fxnote[author=Simon]{#1}
 }
 
 % ¤¤ Specielle tegn ¤¤ %
