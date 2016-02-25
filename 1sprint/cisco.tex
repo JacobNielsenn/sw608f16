@@ -1,21 +1,32 @@
 \section{System for Monitoring Electronic Mobile Devices}\label{sec:monitoring}
-This section will describe a solution for the problems associated with indoor navigation and monitoring of multiple mobile devices.
-
-\subsection{Indoor Monitoring Obstacles}
+%Introduction to this
 When monitoring electronic devises in indoor spaces, a set of obstacles are presented. Some of the popular techniques that can be used in outdoor environments prove themselves obsolete or severely hindered when used in an indoor environment. This can be seen when working with Global Positioning System(GPS) technology, as obstacles such as walls, roofs and floors will disrupt the signal received from satellites, leading to large imprecisions in the position measurement.
+
+This section will describe a solution for the problems associated with indoor navigation and monitoring of multiple mobile devices. There will be described two technologies used for indoor positioning, wi-fi and Radio Frequency Identification, hence referred to as RFID.
+
+\subsection{Wi-Fi Indoor Positioning}
+One of the technologies used for indoor positioning is wi-fi. When using wi-fi there are multiple methods of doing so, one being triangulation and another being fingerprinting.
 %tre problematikker: precision, latency, refresh rate: http://blogs.cisco.com/wireless/three-dimensions-that-influence-location-quality
 
+%What does google do?
 There are ways to overcome the GPS issue, Google presents one possible solution. They have made indoor navigation and tracking possible in indoor spaces trough their Indoor Maps project \cite{IPSoverGPS} which lets users map a building by uploading a floor plan of said building. After the floor plan have been accepted, the system will request information about the location of the Wi-FI access points in the building. By doing so the system is able to triangulate using the access points as static reference points and combine that information with the GPS location, thereby utilising both technologies to get a more precise position of the device than by using GPS only.
 
-Another solution is to utilise Radio Frequency Identification(RFID) to create checkpoints throughout a building. These checkpoint are placed in doors or other room entrances and thereby utilise a RFID scanner that reports any observed devices which is equipped with a RFID tag\cite{indoor_bin}. %The environment of which the system will be used in have to be modelled in order to make use of the checkpoint data. 
-RFID requires hardware to set up the checkpoints, and is in addition to this limited to only work at these checkpoints. It is however possible to connect the checkpoints and in this way track the device. Thereby it can be know if the device entered or exited the room.
-
-%This should be moved a bit
-This approach has two limitations. The first lies in the need of auxiliary hardware, as the environment which the system is to operate in not equipped with the scanners, which will have to be installed and modelled\sfx{how do we know this?}. The second downside is the limitations of the system. It is only possible to get new data about a device's position when it has been observed by a scanner, which means there will be much downtime if the device is moving down a hallway or is stationary in a room. It is therefore not possible to get a precise position of a device after it has moved away from a scanner due to the direction in which the device moved in is unknown. A solution to this problem could be to use more scanners or combine the system with more technologies to improve precision and refresh rate.
-
+%About Cisco
 Cisco has developed a location-aware wireless network system, the Cisco Unified Wireless Network(UWN), which utilises Wi-Fi triangulation\cite{CiscoTri} and other wireless communication protocols in order to develop indoor location based services\cite{uwn}. \sfx{explain MSE, and what tri-lateration is(which cisco uses}
 The building is modelled by the use of an outline of the floor plan. The image will be converted to a coordinate system that is placed on top of the model which is then supplied with the positions of the access points that are set up in the building. From there it is possible to get the relative position of any nearby devices in relation to the origin of a coordinate system. It is these positions that will be used in order to track and analyse wireless devices.
 \ofx{write about fingerprinting}
+
+\subsection{RFID Indoor Positioning}
+Another solution is to utilise RFID to create checkpoints throughout a building. These checkpoint are placed in doors or other room entrances and thereby utilise a RFID scanner that reports any observed devices which is equipped with a RFID tag\cite{indoor_bin}. 
+RFID works by a scanner reading an id form the passing device then sending the tag of the scanned device, the scanners own id and the time-stamp for the scan to a host computer system. By knowing where the scanners are the system can keep track of the devices\cite{RFIDjournal}.
+
+RFID requires auxiliary hardware to set up the checkpoints, and is in addition to this limited to only work at these checkpoints. It is possible to connect the checkpoints and watch users resent history and in this way track the device. Thereby it can be know if the device entered or exited the room. It can however not be know where in the room the person are which makes it difficult to track someone in a large room.
+
+%Maby should be moved a bit
+%This approach has two limitations. The first lies in the need of auxiliary hardware, as the environment in which the system is to operate are not necessarily equipped with the scanners, which will have to be installed. The second downside is the limitations of the system. It is only possible to get new data about a device's position when it has been observed by a scanner, which means there will be much downtime if the device is moving down a hallway or is stationary in a room. It is therefore not possible to get a precise position of a device after it has moved away from a scanner due to the direction in which the device moved in is unknown. A solution to this problem could be to use more scanners or combine the system with more technologies to improve precision and refresh rate.
+
+
+
 \subsection{Cisco}\label{subsec:cisco}
 At the university we have access to a sever that runs the Cisco UWN (MSE) software which is set up to monitor every building on campus at Aalborg University. We have chosen to use the data that is available from here as it is comprehensible to set the system up in a new environment.
 
