@@ -5,11 +5,11 @@ When monitoring electronic devises in indoor spaces, a set of obstacles are pres
 This section will describe a solution for the problems associated with indoor navigation and monitoring of multiple mobile devices. There will be described two technologies used for indoor positioning, wi-fi and Radio Frequency Identification, hence referred to as RFID.
 
 \subsection{Wi-Fi Indoor Positioning}
-One of the technologies used for indoor positioning is wi-fi. When using wi-fi there are multiple methods of doing so, one being triangulation and another being fingerprinting.
+One of the technologies used for indoor positioning is wi-fi. When using wi-fi there are multiple methods of doing so, one being triangulation in this section there will be looked further in to this.
 %tre problematikker: precision, latency, refresh rate: http://blogs.cisco.com/wireless/three-dimensions-that-influence-location-quality
 
 %Should we make this a subsubsection?
-Triangulation works by having three accesspoints being able to connect to the device. The position of the accesspoints are known to the system and by calculating the distance from the device to each accesspoint, based on the signal strength, the position can be found. It is also possible to find the direction of the device, relative to the accesspoints and from this information calculate the position. The two methods can also be combined such that the system is based on signal strength and direction\cite{triangulation}.
+Triangulation works by having three access-points being able to detect to a device. The position of the access-points are known to the system and by calculating the distance from the device to each access-point, based on the signal strength, the position can be found. It is also possible to find the direction of the device, relative to the access-points and from this information calculate the position. The two methods can also be combined such that the system is based on signal strength and direction\cite{triangulation}. In addition to this it is possible to combine the system with fingerprinting, this means that when a device are detected, the device sends a unique id e.g. its Mac-address, and thereby identifying the device.
 
 %Paragraph?
 %What does google do?
@@ -18,11 +18,6 @@ There are ways to overcome the GPS issue, Google presents one possible solution.
 %About Cisco
 Cisco has developed a location-aware wireless network system, the Cisco Unified Wireless Network(UWN), which utilises Wi-Fi triangulation\cite{CiscoTri} and other wireless communication protocols in order to develop indoor location based services\cite{uwn}. \sfx{explain MSE, and what tri-lateration is(which cisco uses}
 The building is modelled by the use of an outline of the floor plan. The image will be converted to a coordinate system that is placed on top of the model which is then supplied with the positions of the access points that are set up in the building. From there it is possible to get the relative position of any nearby devices in relation to the origin of a coordinate system. It is these positions that will be used in order to track and analyse wireless devices.
-
-%Next subsub?
-%Something about fingerprinting
-As mentioned it is also possible to use fingerprinting for indoor positioning.
-\ofx{write about fingerprinting}
 
 \subsection{RFID Indoor Positioning}
 Another solution is to utilise RFID to create checkpoints throughout a building. These checkpoint are placed in doors or other room entrances and thereby utilise a RFID scanner that reports any observed devices which is equipped with a RFID tag\cite{indoor_bin}. 
