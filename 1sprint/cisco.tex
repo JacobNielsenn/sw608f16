@@ -8,12 +8,20 @@ This section will describe a solution for the problems associated with indoor na
 One of the technologies used for indoor positioning is wi-fi. When using wi-fi there are multiple methods of doing so, one being triangulation and another being fingerprinting.
 %tre problematikker: precision, latency, refresh rate: http://blogs.cisco.com/wireless/three-dimensions-that-influence-location-quality
 
+%Should we make this a subsubsection?
+Triangulation works by having three accesspoints being able to connect to the device. The position of the accesspoints are known to the system and by calculating the distance from the device to each accesspoint, based on the signal strength, the position can be found. It is also possible to find the direction of the device, relative to the accesspoints and from this information calculate the position. The two methods can also be combined such that the system is based on signal strength and direction\cite{Triangulation}.
+
+%Paragraph?
 %What does google do?
 There are ways to overcome the GPS issue, Google presents one possible solution. They have made indoor navigation and tracking possible in indoor spaces trough their Indoor Maps project \cite{IPSoverGPS} which lets users map a building by uploading a floor plan of said building. After the floor plan have been accepted, the system will request information about the location of the Wi-FI access points in the building. By doing so the system is able to triangulate using the access points as static reference points and combine that information with the GPS location, thereby utilising both technologies to get a more precise position of the device than by using GPS only.
 
 %About Cisco
 Cisco has developed a location-aware wireless network system, the Cisco Unified Wireless Network(UWN), which utilises Wi-Fi triangulation\cite{CiscoTri} and other wireless communication protocols in order to develop indoor location based services\cite{uwn}. \sfx{explain MSE, and what tri-lateration is(which cisco uses}
 The building is modelled by the use of an outline of the floor plan. The image will be converted to a coordinate system that is placed on top of the model which is then supplied with the positions of the access points that are set up in the building. From there it is possible to get the relative position of any nearby devices in relation to the origin of a coordinate system. It is these positions that will be used in order to track and analyse wireless devices.
+
+%Next subsub?
+%Something about fingerprinting
+As mentioned it is also possible to use fingerprinting for indoor positioning.
 \ofx{write about fingerprinting}
 
 \subsection{RFID Indoor Positioning}
