@@ -9,7 +9,7 @@ One of the technologies used for indoor positioning is wi-fi. When using wi-fi t
 %tre problematikker: precision, latency, refresh rate: http://blogs.cisco.com/wireless/three-dimensions-that-influence-location-quality
 
 %Should we make this a subsubsection?
-Triangulation works by having three access-points being able to detect to a device. The position of the access-points are known to the system and by calculating the distance from the device to each access-point, based on the signal strength, the position can be found. It is also possible to find the direction of the device, relative to the access-points and from this information calculate the position. The two methods can also be combined such that the system is based on signal strength and direction\cite{triangulation}. In addition to this it is possible to combine the system with fingerprinting, this means that when a device are detected, the device sends a unique id e.g. its Mac-address, and thereby identifying the device.
+Triangulation works by having three access-points being able to detect to a device. The position of the access-points are known to the system and by calculating the distance from the device to each access-point, based on the signal strength, the position can be found. It is also possible to find the direction of the device, relative to the access-points and from this information calculate the position. The two methods can also be combined such that the system is based on signal strength and direction. In addition to this it is possible to combine the system with fingerprinting, this means that when a device are detected, the device sends a unique id e.g. its Mac-address, and thereby identifying the device\cite{triang_n_finger}.
 
 %Paragraph?
 %What does google do?
@@ -31,10 +31,18 @@ The technology are being used by air Canada, the largest airline in Canada, to t
 
 
 
-\subsection{Cisco}\label{subsec:cisco}
-At the university we have access to a sever that runs the Cisco UWN (MSE) software which is set up to monitor every building on campus at Aalborg University. We have chosen to use the data that is available from here as it is comprehensible to set the system up in a new environment.
+\subsection{Choice of technology}\label{subsec:cisco}
+Due to RFID not being able to position devices at any time, but is rather able to indicate where a device was last registered, it is not optimal for the applications currently being designed. It have therefore been chosen to use one of the wi-fi based systems.
+At the university we have access to a sever that runs the Cisco UWN (MSE) software which is set up to monitor every building on campus at Aalborg University. We have chosen to use the data that is available from here as it is comprehensible to set the system up in a new environment. An overview of Cisco can be seen in figure \ref{fig:cisco_overveiw}. It shows a snippet of a map on which there are positioned some devices identified by their mac-address.
 
 % billede af hvordan det ser ud?
 %http://www.cisco.com/c/dam/en/us/td/i/200001-300000/270001-280000/276001-277000/276195.tif/jcr:content/renditions/276195.jpg
+\begin{figure}[h]
+	\begin{center}
+	\includegraphics[scale=1]{graphics/cisco_overview.png}
+	\caption{Overview of Cisco\cite{cisco_overview}}
+	\label{fig:cisco_overveiw}
+	\end{center}
+\end{figure}
 
 %How do we solve the previous stated problems
