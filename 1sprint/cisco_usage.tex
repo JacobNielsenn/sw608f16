@@ -1,6 +1,6 @@
 \section{Using Cisco on AAU}
 %husk at forklare om CPI og MSE
-The Cisco localisation and positioning system is already in use on Aalborg University. To be able to use the information from the system, we had a meeting with the administrator, during which he raised concerns for privacy, as well as a desire of being able to provide this data to future student projects. To accommodate this, it has been asked of us to build and deploy an intermediate service with the goal of obfuscating sensitive personal data, such as mac-addresses and user names. This service is intended to duplicate the functionality of the Cisco Restful API, such that the service acts as a transparent proxy. This is achieved by creating an intermediate Restful service, that simply redirects requests and processes the response before sending it back to the initial requester, as illustrated on \cref{fig:cisco_usage}.
+The Cisco localisation and positioning system is already in use at Aalborg University. To be able to use the information from the system, we had a meeting with the administrator, during which he raised concerns for privacy, as well as a desire of being able to provide this data to future student projects. To accommodate this, it has been asked of us to build and deploy an intermediate service with the goal of obfuscating sensitive personal data, such as mac-addresses and user names. This service is intended to duplicate the functionality of the Cisco Restful API, such that the service acts as a transparent proxy. This is achieved by creating an intermediate Restful service, that simply redirects requests and processes the response before sending it back to the initial requester, as illustrated on \cref{fig:cisco_usage}.
 
 \begin{figure}[h]
 	\begin{center}
@@ -10,9 +10,9 @@ The Cisco localisation and positioning system is already in use on Aalborg Unive
 	\end{center} 
 \end{figure}
 
-A Restful service typically communicates using the HTTP or HTTPS protocols, and functions by receiving requests on specific URIs to which it responds in a predefined fashion. As an example we can send a HTTPS GET request to 64.103.26.61 with the URI "/api/contextaware/v1/location/clients" and, given that we supply the correct user name and password, receive a string of data corresponding to the type of request. \sfx{relevant with example? We know that the given IP is a cisco test system, but should we use that in our report?} \sfx{kilde}
+A Restful service typically communicates using the HTTP or HTTPS protocols, and functions by receiving requests on specific URIs to which it responds in a predefined fashion. As an example we can send a HTTPS GET request to 64.103.26.61, which is a Cisco MSE test server, with the URI "/api/contextaware/v1/location/clients" and, given that we supply the correct user name and password, receive a string of data corresponding to the type of request. \sfx{Do we need a source on basic info like this?}
 
-To create a transparent Restful service that duplicates the functionality of the Cisco Restful API, we need to make use of the same URIs as the Cisco API\sfx{link to cisco api}. This is done with the use of the Jersey Java library, which affords the possibility of creating a HTTP server and specifying what URIs are avaiable for a client to request.
+To create a transparent Restful service that duplicates the functionality of the Cisco Restful API, we need to make use of the same URIs as the Cisco API\cite{cisco_mse_api}. This is done with the use of the Jersey Java library, which affords the possibility of creating a HTTP server and specifying what URIs are available for a client to request.
 
 \begin{lstlisting}[caption={Adding a URI},label={lst:context_code},language=inc_Java]
 server.createContext("/api/contextaware/v1/location/clients", httpExchange -> {
