@@ -1,15 +1,17 @@
 \section{System for Monitoring Electronic Mobile Devices}\label{sec:monitoring}
 %Introduction to this
-When monitoring electronic devises in indoor spaces, a set of obstacles are presented. Some of the popular techniques that can be used in outdoor environments prove themselves obsolete or severely hindered when used in an indoor environment. This can be seen when working with Global Positioning System(GPS) technology, as obstacles such as walls, roofs and floors will disrupt the signal received from satellites, leading to large imprecisions in the position measurement.
+When monitoring electronic devises in indoor spaces, a set of obstacles are presented. Some of the popular techniques that are used in outdoor environments prove themselves obsolete or severely hindered when used in an indoor environment. \sfx{source} This can be seen when working with the Global Positioning System(GPS) technology, as obstacles such as walls, roofs and floors will disrupt the signals received from satellites, leading to large imprecisions in the position measurement.
 
-This section will describe a solution for the problems associated with indoor navigation and monitoring of multiple mobile devices. There will be described two technologies used for indoor positioning, wi-fi and Radio Frequency Identification, hence referred to as RFID.
+This section will describe a solution to the problems associated with indoor navigation and monitoring of multiple mobile devices. \sfx{the problem isn't described clearly enough to present solutions already. Go a bit more in detail first, or say the section will present the problems and THEN solutions} Two technologies will be described for indoor positioning, WI-FI and Radio Frequency Identification, hence referred to as RFID. \sfx{use glossary on this} \sfx{bluetooth?}
 
 \subsection{Wi-Fi Indoor Positioning}
-One of the technologies used for indoor positioning is wi-fi. When using wi-fi there are multiple methods of doing so, one being triangulation in this section there will be looked further in to this.
+One of the most popular technologies used for indoor positioning is WI-FI\sfx{Do we need a source for this?}. When using WI-FI there are multiple methods of determining a users position, one being triangulation. In this section there will be looked further into this. \sfx{is the purpose of this section to present the technical methods of determining positions using WI-FI? We describe RSSI-based tri-lateration, but what about the others? link in comment }
+%http://www.cisco.com/c/en/us/td/docs/solutions/Enterprise/Mobility/WiFiLBS-DG/wifich2.html link for fixme
+
 %tre problematikker: precision, latency, refresh rate: http://blogs.cisco.com/wireless/three-dimensions-that-influence-location-quality
 
 %Should we make this a subsubsection?
-Triangulation works by having three access-points being able to detect to a device. The position of the access-points are known to the system and by calculating the distance from the device to each access-point, based on the signal strength, the position can be found. It is also possible to find the direction of the device, relative to the access-points and from this information calculate the position. The two methods can also be combined such that the system is based on signal strength and direction. In addition to this it is possible to combine the system with fingerprinting, this means that when a device are detected, the device sends a unique id e.g. its Mac-address, and thereby identifying the device\cite{triang_n_finger}.
+Triangulation works by using three or more access-points to receive the signal from a device. The position of the access-points are known to the system and by calculating the distance from the device to each access-point, based on the received signal strength indication, the position can be found. It is also possible to find the direction of the device, relative to the access-points and from this information calculate the position. The two methods can also be combined such that the system is based on signal strength and direction. In addition to this it is possible to combine the system with fingerprinting, this means that when a device are detected, the device sends a unique id e.g. its Mac-address, and thereby identifying the device\cite{triang_n_finger}. %http://www.cisco.com/c/en/us/td/docs/solutions/Enterprise/Mobility/WiFiLBS-DG/wifich2.html under RSS har vi en formel til at beregne afstand baseret på signalstyrke
 
 %Paragraph?
 %What does google do?
@@ -32,7 +34,7 @@ The technology are being used by air Canada, the largest airline in Canada, to t
 
 
 \subsection{Choice of technology}\label{subsec:cisco}
-Due to RFID not being able to position devices at any time, but is rather able to indicate where a device was last registered, it is not optimal for the applications currently being designed. It have therefore been chosen to use one of the wi-fi based systems.
+Due to RFID not being able to position devices at any time, but is rather able to indicate where a device was last registered, it is not optimal for the applications currently being designed. It have therefore been chosen to use one of the WI-FI based systems.
 At the university we have access to a sever that runs the Cisco UWN (MSE) software which is set up to monitor every building on campus at Aalborg University. We have chosen to use the data that is available from here as it is comprehensible to set the system up in a new environment. An overview of Cisco can be seen in \cref{fig:cisco_overveiw}. It shows a snippet of a map on which there are positioned some devices identified by their mac-address.
 
 % billede af hvordan det ser ud?
