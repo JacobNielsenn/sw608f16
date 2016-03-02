@@ -4,21 +4,25 @@ When monitoring electronic devises in indoor spaces, a set of obstacles are pres
 
 This section will describe different technologies and systems using these technologies, for indoor positioning and monitoring of multiple mobile devices. Two technologies will be described for indoor positioning, WI-FI and Radio Frequency Identification (RFID). \sfx{use glossary on this} \sfx{bluetooth?}
 
-\subsection{Wi-Fi Indoor Positioning}
+\subsection{WI-FI Indoor Positioning}
 One of the most popular technologies used for indoor positioning is WI-FI\sfx{Do we need a source for this?}. When using WI-FI there are multiple methods of determining a users position, one being triangulation. In this section there will be looked further into this. \sfx{is the purpose of this section to present the technical methods of determining positions using WI-FI? We describe RSSI-based tri-lateration, but what about the others? link in comment }
 %http://www.cisco.com/c/en/us/td/docs/solutions/Enterprise/Mobility/WiFiLBS-DG/wifich2.html link for fixme
 
 %tre problematikker: precision, latency, refresh rate: http://blogs.cisco.com/wireless/three-dimensions-that-influence-location-quality
 
-%Should we make this a subsubsection?
-Triangulation works by using three or more access-points to receive the signal from a device. The position of the access-points are known to the system and by calculating the distance from the device to each access-point, based on the received signal strength indication, the position can be found. It is also possible to find the direction of the device, relative to the access-points and from this information calculate the position. The two methods can also be combined such that the system is based on signal strength and direction. In addition to this it is possible to combine the system with fingerprinting, this means that when a device are detected, the device sends a unique id e.g. its Mac-address, and thereby identifying the device\cite{triang_n_finger}. %http://www.cisco.com/c/en/us/td/docs/solutions/Enterprise/Mobility/WiFiLBS-DG/wifich2.html under RSS har vi en formel til at beregne afstand baseret på signalstyrke
+%Triangulation
+Triangulation works by using three or more access-points to receive the signal from a device. The position of the access-points are known to the system and by calculating the distance from the device to each access-point, based on the received signal strength indication, the position can be found. It is also possible to find the direction of the device, relative to the access-points and from this information calculate the position. The two methods can also be combined such that the system is based on signal strength and direction \cite{Triangulation}.
+
+%Fingerprinting
+Another WI-FI based method to determine indoor positioning is fingerprinting. Fingerprinting is based on signal strength as well as triangulation. It works by calibrating the system such that the signal strength for each point of interest, e.g. each room, is know to the system, thereby when the signal strength form a device is received it can then be compared to the known strength for all rooms and thereby determine what point of interest the device is closest to. This means that a system using fingerprinting can not determine the exact position of a device, but rather which area the device is currently at \cite{fingerprint1}.
+ %http://www.cisco.com/c/en/us/td/docs/solutions/Enterprise/Mobility/WiFiLBS-DG/wifich2.html under RSS har vi en formel til at beregne afstand baseret på signalstyrke
 
 %Paragraph?
 %What does google do?
-There are ways to overcome the GPS issue, Google presents one possible solution. They have made indoor navigation and tracking possible in indoor spaces trough their Indoor Maps project \cite{IPSoverGPS} which lets users map a building by uploading a floor plan of said building. After the floor plan have been accepted, the system will request information about the location of the Wi-FI access points in the building. By doing so the system is able to triangulate using the access points as static reference points and combine that information with the GPS location, thereby utilising both technologies to get a more precise position of the device than by using GPS only.
+There are ways to overcome the GPS issue, Google presents one possible solution. They have made indoor navigation and tracking possible in indoor spaces trough their Indoor Maps project \cite{IPSoverGPS} which lets users map a building by uploading a floor plan of said building. After the floor plan have been accepted, the system will request information about the location of the WI-FI access points in the building. By doing so the system is able to triangulate using the access points as static reference points and combine that information with the GPS location, thereby utilising both technologies to get a more precise position of the device than by using GPS only.
 
 %About Cisco
-Cisco has developed a location-aware wireless network system, the Cisco Unified Wireless Network(UWN), which utilises Wi-Fi triangulation\cite{CiscoTri} and other wireless communication protocols in order to develop indoor location based services\cite{uwn}.
+Cisco has developed a location-aware wireless network system, the Cisco Unified Wireless Network(UWN), which utilises WI-FI triangulation\cite{CiscoTri} and other wireless communication protocols in order to develop indoor location based services\cite{uwn}.
 Cisco utilizes the Cisco Mobility Services Engine (MSE) for their system. MSE makes it possible for Cisco to track the location of up to 25000 network devices at once. It is the MSE that does the calculations to position devices using the data it receives from the access-points. Furthermore it is connected to the wireless LAN architecture thus unifying the network such that it does not appear as many\cite{ciscoMSE}.
 The building is modelled by the use of an outline of the floor plan. The image will be converted to a coordinate system that is placed on top of the model which is then supplied with the positions of the access points that are set up in the building. From there it is possible to get the relative position of any nearby devices in relation to the origin of a coordinate system. It is these positions that will be used in order to track and analyse wireless devices.
 
@@ -35,7 +39,7 @@ The technology are being used by air Canada, the largest airline in Canada, to t
 
 
 \subsection{Choice of technology}\label{subsec:cisco}
-Due to RFID not being able to position devices at any time, but is rather able to indicate where a device was last registered, it is not optimal for the applications currently being designed. It have therefore been chosen to use a wi-fi based system.
+Due to RFID not being able to position devices at any time, but is rather able to indicate where a device was last registered, it is not optimal for the applications currently being designed. It have therefore been chosen to use a WI-FI based system.
 At the university we have access to a sever that runs the Cisco UWN (MSE) software which is set up to monitor every building on campus at Aalborg University. We have chosen to use the data that is available from here as it is comprehensible to set the system up in a new environment. An overview of Cisco can be seen in \cref{fig:cisco_overveiw}. It shows a snippet of a map on which there are positioned some devices identified by their mac-address.
 
 % billede af hvordan det ser ud?
