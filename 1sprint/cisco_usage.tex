@@ -44,10 +44,11 @@ Private static Client ObfuscateMacAddress(Client singleClient) {
 
 With this code it is possible to create an intermediate service for the Cisco RESTful service, that intercepts the response and obfuscates certain information. To use this service, a client needs to know the IP address of the intermediate service and a login set by the Cisco administrator. To automate the requests and create a flow of data from the Cisco systems to the aStep database, we will have to build and implement a client that fetches data at an interval. The scope of the project is beyond Aalborg University, and as such we want to use more than a single Cisco system. 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\begin{center}
 	\includegraphics[scale=0.5]{graphics/ciscoSmall.pdf}
 	\caption{Cisco systems}
 	\label{fig:cisco_systems}
 	\end{center} 
 \end{figure}
+\cref{fig:cisco_systems} shows how the information flow is intended. The client connecting to the Cisco services will function as a server that requests data from all Cisco services that we have access to. Alternatively a server can be implemented for each Cisco service, however, this solution has several downsides. Firstly, it means corporations supplying the aStep project with information will have to have hardware running the server, which requires maintenance. Secondly, this solution is not scalable. The server running the aStep database will potentially be overloaded, as it has to handle each individual Cisco system sending information. As more Cisco systems are added, there will be less time to process received data. Alternatively the aStep database server can request the data, however, with an increase in connected Cisco systems, the interval at which we receive new information from a given system also increases. The optimal solution to this is to create a hierarchy of servers, such that the database server only receives data from a constant amount of connections. 
