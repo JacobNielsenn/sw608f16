@@ -1,12 +1,11 @@
 \section{System for Monitoring Mobile Devices}\label{sec:monitoring}\sfx{new name}
-%Introduction to this
 When monitoring electronic devices in indoor spaces, a set of obstacles are presented. Some of the popular techniques used in outdoor environments prove themselves obsolete or severely hindered when applied in an indoor environment. \sfx{source (Cant find it ask Anders - Oliver)} This can be seen when working with the Global Positioning System(GPS) technology, as obstacles such as walls, roofs and floors will disrupt the signals received from satellites, leading to large imprecisions in the position measurement. As a consequence we need to explore specialized methods for determining positions in indoor spaces.
 
 In this section we will describe different approaches for indoor positioning and monitoring of mobile devices, and systems using these. Two systems will be described for indoor positioning, namely Google Indoor Maps and Cisco MSE.
 
-\subsection{Tracking Approach}
+\subsection{Tracking Approach}\label{sec:tracking_approach}
 WI-FI, Bluetooth and Radio-Frequency Identification (RFID) are amongst the most popular technologies used for indoor positioning. When using these technologies there are multiple approaches for determining a users position. In this section we will examine some of these approaches.
-%http://www.cisco.com/c/en/us/td/docs/solutions/Enterprise/Mobility/WiFiLBS-DG/wifich2.html link for fixme
+
 Tracking approaches are typically mapped into four categories\cite{tracking_approaches}
 \begin{itemize}
 \item Cell of origin
@@ -17,45 +16,52 @@ Tracking approaches are typically mapped into four categories\cite{tracking_appr
 Despite the division, many approaches combine categories to increase the location precision. We will take a look at an approach from each category.
 
 \subsubsection*{Cell of Origin}
-Another solution is to utilise RFID to create checkpoints throughout a building. These checkpoint are placed in doors or other room entrances and thereby utilise a RFID scanner that reports any observed devices which is equipped with a RFID tag\cite{indoor_bin}. 
-RFID works by a scanner reading an id form the passing device then sending the tag of the scanned device, the scanners own id and the time-stamp for the scan to a host computer system. By knowing where the scanners are the system can keep track of the devices\cite{RFIDjournal}.
+Approaches categorized under cell of origin are among the simplest techniques for positioning. These approaches aim to position mobile devices in cells, either defined by the reach of access points, or defined by rooms in a building.
+The latter approach can utilise RFID to create checkpoints throughout a building. These checkpoint are placed in room entrances and consist of a RFID scanner, such that devices with a RFID tag are registered as they pass the scanner\cite{indoor_bin}. 
+This approach can be used to track the RFID tags, as each tag contains a unique ID, which is combined with the RFID scanners ID and a time-stamp. By analysing the most recent entry, the system will be know in which room the tag is located\cite{RFIDjournal}.
 
-RFID requires auxiliary hardware to set up the checkpoints, and is in addition to this limited to only work at these checkpoints. By analysing the collected data on the host system it is possible to track a device. Thereby it can be know if a device have entered or exited the room. It can however not be know where in the room it is, which makes it difficult to track someone in a large room.
-The technology are being used by Air Canada, the largest airline in Canada, to track foot carts, and by doing so saving millions of dollars each year\cite{RFIDjournal}.
+The approaches in this category requires auxiliary hardware to set up the checkpoints, and is in addition to this limited to only work at these checkpoints. By analysing the collected data on the host system it is possible to track a device. Thereby it can be know if a device have entered or exited the room. It can however not know where in the room the device is, which makes it difficult to track someone if a room is of substantial size or the building lacks RFID scanners\cite{RFIDjournal}.
 
 \subsubsection*{Distance}
 %Triangulation
-Triangulation works by using three or more access-points to receive the signal from a device. The position of the access-points are known to the system and by calculating the distance from the device to each access-point, based on the received signal strength indication, the position can be found. It is also possible to find the direction of the device, relative to the access-points and from this information calculate the position. The two methods can also be combined such that the system is based on signal strength and direction \cite{Triangulation}.
-\Cref{fig:triangulation} shows a simple model of how triangulation works. In the centre of each circle is a set of coordinates which is the position of an access-point, the circle indicates how far away the device is from the access-point. And by using three access-points the exact position of the device can be determined. The position being the point where the three circles crosses each other.
+Approaches in the distance category measures the proximity of a device and use this information to calculate a position, much in the same way it is done by GPS.
+Triangulation works by using three or more access-points to receive the signal from a device. The position of the access-points are known to the system and by calculating the distance from the device to each access-point, based on the Received Signal Strength Indication(RSSI), the position can be found \cite{Triangulation}. The RSSI can be used to measure proximity, using the fact that signal strength decays over distance. Naturally, the decay will be greater in a closed environment with disruptions for the signal, and as such signal loss models have been developed for indoor environments. 
+\Cref{fig:triangulation} shows a simple model of how triangulation works. In the centre of each circle is a set of coordinates which is the position of the access-point. The circle indicates the proximity of the device. By using three access-points the exact position of the device can be resolved, by determining where the intersection of the three proximities is.
 \begin{figure}[ht]
 	\begin{center}
 		\includegraphics[scale=1]{graphics/triangulation.png}
-		\caption{Triangulation\cite{Triangualtion}}
+		\caption{Triangulation\cite{Triangulation}}
 		\label{fig:triangulation}
 	\end{center}
 \end{figure}
 
+\subsubsection*{Angle of Arrival}
+This category consists of approaches where the angle of the received signal is measured. The angle can be obtained by either having several antennas or being able to rotate a single antenna to find the direction at which the RSSI is strongest. With multiple angles of arrival it is possible to calculate a position based on the intersection of the vectors going through the antennas.
+
 \subsubsection*{Location Patterning}
-Another WI-FI based method to determine indoor positioning is fingerprinting. Fingerprinting is based on signal strength as well as triangulation. It works by calibrating the system such that the signal strength for each point of interest, e.g. each room, is know to the system, thereby when the signal strength form a device is received it can then be compared to the known strength for all rooms and thereby determine what point of interest the device is closest to. This means that a system using fingerprinting can not determine the exact position of a device, but rather which area the device is currently at \cite{fingerprint1}.
- %http://www.cisco.com/c/en/us/td/docs/solutions/Enterprise/Mobility/WiFiLBS-DG/wifich2.html under RSS har vi en formel til at beregne afstand baseret på signalstyrke
-
-%Paragraph?
-%What does google do?
-\subsubsection{Technologies}
-There are ways to overcome the GPS issue, Google presents one possible solution. They have made indoor navigation and tracking possible in indoor spaces trough their Indoor Maps project \cite{IPSoverGPS} which lets users map a building by uploading a floor plan of said building. After the floor plan have been accepted, the system will request information about the location of the WI-FI access points in the building. By doing so the system is able to triangulate using the access points as static reference points and combine that information with the GPS location, thereby utilising both technologies to get a more precise position of the device than by using GPS only.
-
-%About Cisco
-Cisco has developed a location-aware wireless network system, the Cisco Unified Wireless Network(UWN), which utilises WI-FI triangulation\cite{CiscoTri} and other wireless communication protocols in order to develop indoor location based services\cite{uwn}.
-Cisco utilizes the Cisco Mobility Services Engine (MSE) for their system. The MSE makes it possible for Cisco to track the location of up to 25000 network devices at once. It is the MSE that does the calculations to position devices using the data it receives from the access-points\cite{ciscoMSE}.
-The building is modelled by the use of an outline of the floor plan. The image will be converted to a coordinate system that is placed on top of the model which is then supplied with the positions of the access points that are set up in the building. From there it is possible to get the relative position of any nearby devices in relation to the origin of a coordinate system. It is these positions that will be used in order to track and analyse wireless devices.
+The location patterning category sets out to measure the connectivity patterns for given locations. The most common approach for this category is called WI-FI Fingerprinting. It works by introducing an intial calibration phase, where the RSSI for each point of interest is measured and stored in the system. When the signal strength from a device is received, it is then compared to the previously measured RSSIs. The point of interest with the closest RSSI is determined to be the position of the device. This means that a system using fingerprinting can not determine the exact position of a device, but rather which area the device is currently at \cite{fingerprint1}.
 
 \subsection{Evaluation dimensions}
 When evaluating indoor location services there are three dimensions that have to be considered: location precision, refresh rate and system latency. Location precision tells us about the location precision that the system affords. Refresh rate is the rate at which the location is updated, and as such how closely the most recent data is related to real-time data. System latency is a dimension describing the time it takes to perform the positioning calculations\cite{dimensions}. Depending on the usage of the system, the dimensions can be valued using a scale of importance, such as "High", "Medium" and "Low". Alternatively we can chose to look for systems with one or more dimensions below a set value. For example, we have a desire to find a system with a location precision lower than the average precision for GPS. 
 
 The three dimensions are in no way constant for a system. For most systems, the hardware has a large influence on the dimensions. Location precision is severely diminished if the environment lacks access points. Refresh rate depends on how often mobile devices communicate with the network and system latency can be impacted by a large amount of noise on the WI-FI channels. Naturally corporations developing indoor positioning services use their best results to advertise for their product. As such, the values supplied from official advertising sources are best-case values. However, if we assume this is the case for all products, we can use these values as a basis for comparison.
 
+%What does google do?
+\subsection{Technologies}
+In this section we examine some systems that aStep can use to integrate indoor positioning.
+
+Zonith Indoor Positioning System is a system that uses the Cell of Origin approach. As mentioned in \cref{sec:tracking_approach}, this technique requires auxiliary hardware. Zonith offers Bluetooth Beacons, which serve as checkpoint nodes, and allow for any device with Bluetooth to be discovered and tracked.
+%http://zonith.com/products/ips/
+
+Google presents one possible system. They have made indoor navigation and tracking possible trough their Indoor Maps project \cite{IPSoverGPS}, which lets users map a building by uploading a floor plan of said building. After the floor plan has been accepted, the system will request information about the location of the WI-FI access points in the building. By doing so, the system is able to triangulate using the access points as static reference points and combine that information with the GPS location, thereby utilising both technologies to get a more precise position of the device than by using GPS only.
+
+%About Cisco
+Cisco has developed a location-aware wireless network system, the Cisco Unified Wireless Network(UWN), which utilises WI-FI triangulation\cite{CiscoTri} and other wireless communication protocols in order to develop indoor location based services\cite{uwn}.
+Cisco utilizes the Cisco Mobility Services Engine (MSE) for their system. The MSE makes it possible for Cisco to track the location of up to 25000 network devices at once. It is the MSE that does the calculations to position devices using the data it receives from the access-points\cite{ciscoMSE}.
+The building is modelled by the use of an outline of the floor plan. The image will be converted to a coordinate system that is placed on top of the model which is then supplied with the positions of the access points that are set up in the building. From there it is possible to get the relative position of any nearby devices in relation to the origin of a coordinate system. It is these positions that will be used in order to track and analyse wireless devices.
+
 \subsection{Choice of technology}\label{subsec:cisco}
 Due to RFID not being able to position devices at any time, but is rather able to indicate where a device was last registered, it is not optimal for the applications currently being designed. It have therefore been chosen to use a WI-FI based system.
-At the university we have access to a sever that runs the Cisco UWN (MSE) software which is set up to monitor every building on campus at Aalborg University. We have chosen to use the data that is available from here as it is comprehensible to set the system up in a new environment.
+At the university we have access to a sever that runs the Cisco UWN (MSE) software, which is set up to monitor every building on campus at Aalborg University. We have chosen to use the data that is available from here as it is comprehensible to set the system up in a new environment.
 
 %How do we solve the previous stated problems
