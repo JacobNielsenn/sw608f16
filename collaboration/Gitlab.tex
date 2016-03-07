@@ -1,5 +1,22 @@
-\section{Gitlab}
-From the aSTEP meeting that toke place 17.02.2016 it was decided that a few people across the groups should take responsibility for maintaining the gitlab server. Two members of our group volunteered for this task. The section purpose is to describe the work that our group has done related to gitlab.
+\section{GitLab}
+From the aSTEP meeting that toke place 17.02.2016 it was decided that a few people across the groups should take responsibility for maintaining the gitlab server. Two members of our group volunteered for this task. The section purpose is to describe the work that our group has done related to GitLab.
 
-We toke on the task of updating the gitlab that was running on our aSTEP virtual server, the magnitude of this task involves installing a virtual server on one of our groups computer to emulate the gitlab update to ensure that if it fails to update, we will not endanger the aSTEPs gitlab.
+We toke on the task of updating the GitLab that was running on our aSTEP virtual server, this will from now on be refereed to as aSTEP server. The magnitude of this task involves installing a virtual server on one of our groups computer to emulate the GitLab update to ensure that if it fails to update, we will not course any problems to the aSTEP server running GitLab. Later in the process we discovered some problems with this approach.
+
+Installing the ubuntu-server version 13.04 went well, creating the backup image of the gitlab server was a little more difficult, but mainly because of our inexperience with ubuntu commands, which is the only option when working with an ubuntu-server. Similar problems occurred when we needed to retrieve the backup files from the aSTEP server, this were solved using a subprogram of PuTTY which is called PSCP is allow us to send or retrieve files from remote machines. The last problem that arrived was installing the gitlab version, the exact package used on aSTEP is gitlab-ce\_8.4.4-ce.0\_amd64.deb which i only usable on a amd system thus making it seemingly impossible for our group to continue this emulation.  
+
+We described the problem we had encountered on Slack and shortly after Rune from the OutDoor group, that is also a part of the GitLab group had a solution to the problem. The solution to the problem can be found at the aSTEP wiki so future groups do not encounter the same problem. After this we were able to test updating GitLab on our virtual server and did not encounter any problems, a guide for this can also be found on aSTEP wiki to help future development.
+
+\subsection{PSCP}
+PSCP was used to communicate between aSTEPs server and also with our own virtual machine. the commands for PSCP is pretty straight forward, if you are using windows, you open your command prompt and go to the folder where PSCP is located or you add it to your environment, we ended up placing the PSCP.exe on the c drive. Afterwards two commands was used to either retrieve or send files like shown in 
+
+\begin{lstlisting}
+ PSCP username@host:source target
+ PSCP source username@host:target
+ C:\PSCP abcdef12@student.aau.dk@daisy-git.cs.aau.dk:/home/test\_folder C:\\test\_folder\\
+ C:\PSCP C:\test_folder\ abcdef12@student.aau.dk@daisy-git.cs.aau.dk:/home/test\_folder
+\end{lstlisting}
+
+The first command is used to retrieve data from a remote machine and the second command is used to send. the third line shows an example of how to retrieve a file from to the aSTEP server, with the user abcdef12@student.aau.dk and the host being daisy-git.cs.aau.dk and the path on the aSTEP server being /home/test\_folder and the target path is C:\\test\_folder\\. The forth example shows the send command it is similar to the third example, with the two arguments being switched around. 
+
 
