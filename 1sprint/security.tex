@@ -1,5 +1,19 @@
 \section{security}
-The goal of this section is to secure the data that will be send from the Cisco system to the database described in figure \jfx{ref til figuren i cisco}. Possible methods to do so will be explored and an appropriate method will be chosen to implement.
+The security aspect when working with the Cisco system will be minimized, because the security is not our main focus. This section will describe the requirements from working with sensitive data related to the Cisco system and how we handle these requirements.
 
-\subsection{Encryption}
-Encryption are used to ensured that only the intended people is able to extract data. Encrypting data is however not always enough, due to unauthorized people still being able to access the encrypted data and in practice be able to decrypt it. This can be semi-counteracted by increasing the bit encryption, which will exponentially increase the time needed to brute force the encryption. When security is discussed there are two impotent factors to consider. One: Two: \ofx{Source? and what are those two factors?}
+The administrator for the Cisco system will only allow us to retrieve data, if we obfuscate the MAC-addresses and other sensitive data, the main reason for this is so it will not be possible to single out a specific person, they also required that username and password would be necessary in order to establish that only us get access to it. 
+
+\subsection{Obfuscate MAC-Addresses}
+There are several alternatives to obfuscate the MAC-address, we need a solution that allow us to still track the obfuscated MAC-address, this is done to not limit the capabilities of aSTEP indoor location based service. The alternatives that will be explored in this section is hashing or translating the MAC-addresses.
+
+\subsubsection{Hashing}
+Hashing the MAC-address is a solution, the problem with that is the hash function takes an input and output into a fixed table, this can make two MAC-addresses share the same entry in the table, this can be fixed by expanding the hash function to cover all possible combinations of MAC-addresses and then eliminating the chance of two MAC-addresses have the same entry. This will make the table larger compared to the option were two MAC-addresses could have the same entry
+
+\subsubsection{Translating}
+A simpler approach that we suggested to the administrator of Cisco, is changing the last four digits of the MAC-address and replacing them with a counter, this will make it impossible to know which MAC-address corresponds to the real address. This was approved by the administrator.
+
+Hashing is a good option but more complex then simply translating the addresses, translations of MAC-address will be our chose over hashing.
+
+
+%\subsection{Encryption}
+%Encryption are used to ensured that only the intended people is able to extract data. Encrypting data is however not always enough, due to unauthorized people still being able to access the encrypted data and in practice be able to decrypt it. This can be semi-counteracted by increasing the bit encryption, which will exponentially increase the time needed to brute force the encryption. When security is discussed there are two impotent factors to consider. One: Two: \ofx{Source? and what are those two factors?}
