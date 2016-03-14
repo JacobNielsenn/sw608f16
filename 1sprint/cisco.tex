@@ -13,20 +13,19 @@ Tracking approaches are typically mapped into four categories\cite{tracking_appr
 \item Angle of Arrival
 \item Location Patterning
 \end{itemize}
-Despite the division, many advanced approaches combine categories to increase the location precision. We will take a look at an approach from each category.
+Despite the partitioning, many advanced approaches combine categories to increase the location precision. We will take a look at an approach from each category.
 
 \subsubsection*{Cell of Origin}
 Approaches categorized under cell of origin are among the simplest techniques for positioning. These approaches aim to position mobile devices in cells, either defined by the reach of access points, or defined by rooms in a building.
 The latter approach can utilise RFID to create checkpoints throughout a building. These checkpoint are placed in room entrances and consist of a RFID scanner, such that devices with a RFID tag are registered as they pass the scanner\cite{indoor_bin}. 
 This approach can be used to track the RFID tags, as each tag contains a unique ID, which is combined with the RFID scanners ID and a time-stamp. By analysing the most recent entry, the system will be know in which room the tag is located\cite{RFIDjournal}.
 
-The approaches in this category requires auxiliary hardware to set up the checkpoints, and is in addition to this limited to only work at these checkpoints. By analysing the collected data on the host system it is possible to track a device. Thereby it can be know if a device have entered or exited the room. It can however not know where in the room the device is, which makes it difficult to track someone if a room is of substantial size or the building lacks RFID scanners\cite{RFIDjournal}.
+The approaches in this category require auxiliary hardware to set up the checkpoints, and is in addition to this limited to only register movement at these checkpoints. By analysing the collected data on the host system it is possible to track a device. Thereby it can be derived if a device has entered or exited the room. It is, however, not possible to know where in the room a device is, which makes it difficult to track someone if a room is of substantial size or the building lacks RFID scanners\cite{RFIDjournal}.
 
 \subsubsection*{Distance}
-%Triangulation
 Approaches in the distance category measures the proximity of a device and use this information to calculate a position, much in the same way it is done by GPS.
-Triangulation works by using three or more access-points to receive the signal from a device. The position of the access-points are known to the system and by calculating the distance from the device to each access-point, based on the Received Signal Strength Indication(RSSI), the position can be found \cite{Triangulation}. The RSSI can be used to measure proximity, using the fact that signal strength decays over distance. Naturally, the decay will be greater in a closed environment with disruptions for the signal, and as such signal loss models have been developed for indoor environments. 
-\Cref{fig:triangulation} shows a simple model of how triangulation works. In the centre of each circle is a set of coordinates which is the position of the access-point. The circle indicates the proximity of the device. By using three access-points the exact position of the device can be resolved, by determining where the intersection of the three proximities is.
+Triangulation works by using three or more access-points to receive the signal from a device. The position of the access-points are known to the system and by calculating euclidean vectors from each access-point to the device, based on the Received Signal Strength Indication(RSSI), the position can be found \cite{Triangulation}. The RSSI can be used to measure proximity, using the fact that signal strength decays over distance. Naturally, the decay will be greater in a closed environment with obstacles causing signal disruptions, and as such signal loss models have been developed for indoor environments. 
+\Cref{fig:triangulation} shows a simple model of how triangulation works. In the centre of each circle is a set of coordinates encoding the position of the access-point. The circle indicates the proximity of the device based on the signal strength. By using three access-points we can determine the position of the device, by calculating the position of the intersection of the proximities.
 \begin{figure}[ht]
 	\begin{center}
 		\includegraphics[scale=1]{graphics/triangulation.png}
@@ -36,21 +35,36 @@ Triangulation works by using three or more access-points to receive the signal f
 \end{figure}
 
 \subsubsection*{Angle of Arrival}
-This category consists of approaches where the angle of the received signal is measured. The angle can be obtained by either having several antennas or being able to rotate a single antenna to find the direction at which the RSSI is strongest. With multiple angles of arrival it is possible to calculate a position based on the intersection of the vectors going through the antennas.
+This category consists of approaches where the angle of the received signal is measured. The angle can be obtained by either having several antennas or being able to rotate a single antenna to find the direction at which the RSSI is strongest. With multiple angles of arrival it is possible to calculate a position based on the intersection of the euclidean vectors going through the antennas.
 
 \subsubsection*{Location Patterning}
-The location patterning category sets out to measure the connectivity patterns for given locations. The most common approach for this category is called WI-FI Fingerprinting. It works by introducing an intial calibration phase, where the RSSI for each point of interest is measured and stored in the system. When the signal strength from a device is received, it is then compared to the previously measured RSSIs. The point of interest with the closest RSSI is determined to be the position of the device. This means that a system using fingerprinting can not determine the exact position of a device, but rather which area the device is currently at \cite{fingerprint1}.
+The location patterning category sets out to measure the connectivity patterns for a set of locations. The most common approach for this category is called WI-FI Fingerprinting. This method has an intial calibration phase, where the RSSI pattern for each point of interest is measured and stored in the system. When the signal strength from a device is received, it is then compared to the previously measured RSSIs. The point of interest with the closest RSSI is determined to be the position of the device. This means that a system using fingerprinting can not determine the exact position of a device, but rather which area the device is currently at \cite{fingerprint1}.
 
 \subsection{Evaluation dimensions}
-When evaluating indoor location services there are three dimensions that have to be considered: location precision, refresh rate and system latency. Location precision tells us about the location precision that the system affords. Refresh rate is the rate at which the location is updated, and as such how closely the most recent data is related to real-time data. System latency is a dimension describing the time it takes to perform the positioning calculations\cite{dimensions}. Depending on the usage of the system, the dimensions can be valued using a scale of importance, such as "High", "Medium" and "Low". Alternatively we can chose to look for systems with one or more dimensions below a set value. For example, we have a desire to find a system with a location precision lower than the average precision for GPS. 
+When evaluating indoor location services there are three dimensions that we can evaluate quality on: location precision, refresh rate and system latency. Location precision tells us about the location precision that the system affords. Refresh rate is the rate at which the location is updated, and as such how closely the most recent data is related to real-time data. System latency is a dimension describing the time it takes to perform the positioning calculations\cite{dimensions}. Depending on the usage of the system, the dimensions can be valued using a scale of importance, such as "High", "Medium" and "Low". Alternatively we can chose to look for systems with one or more dimensions below a set value. For example, we have a desire to find a system with a location precision lower than the average precision for GPS. 
 
-The three dimensions are in no way constant for a system. For most systems, the hardware has a large influence on the dimensions. Location precision is severely diminished if the environment lacks access points. Refresh rate depends on how often mobile devices communicate with the network and system latency can be impacted by a large amount of noise on the WI-FI channels. Naturally corporations developing indoor positioning services use their best results to advertise for their product. As such, the values supplied from official advertising sources are best-case values. However, if we assume this is the case for all products, we can use these values as a basis for comparison. \sfx{Might want to delete last three sentences. These dimensions are not a standard, and as such it is hard to find these numbers for all systems.}
+The three dimensions are in no way constant for a system. For most systems, the hardware has a large influence on the dimensions. Location precision is severely diminished if the environment lacks access points. Refresh rate depends on how often mobile devices communicate with the network and system latency can be impacted by a large amount of noise on the WI-FI channels. \Cref{tab:evaluating_approaches} shows the influences for the four tracking approach categories for each evaluation dimension. The system latency of a system entirely depends on the software, hardware and communication used.
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|p{4cm}|p{4cm}|p{3.5cm}|}
+\hline
+                    & Location Precision                 & Refresh Rate             & System Latency    \\ \hline
+Cell of Origin      & Within cells                       & On checkpoint register   & Depends on system \\ \hline
+Distance            & Depends on amount of access points & When device communicates & Depends on system \\ \hline
+Angle of Arrival    & Depends on amount of antennas      & When device communicates & Depends on system \\ \hline
+Location Patterning & Depends on calibration phase       & When device communicates & Depends on system \\ \hline
+\end{tabular}
+\caption{My caption}
+\label{tab:evaluating_approaches}
+\end{table}
+
 
 %What does google do?
 \subsection{Technologies}
 In this section we examine some systems using different tracking approaches that aStep can use to integrate indoor positioning.
 
-Zonith Indoor Positioning System is a system that uses the Cell of Origin approach. As mentioned in \cref{sec:tracking_approach}, this technique requires auxiliary hardware. Zonith offers Bluetooth Beacons, which serve as checkpoint nodes, and allow for any device with Bluetooth to be discovered and tracked\cite{zonith}. The system is not evaluated based on the three dimensions. This is because of the nature of the approach; we can expect the location precision to be excellent at the moment a device is registered. However, the most recent registration of a device is a weak approximation of its location, at best it tells us what room the device is in.
+Zonith Indoor Positioning System is a system that uses the cell of origin approach. As mentioned in \cref{sec:tracking_approach}, this technique requires auxiliary hardware. Zonith offers Bluetooth Beacons, which serve as checkpoint nodes, and allow for any device with Bluetooth to be discovered and tracked\cite{zonith}. The system is not evaluated based on the three dimensions. This is because of the nature of the approach; we can expect the location precision to be excellent at the moment a device is registered. However, the most recent registration of a device is a weak approximation of its location, at best it tells us what room the device is in.
 
 Redpin is an open source indoor positioning system that uses location patterning. The system requires a calibration phase, where the connectivity fingerprint of different key locations is measured. A users location is calculated on request, and the system will be able to provide the user with at least room-level accuracy\cite{redpin}. Loation precision is as such dependent on the calibration phase, but is expected in a decent environment to be better than a cell of origin approach. 
 
