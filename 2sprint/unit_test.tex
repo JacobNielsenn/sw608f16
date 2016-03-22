@@ -4,8 +4,8 @@ The test are also necessary since there is 9 other groups that is depending our 
 
 \subsection{Testing Purpose}
 %Next year student
-The code that have been developed in this project will be further improved and expanded by the next year students in order to better support the needs of the platform. 
-By writing tests to all of the code, these developers a better start when they get their hands on the project. 
+The code that have been developed in this project will be further improved and expanded by the next year students in order to better understand and change the code as future requirements arises for the indoor service. 
+By writing tests to all of the code, give these developers a better start when they get their hands on the project. 
 This report will help them understand why some design decisions have been made and what the purpose of the system is as a whole, but what the individual methods are supposed to do will not be covered in its entirety. 
 By testing the methods with tests that checks if an given input returns an expected result, will help the developers to get a clearer understanding of what the methods are supposed to do. 
 This understanding are further enhanced by the documentation that also describes the methods as explained in Section \ref{sec:code_documentation} \nameref{sec:code_documentation}. 
@@ -15,7 +15,7 @@ This project involves the collaboration between 10 groups to develop the aStep p
 Many of the aStep components communicates with each other by calling methods or sharing data.
 Tests are therefore beneficial as they can be used in debugging situations when big changes are made to the aStep system. 
 Sometimes a change in one component will break other components in sometimes unforeseen ways such as indirect dependencies.
-When such an error occurs it is helpful to have tests that catch them before the changes are shared with everyone else in the project.
+When such an error occurs it is helpful to have tests that catch them before the changes are shared with everyone else in the project. This is ensured by our gitlab server, were each time a commit is made the gitlab compiles the entire project and runs all the test, if any of the fail the push will not go through.
 
 %Correctness
 The tests will also be used to ensure the system provides correct functionality in the form of what they output.
