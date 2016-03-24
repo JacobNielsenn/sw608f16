@@ -1,12 +1,18 @@
-\chapter{Sprint 2}
+\chapter{Sprint 2} \label{cha:sprint2}
 In this chapter we describe the work done in the second sprint. Since it have been chosen to utilize Cisco, which is available to us at Aalborg University, the main goal for this sprint is to make the connection and send data from Cisco to the aStep database, as it can be seen in \cref{fig:cisco_systems}. There will also be focused on unit testing the code, looked into possibilities to find geographical locations rather than the relative position supplied by Cisco as of now. Finally there will be taken time to describe our collaboration with the other groups assigned to the aStep project.
 
 \input{2sprint/geo_locations}
 \input{2sprint/unit_test}
 \input{2sprint/code_documentation}
-%\section{Relative to real cordiante}
-% {0;0} = {100deg 10' 10'' N; 10deg 20' 20'' E} 
-%person at relative cordinate {120; 25} 
-%Person real cordinate = {100deg 10' 11.2'' N; 10deg 20' 20.25'' E}
+\input{2sprint/client}
+\input{2sprint/store_data}
 
 \section{Sprint evaluation}
+As described in \cref{cha:sprint2} the goals for this sprint was: 
+\begin{itemize}
+\item To have the data from Cisco send to the aSTEP database, which have not been reached due to it taking more time than expected to just get the data from Cisco to our client. This goal will therefore continue into the next sprint.
+\item To unit test the excising code, which have been done for large parts thereof. As described in \cref{sec:unit_test}.
+\item To look into possibilities for storing geographical coordinates, this have been done in \cref{sec:geo_coordinates} and we are currently waiting for the Cisco administrators assistant to make this possible.
+\item In addition there have been take time do describe our collaboration with the other groups, this can be seen in \cref{sec:collaboration} 
+\end{itemize}
+In conclusion our goals for the second sprint have been partially fulfilled and therefore further work is needed.
