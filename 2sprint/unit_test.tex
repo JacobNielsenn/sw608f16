@@ -1,4 +1,4 @@
-\section{Unit Testing}
+\section{Unit Testing}\label{sec:unit_test}
 To supply the next year student, that will continue this project, with a better understating of our code and what the essence of it is, all methods have been tested and documented. 
 The test are also necessary since there is 9 other groups that is depending our code to be working.
 
@@ -15,17 +15,28 @@ This project involves the collaboration between 10 groups to develop the aStep p
 Many of the aStep components communicates with each other by calling methods or sharing data.
 Tests are therefore beneficial as they can be used in debugging situations when big changes are made to the aStep system. 
 Sometimes a change in one component will break other components in sometimes unforeseen ways such as indirect dependencies.
-When such an error occurs it is helpful to have tests that catch them before the changes are shared with everyone else in the project. This is ensured by our gitlab server, were each time a commit is made the gitlab compiles the entire project and runs all the test, if any of the fail the push will not go through.
+When such an error occurs it is helpful to have tests that catch them before the changes are shared with everyone else in the project. This is ensured by the common GitLab server, as whenever a change is pushed to the GitLab server, the entire project is compiled and all the tests will be processed. The build will be marked as erroneous if the compilation or any of the tests fails.
 
 %Correctness
-The tests will also be used to ensure the system provides correct functionality in the form of what they output.
-
+The tests will also be used to ensure that the system provides correct service as they are designed to verify different aspects of it.
+A test should verify that the methods functions accordingly to the specifications of the method.
+Besides uncovering bugs the test will be helpful to discover situations where the system will not function fully.
+By discovering and patching such shortcomings the system's usability will be improved together with the maintainability as the code becomes easier to understand as the test self-document themselves.
 
 %Intern understanding group and project
-
+Because the tests presents how the system is expected to behave, it become easier for other people than the developers to read and understand the code.
+It does require that the reader possess some knowledge about the language in order to gain any insight from the tests.
+The tests can also be used by the user to quickly gain an overview of a class by glancing over the tests as the name and return types of the methods are not always enough for the reader to understand them.
+But because the test displays the expected result, the reader can be more confident about what the intentions of the method is.
 
 \subsection{Testing Method}
-Junit and Java
-After code
-Gitlab docker and images
-
+The tests have been made with use of the testing library JUnit\cite{junit4}.
+Even though that all none trivial methods have been tested, it was never the goal to use test driven development.
+The system have been supplied with tests after the classes was finished. 
+The reason for waiting with tests was that the primary focus with regards to the code, were to quickly establish some real functionality. 
+By doing so it was possible to showcase what functionality we would be able to offer early in the project.%discuss the goals, specification and responsibility of our system with the other groups.
+This was relevant information for the application and database groups as they were interested in the knowing what data we would be able to share with them.
+Developing the system using test driven development is a time consuming process that takes up a considerable amount of time in the begging of a project.
+It does however save some time when the projects reaches a later state in its development cycle.
+It would also require an excessive amount of time on retweaking the tests as the system will need to be changed to accommodate new functionality and goals at every sprint as the other groups discovers new needs and requirements for their own systems.
+It was therefore chosen to wait with the tests until the other groups were sure about what they wanted and what was expected from us.
