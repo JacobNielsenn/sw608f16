@@ -1,42 +1,42 @@
 \section{Unit Testing}\label{sec:unit_test}
-To supply the next year student, that will continue this project, with a better understating of our code and what the essence of it is, all methods have been tested and documented. 
-The test are also necessary since there is 9 other groups that is depending our code to be working.
+To supply the next year students, who will continue this project, with a better understating of our code and what the essence of it is, all methods have been tested and documented. 
+The tests are necessary since there are 9 other groups depending on our code to be working.
 
 \subsection{Testing Purpose}
 %Next year student
-The code that have been developed in this project will be further improved and expanded by the next year students in order to better understand and change the code as future requirements arises for the indoor service. 
-By writing tests to all of the code, give these developers a better start when they get their hands on the project. 
+The code developed in this project will be further improved and expanded on by the next year students. One of the reasons the code are being tested is to give future students a better understanding of the code as future requirements arises for the indoor service. 
+By writing tests to the entire code, future developers may be able to start up this project with more ease. 
 This report will help them understand why some design decisions have been made and what the purpose of the system is as a whole, but what the individual methods are supposed to do will not be covered in its entirety. 
-By testing the methods with tests that checks if an given input returns an expected result, will help the developers to get a clearer understanding of what the methods are supposed to do. 
+By testing all methods such that it checks if an given input returns the expected result, will help the developers to get a clearer understanding of what the methods are supposed to do. 
 This understanding are further enhanced by the documentation that also describes the methods as explained in Section \ref{sec:code_documentation} \nameref{sec:code_documentation}. 
 
 %Debugging intern and extern
 This project involves the collaboration between 10 groups to develop the aStep platform. 
 Many of the aStep components communicates with each other by calling methods or sharing data.
 Tests are therefore beneficial as they can be used in debugging situations when big changes are made to the aStep system. 
-Sometimes a change in one component will break other components in sometimes unforeseen ways such as indirect dependencies.
-When such an error occurs it is helpful to have tests that catch them before the changes are shared with everyone else in the project. This is ensured by the common GitLab server, as whenever a change is pushed to the GitLab server, the entire project is compiled and all the tests will be processed. The build will be marked as erroneous if the compilation or any of the tests fails.
+Changes in one component may break other components in unforeseen ways such as indirect dependencies.
+When such an error occurs it is helpful to have tests that catch them before the changes are shared with everyone else in the project. This is ensured by the common GitLab server, such that whenever a change is pushed to the GitLab server, the entire project is compiled and all the tests will be processed. The build will be marked as erroneous if the compilation or a test fails.
 
 %Correctness
 The tests will also be used to ensure that the system provides correct service as they are designed to verify different aspects of it.
 A test should verify that the methods functions accordingly to the specifications of the method.
 Besides uncovering bugs the test will be helpful to discover situations where the system will not function fully.
-By discovering and patching such shortcomings the system's usability will be improved together with the maintainability as the code becomes easier to understand as the test self-document themselves.
+By discovering and patching such shortcomings the systems usability will be improved together with the maintainability as the code becomes easier to understand as the test self-document themselves. \ofx{usability? maybe explain a little}
 
 %Intern understanding group and project
 Because the tests presents how the system is expected to behave, it become easier for other people than the developers to read and understand the code.
 It does require that the reader possess some knowledge about the language in order to gain any insight from the tests.
 The tests can also be used by the user to quickly gain an overview of a class by glancing over the tests as the name and return types of the methods are not always enough for the reader to understand them.
-But because the test displays the expected result, the reader can be more confident about what the intentions of the method is.
+But because the test displays the expected result, the reader can be more confident about what the intentions of each method is.
 
 \subsection{Testing Method}
 The tests have been made with use of the testing library JUnit\cite{junit4}.
-Even though that all none trivial methods have been tested, it was never the goal to use test driven development.
-The system have been supplied with tests after the classes was finished. 
-The reason for waiting with tests was that the primary focus with regards to the code, were to quickly establish some real functionality. 
-By doing so it was possible to showcase what functionality we would be able to offer early in the project.%discuss the goals, specification and responsibility of our system with the other groups.
-This was relevant information for the application and database groups as they were interested in the knowing what data we would be able to share with them.
-Developing the system using test driven development is a time consuming process that takes up a considerable amount of time in the begging of a project.
+Even though all none trivial methods have been tested, it was never the goal to use test driven development.
+Therefore the system have been supplied with tests after each class have been finished. 
+The reason for waiting with tests is that the primary focus in regards to the code, was to quickly establish some functionality. 
+By doing so it have been possible to showcase what functionality we would be able to offer early in the project.%discuss the goals, specification and responsibility of our system with the other groups.
+This was relevant information for the application and database groups as they were interested in knowing what data we would be able to provide.
+Developing the system using test driven development would be a time consuming process taking up a considerable amount of time, that may be better spend on resurge in the begging of a project.
 It does however save some time when the projects reaches a later state in its development cycle.
-It would also require an excessive amount of time on retweaking the tests as the system will need to be changed to accommodate new functionality and goals at every sprint as the other groups discovers new needs and requirements for their own systems.
-It was therefore chosen to wait with the tests until the other groups were sure about what they wanted and what was expected from us.
+It would also require an excessive amount of time on changing the tests as the system will need to be changed to accommodate new functionality and goals at every sprint as the other groups discover new needs and requirements for their own systems.
+It was therefore chosen to postpone testing until the other groups had a better knowledge about what they wanted and what was expected from us.

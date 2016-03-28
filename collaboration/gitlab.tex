@@ -1,15 +1,34 @@
 \section{GitLab}
-At the aSTEP meeting that took place 17.02.2016 it was decided that a few people across the groups should take responsibility for maintaining the GitLab server, to ensure that GitLab is running as decried, without causing any of the groups, assigned to the aSTEP project, problems. Two members of this group volunteered for this task. The purpose of the following section is to describe the work that we have done related to GitLab. The formed GitLab group used Slack to communicate and assign tasks within the group. 
+At the aSTEP meeting that took place at 17.02.2016 it was decided that a few people across the groups should take responsibility for maintaining the GitLab server, to ensure that GitLab is running as decried, without causing any of the groups, assigned to the aSTEP project, problems. Two members of this group volunteered for this task. 
+%The purpose of the following section is to describe the work that we have done related to GitLab. 
+The formed GitLab group used Slack to communicate and assign tasks within the group. The different tasks related to GitLab was assigned to the members of the GitLab group.
 
 \subsection{GitLab Update}
-Our first task is to update GitLab which is running on the semesters virtual server, hence refereed to as the aSTEP server. The magnitude of this task involves installing a virtual server on a computer to emulate the GitLab update to ensure that if it fails, it will not cause problems to the aSTEP server which is running the actual GitLab service. The program VirtualBox\cite{vbox} was used to emulate an Ubuntu Server operation system, where the GitLab service was installed. In addition PuTTY\cite{putty} is used to allow connection and communication with the aSTEP server.
+The first task assigned to our group was to update GitLab which is running on the semesters virtual server, hence refereed to as the aSTEP server. It was agreed that the best approach would be to install a virtual server on a computer, to emulate the GitLab update. This was done to ensure that in case the update would fail it could not cause problems to the aSTEP server.
+%The magnitude of this task involves installing a virtual server on a computer to emulate the GitLab update to ensure that if it fails, it will not cause problems to the aSTEP server which is running the actual GitLab service. 
+The program VirtualBox\cite{vbox} was used to emulate an Ubuntu Server operation system, where the GitLab service was installed. In addition PuTTY\cite{putty} is used to allow connection and communication with the aSTEP server.
 
-The installation process have an architectural conflict as GitLab runs on a 64-bit architecture and the standard configuration of VirtualBox on the test machine only shows the option for installing 32-bit systems. This is problematic as the update will fail if the version is 32-bit. It is possible to allow the 64-bit option to be displayed by changing the following setting on the test machine; turn on Intel (R) Virtualization Technology and Intel (R) VT-d Feature in Basic Input Output System (BIOS). Then disable Hyper-V in Windows Features, restart the machine and updated the setting. VirtualBox will now show the option for 64-bit. 
+The reason for updating GitLab is in order to increase performance, which was achieved for builds as well as runners, push and pull. 
 
+In order to install a 64-bit architecture one must; turn on Intel (R) Virtualization Technology and Intel (R) VT-d Feature in Basic Input Output System (BIOS). Then disable Hyper-V in Windows Features, restart the machine and updated the setting. VirtualBox will now show the option for 64-bit. 
 GitLab is now ready to be installed on the test machine by following the guide from GitLab's website\cite{gitlab_guide}.
 
-In order to test the update a backup must be extracted from the aSTEP server. To extract a backup and upload it to the testing server a sub program of PuTTY, called pscp, will be used. This allows extraction from the aSTEP server and the uploading of files to the test machine.
+%The installation process have an architectural conflict as GitLab runs on a 64-bit architecture and the standard configuration of VirtualBox on the test machine only shows the option for installing 32-bit systems. This is problematic as the update will fail if the version is 32-bit. It is possible to allow the 64-bit option to be displayed by changing the following setting on the test machine; turn on Intel (R) Virtualization Technology and Intel (R) VT-d Feature in Basic Input Output System (BIOS). Then disable Hyper-V in Windows Features, restart the machine and updated the setting. VirtualBox will now show the option for 64-bit. 
+
+%GitLab is now ready to be installed on the test machine by following the guide from GitLab's website\cite{gitlab_guide}.
+
+To test the update a backup must be extracted from the aSTEP server. To extract a backup and upload it to the testing server a sub program of PuTTY, called pscp, will be used. This allows extraction from the aSTEP server and the uploading of files to the test machine.
 
 When the backup is extracted the next step is then to update GitLab with the new version. GitLab developers have incorporated some measures to ensure that the GitLab servers will not lose data even if an update fails. This is done automatic by creating a backup before installing and detailing the process in a log if anything went wrong, along with a set of solutions to the possible problems.
 
 After this was done a Wiki page was created in the shared GitLab Wiki that would help future semesters in updating GitLab if necessary. The whole process of setting up a virtual test server will not be descried in the Wiki. It was deemed not to be necessary since GitLab have the automatic backup feature.
+
+\subsection{GitLab Merge}
+\ofx{Can you write an initial section on this Anders?}
+
+\subsection{GitLab group work}
+What were the other members of the GitLab group doing
+
+%Anders Merge request stuff, runners
+%Rune overall håndtering, runners
+%Alex committer en fandens meget!
