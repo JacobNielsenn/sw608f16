@@ -1,5 +1,7 @@
 \chapter{Sprint 2} \label{cha:sprint2}
-In this chapter we describe the work done in the second sprint. Since it have been chosen to utilize Cisco, which is available to us at Aalborg University, the main goal for this sprint is to make the connection and send data from Cisco to the aStep database, as it can be seen in \cref{fig:cisco_systems}. There will also be focused on unit testing the code and looked into possibilities of finding geographical locations rather than the relative position supplied by Cisco as of now. Finally there will be taken time to describe our collaboration with the other groups assigned to the aStep project, as can be seen in \cref{sec:collaboration}, \nameref{sec:collaboration}.
+In this chapter we describe the work done in the second sprint. 
+
+Since we have chosen to utilize Cisco MSE, which is available to us through Aalborg University, the main goal for this sprint is to create a client responsible for fetching data from Cisco MSE to the aStep database, as it can be seen in \cref{fig:cisco_systems}. We will also focus on testing and thoroughly documenting existing and new code. Furthermore, we will look into the possibilities of finding geographical locations rather than relative positions within a building. Finally, we plan on describing our collaborations with other groups working on the aStep project, as can be seen in \cref{sec:collaboration}, \nameref{sec:collaboration}.
 
 \input{2sprint/geo_locations}
 \input{2sprint/unit_test}
@@ -7,13 +9,14 @@ In this chapter we describe the work done in the second sprint. Since it have be
 \input{2sprint/store_data}
 
 \section{Sprint evaluation}
-As described in \cref{cha:sprint2} the goals for this sprint was: 
+To perform an evaluation of the sprint we iterate over the sprint goals and comment on whether or not they were fulfilled.
 
-To have the data from Cisco send to the aSTEP database, which have not been reached due to it taking more time than expected to get the data from Cisco to our client. This goal will therefore continue into the next sprint.
-To unit test the excising code, which have been done for large parts thereof. As described in \cref{sec:unit_test}.
+First, we wanted to fetch the data from Cisco MSE and send it to the aSTEP database. This goal has only partly been achieved because of several factors. First, it requires an agreement on the uniformity of the data for the whole project, which has not been settled yet. Secondly, we found that the intermediate server requires a few changes, which have not been possible to implement as the Cisco MSE administrator has been unavailable. However, we built a largely finished client service capable of fetching data from different sources and sending it to a database. We cover the implementation of the client in \cref{sec:fetch_data}.
 
-To look into possibilities for storing geographical coordinates, this have been done in \cref{sec:geo_coordinates} and we are currently waiting for the Cisco administrators assistant to make this possible.
+We implemented a significant amount of unit tests to ensure correctness of our code. Furthermore, we thoroughly documented the code to decrease future development and maintenance costs. The unit tests are described in \cref{sec:unit_test}.
 
-In addition there have been take time do describe our collaboration with the other groups, as can be seen in \cref{sec:collaboration} 
+We looked into the possibilities for storing geographical data, and we are curently awaiting the local Cisco administrator to allow for this.
 
-In conclusion our goals for the second sprint have been partially fulfilled and further work will therefore needed.
+Finally we have described several collaborations we participated in during the sprint. These range from server administration to various meetings with different groups. This can be found in \cref{sec:collaboration}. 
+
+In conclusion, the goals for the second sprint have been partially fulfilled and further work will therefore be needed.

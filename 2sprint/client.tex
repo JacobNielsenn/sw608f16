@@ -1,4 +1,4 @@
-\section{Fetching Data From Cisco}
+\section{Fetching Data From Cisco} \label{sec:fetch_data}
 This section aims to build a client that is able to communicate with the Cisco MSE services and the Database server. As mentioned previously, it is expected to communicate with several Cisco MSE services at a time. The client has to be built with the mindset that it will be communicating with external services that we do not have direct control of. Consequently we will have to handle external errors and unexpected behaviour without shutting the system down. 
 
 The client has to afford the flexibility of maintaining a list of connected services during run-time, such that a new Cisco MSE service can be added and removed without requiring a restart. We call this list the $fetch list$. Furthermore, we wish to impose the requirement that a Cisco MSE service has to be online and responsive when added to the list in order to avoid faults caused by erroneous input.
