@@ -8,52 +8,59 @@ There are three formats of geographical coordinates; degrees minutes seconds, de
 
 The listing below shows the conversion between the three different types of geographical coordinates. All the calculations are based on equivalent values and the results of each conversion should therefore be the input of another type.
 
+
 \begin{itemize}
 	\item \textbf{Degrees minutes seconds on input 10\degree 12' 30''}
 	\begin{itemize}
 		\item To degrees decimal minutes ($DDM$)
 		\begin{itemize}
-			\item $ d = 10$
-			\item $ m = 12 + (30/60)$
+			\setlength\itemsep{0.00005em}
+			\item $ d = 10\degree $
+			\item $ m = 12' + (30/60)'$
 			\item $DDM = d \cdot m = 10\degree 12.5' $
 		\end{itemize}
 		\item To decimal degrees ($DD$)
 		\begin{itemize}
-			\item $ d = 10 $
-			\item $ decM = \frac{12'}{60} + \frac{30''}{3600}$
-			\item $ DD = d + decM = 10.2083 $
+			\setlength\itemsep{0.00005em}
+			\item $ d = 10\degree $
+			\item $ decM = \frac{12}{60}\degree + \frac{30}{3600}\degree = 0.2083\degree$
+			\item $ DD = d + decM = 10.2083\degree $
 		\end{itemize}
 	\end{itemize}
 	\item \textbf{Degrees decimal minutes on input 10\degree 12.5'}
 	\begin{itemize}
 		\item To decimal minutes seconds ($DMS$)
 		\begin{itemize}
-			\item $ d = 10 $
-			\item $ m = \floor{12.5}'$
-			\item $ s = (12.5 \mod 1) * 60''$
+			\setlength\itemsep{0.00005em}
+			\item $ d = 10\degree $
+			\item $ m = \floor{12.5}' = 12' $
+			\item $ s = (12.5 \mod 1) * 60'' = 30''$
 			\item $ DMS = d \cdot m \cdot s = 10\degree 12' 30''$
 		\end{itemize}
 		\item To decimal degrees ($DD$)
 		\begin{itemize}
-			\item $ d = 10 $
-			\item $ dec = \frac{12.5}{60}$
-			\item $ DD = d + dec = 10.2083$
+			\setlength\itemsep{0.00005em}
+			\item $ d = 10\degree $
+			\item $ dec = \frac{12.5}{60}\degree = 0.2083\degree$
+			\item $ DD = d + dec = 10.2083\degree$
 		\end{itemize}
 	\end{itemize}
 	\item \textbf{Decimal degrees on input: dd = 10.2083\degree}
 	\begin{itemize}
 		\item To degrees minutes seconds ($DMS$)
 		\begin{itemize}
+			\setlength\itemsep{0.00005em}
 			\item $ d = dd \mod 1 = 10\degree $
-			\item $ md = (dd - d)*60 $
+			\item $ md = (dd - d) * 60' $
 			\item $ m = md \mod 1 = 12' $
-			\item $ s = (md - m * 60) = 30''$
+			\item $ s = (md - m) * 60'' = 30''$
 			\item $ DMS = d \cdot m \cdot s = 10\degree 12' 30''$ 
 		\end{itemize}
 		\item To degrees decimal minutes ($DDM$)
 		\begin{itemize}
-			\item $ d = dd \mod 1 = 10 $
-			\item $ dm = (dd - d) * 60 = 12.5 $
+			\setlength\itemsep{0.00005em}
+			\item $ d = dd \mod 1 = 10\degree $
+			\item $ dm = (dd - d) * 60' = 12.5' $
 			\item $ DDM = d \cdot dm = 10\degree 12.5'$
 		\end{itemize}
 	\end{itemize}
