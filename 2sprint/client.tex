@@ -1,9 +1,9 @@
-\section{Fetching data from Cisco}
+\section{Fetching Data From Cisco}
 This section aims to build a client that is able to communicate with the Cisco MSE services and the Database server. As mentioned previously, it is expected to communicate with several Cisco MSE services at a time. The client has to be built with the mindset that it will be communicating with external services that we do not have direct control of. Consequently we will have to handle external errors and unexpected behaviour without shutting the system down. 
 
 The client has to afford the flexibility of maintaining a list of connected services during run-time, such that a new Cisco MSE service can be added and removed without requiring a restart. We call this list the $fetch list$. Furthermore, we wish to impose the requirement that a Cisco MSE service has to be online and responsive when added to the list in order to avoid faults caused by erroneous input.
 
-In this initial design and implementation of the client we do not wish to focus on security nor efficiency as they add another layer of complexity. Hence, certain security and efficiency-related areas have been omitted in favour of robustness, flexibility and scalability. In particular, handling sensitive data such as IP addresses and passwords is something that has to be reconsidered.
+In this initial design and implementation of the client we do not wish to focus on security nor efficiency as they add another layer of complexity. Hence, certain security and efficiency-related aspects have been omitted in favour of robustness and flexibility. In particular, handling sensitive data such as IP addresses and passwords is something that has to be reconsidered in the future.
 
 \subsection*{Creating robustness}
 In order to make a robust client we have to make sure that it can handle erroneous input and external errors when connecting to Cisco MSE services. This is largely handled by the $try...catch$ keywords in Java, which allow the executing program to catch exceptions during runtime and execute code according to the exception without exiting. In particular, a common exception type when working with networking is the $IOException$, which is a general term for the group of exceptions that can be encountered when performing IO-operations such as connecting to an IP address. There are several different exceptions that can be thrown when sending a request to a service, depending on the state of the service. Consequently we use $try... catch(IOException)$ when performing networking requests, as such exceptions  have to be handled in the same way no matter the subtype.
@@ -38,8 +38,8 @@ private void failedConnection(){
 
 When attempting to connect to a service and an $IOException$ is thrown, the program changes state and the method in \cref{lst:failed_connect} is executed. An example of the exception catch can be seen on line 19. Instead of fetching data and sending it to the database at an interval, the program now simply attempts reconnecting to the erroneous service. This is done at an interval, first every 10 minutes and later every 30 minutes until 12 hours have passed. After this time period the service is disregarded, and it is removed from the fetch list.
 
-\subsection{Creating flexibility}
-We wish to afford the possibility of adding services to the fetch list during runtime. We can implement this with a RESTful service while using HTTP POST requests to communicate with this service. When receiving a POST request, the service has to verify the parameters to ensure that the data received is of the correct form. 
+\subsection*{Creating flexibility}
+We wish to afford the possibility of adding services to the fetch list during runtime. We can implement this functionality with a RESTful service while using HTTP POST requests to communicate with this service. When receiving a POST request, the service has to verify the parameters to ensure that the data received is of the correct form. 
 
 \begin{lstlisting}[caption={Adding a server to the fetch list},label={lst:add_server},language=inc_Java, mathescape]
 server.createContext("/api/add/server", httpExchange -> {
@@ -47,15 +47,16 @@ server.createContext("/api/add/server", httpExchange -> {
         Headers headers = httpExchange.getRequestHeaders();
         List<String> username = headers.get("Username");
         List<String> passphrase = headers.get("Password");
-        List<String> ip = headers.get("IP");
-        if(validIP(ip.get(0)) && IsServerOnline(ip.get(0))){
-            AddIP(ip.get(0), username.get(0), passphrase.get(0));
+        List<String> url = headers.get("url");
+        if(validIP(url.get(0)) && IsServerOnline(url.get(0))){
+            AddIP(url.get(0), username.get(0), passphrase.get(0));
             WriteToFile();
         }
     }
 });
 \end{lstlisting}
-\Cref{lst:add_server} shows the essential functionality executed when a request is received on the URI $/api/add/server$. On line two we call the function VerifyHeaders, which goes through the parameters of the POST request and ensures that IP address, username and password are not empty. If the request passes this test, we then test on line 7 whether the IP address provided is valid by comparing it with a regular expression and attempting to open a connection to the service. The method $IsServerOnline$ returns true if any response code is returned by the server. If the HTTP request passes all these tests we add the IP address to the fetch list.
+\Cref{lst:add_server} shows the essential functionality executed when a request is received on the URI $/api/add/server$. On line two we call the function VerifyHeaders, which goes through the parameters of the POST request and ensures that IP address, username and password are not empty. If the request passes this test, we then test on line 7 whether the IP address provided is valid by comparing it with a regular expression and attempting to open a connection to the service. The method $IsServerOnline()$ returns true if any response code is returned by the server. If the HTTP request passes all these tests we add the IP address to the fetch list.
 
+In order to store program configuration, we save the IP addresses and user information in a file. This is particularly helpful for debugging purposes, as we do not need to reinsert information into the program on start up. Naturally, storing sensitive information such as passwords in a file is a bad idea. However, the client is intended to have an uptime of close to 100\%, and it is as such not a necessity to store sensitive information in secondary memory in a final release. Furthermore, as the focus shifts towards security we will have to find a way to encode and store sensitive data to ensure that intruders cannot retrieve nor use any information they may find.
 
-In order to store program configuration we save the IP addresses and user information in a file. This is particularly helpful for debugging purposes, as we do not need to reinsert information into the program on start up. Naturally, storing sensitive information such as passwords in a file is a bad idea. However, the client is intended to have an uptime of close to 100\%, and it is as such not a necessity to store sensitive information in secondary memory in a final release. 
+The fetch list is handled by creating a fetch thread for each element. This thread is tasked with the retrieval of information, obfuscation and dispatching the information to the database. In between this sequence of operations the thread will suspend its operations by sleeping, thus making processor time available for other threads. If a connection fails repeatedly for 12 hours, the thread responsible will simply die. Using threads allow for concurrent connections with Cisco MSE services and allows the underlying operating system and compiler to optimise the program to utilize several processor cores.
