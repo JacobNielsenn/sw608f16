@@ -4,7 +4,7 @@ The tests are necessary since there are 9 other groups depending on our code to 
 
 \subsection{Testing Purpose}
 %Next year student
-The code developed in this project will be further improved and expanded on by the next year students. One of the reasons the code are being tested is to give future students a better understanding of the code as future requirements arises for the indoor service. 
+The code developed in this project will be further improved and expanded on by the next year students. One of the reasons the code are being tested is, alongside good documentation, to give future students a better understanding of the code as further requirements arises for the indoor service. 
 By writing tests to the entire code, future developers may be able to start up this project with more ease. 
 This report will help them understand why some design decisions have been made and what the purpose of the system is as a whole, but what the individual methods are supposed to do will not be covered in its entirety. 
 By testing all methods such that it checks if an given input returns the expected result, will help the developers to get a clearer understanding of what the methods are supposed to do. 
@@ -24,13 +24,13 @@ Besides uncovering bugs the test will be helpful to discover situations where th
 By discovering and patching such shortcomings the systems usability will be improved together with the maintainability as the code becomes easier to understand as the test self-document themselves. \ofx{usability? maybe explain a little}
 
 %Intern understanding group and project
-Because the tests presents how the system is expected to behave, it become easier for other people than the developers to read and understand the code.
+Because the tests represents how the system is expected to behave, it becomes easier for other people than the developers to read and understand the code.
 It does require that the reader possess some knowledge about the language in order to gain any insight from the tests.
 The tests can also be used by the user to quickly gain an overview of a class by glancing over the tests as the name and return types of the methods are not always enough for the reader to understand them.
 But because the test displays the expected result, the reader can be more confident about what the intentions of each method is.
 
 \subsection{Testing Method}
-The tests have been made with use of the testing library JUnit\cite{junit4}.
+The tests have been made with use of the testing library JUnit\cite{junit4}.\ofx{Bis asks: "Why JUnit? any benefits of using this?}
 Even though all none trivial methods have been tested, it was never the goal to use test driven development.
 Therefore the system have been supplied with tests after each class have been finished. 
 The reason for waiting with tests is that the primary focus in regards to the code, was to quickly establish some functionality. 

@@ -1,5 +1,5 @@
 \section{Geographical Locations} \label{sec:geo_coordinates}
-There are three formats of geographical coordinates; degrees minutes seconds, degrees decimal minutes and decimal degrees. These are represented at such:
+There are three formats of geographical coordinates; degrees minutes seconds, degrees decimal minutes and decimal degrees\cite{geo_types}. These are represented at such:
 \begin{itemize}
 	\item Degrees minutes seconds(DMS): 10\degree 12' 30''
 	\item Degrees decimal minutes(DDM): 10\degree 12.5'
@@ -66,10 +66,10 @@ The listing below shows the conversion between the three different types of geog
 	\end{itemize}
 \end{itemize}
 
-It have been requested that the data we supply for the applications are in geographical coordinates, there have therefore been looked into possibilities of doing so.
+It has been requested that the data we supply for the applications are in geographical coordinates, there have therefore been looked into possibilities of doing so.
 As the coordinate given from Cisco are in feet away from the fixed ${0;0}$ point, it would be possible to calculate the geographical location of a device by knowing the coordinate of ${0;0}$ and the angle of the map compared to longitude and latitude. 
 
-However by using Cisco it is not necessary to do so since there is an option of getting the positions in geographical coordinates. This requires at least three and at most 20 geographical coordinates on each map to be inserted. By knowing at least three points, Cisco can calculate the position of each device based on the relative coordinate in comparison to the inserted locations\cite{geo_cisco}. 
+However by using Cisco it is not necessary to make these calculations ourself since there is an option of getting the positions in geographical coordinates. This requires at least three and at most 20 geographical coordinates on each map to be inserted. By knowing at least three points, Cisco can calculate the position of each device based on the relative coordinate in comparison to the inserted locations\cite{geo_cisco}. 
 Cisco can output geographical coordinates in either the DMS of the DD format\cite{cisco_geo_type}. The application group prefers to receive the coordinates in the DD format, but since future applications may want the DMS or DDM format and conversion from DMS is the easier solution this will be chosen \ofx{we may have to correct this later on based on what we get from Cisco}.
 
 %http://www.cisco.com/c/en/us/td/docs/solutions/Enterprise/Borderless_Networks/Unified_Access/CMX/CMX_Prime.html#pgfId-1019702
