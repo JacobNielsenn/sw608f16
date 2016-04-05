@@ -1,42 +1,36 @@
-\section{Unit Testing}\label{sec:unit_test}
-To ensure correctness of the code and supply future developers with a better understanding of our code, all methods have been tested and documented. 
-The tests are necessary since there are 9 other groups depending on our code to be functioning.
+\section{Testing and Documentation}\label{sec:unit_test}
+To ensure correctness of the code and supply future developers with a better understanding of our code, all code has been tested and documented. This is seen as a necessity as there are nine other project groups depending on the code we produce.
 
 \subsection{Testing Purpose}
-%Debugging intern and extern
-This project involves the collaboration between 10 groups to develop the aStep platform. 
-Many of the aStep components communicates with each other by calling methods or sharing data.
-Tests are therefore beneficial as they can be used in debugging situations when big changes are made to the aStep system. 
-Changes in one component may break other components in unforeseen ways such as indirect dependencies.
-When such an error occurs it is helpful to have tests that catch them before the changes are shared with everyone else in the project. This is ensured by the common GitLab server, such that whenever a change is pushed to the GitLab server, the entire project is compiled and all the tests will be processed. The build will be marked as erroneous if the compilation or a test fails.
+Many of the aStep components communicate with each other by calling methods or sharing data. These dependencies introduce a requirement for correctness of code across the project. Consequently, unit tests are created to ensure functionality behaves according to the specification. The tests can be used to simulate the characteristics of the usage of the code and ensure that edge cases and unintended uses are handled properly. 
 
-%Correctness
-The tests will also be used to ensure that the system provides correct service as they are designed to verify different aspects of it.
-A test should verify that the methods functions accordingly to the specifications of the method.
-Besides uncovering bugs the test will be helpful to discover situations where the system will not function fully.
-By discovering and patching such shortcomings the systems usability will be improved together with the maintainability as the code becomes easier to understand as the test self-document themselves. \ofx{usability? maybe explain a little}
+Changes in an implemented component may have unforeseen obscure consequences on other components because of indirect dependencies. When such an error occurs it is helpful to have tests that catch them before the changes are shared with everyone else in the project. This is ensured by use of a common GitLab server, such that whenever a change is pushed, the entire project is compiled and all the tests will be processed. The build will be marked as erroneous if the compilation or a test fails.
 
-%Next year student
-The code developed in this project will be further improved and expanded on by next year's students. One of the reasons the code are being tested is, alongside good documentation, to give future students a better understanding of the code as further requirements arises for the indoor service. 
-By writing tests to the entire code, future developers may be able to start up this project with more ease. 
-This report will help them understand why some design decisions have been made and what the purpose of the system is as a whole, but what the individual methods are supposed to do will not be covered in its entirety. 
-By testing all methods such that it checks if a given input returns the expected result, will help the developers to get a clearer understanding of what the methods are supposed to do. 
-This understanding is further enhanced by the documentation that also describes the methods as explained in Section \ref{sec:code_documentation} \nameref{sec:code_documentation}. 
-
-%Intern understanding group and project
-Because the tests represents how the system is expected to behave, it becomes easier for other people than the developers to read and understand the code.
-It does require that the reader possess some knowledge about the language in order to gain any insight from the tests.
-The tests can also be used by the user to quickly gain an overview of a class by glancing over the tests as the name and return types of the methods are not always enough for the reader to understand them.
-But because the test displays the expected result, the reader can be more confident about what the intentions of each method is.
+The code developed in this project will be further improved and expanded on by future students. Unit tests support the documentation and facilitates understanding of the code.
+By writing tests for the entire code, future developers may be able to start working on this project with more ease. 
+This report seeks to explain design decisions and what the purpose of the system is as a whole, whereas the usage of individual methods are documented with unit tests, and the functionality of the individual methods are documented with comments.
 
 \subsection{Testing Method}
-The tests have been made using the testing library JUnit\cite{junit4}.\ofx{Bis asks: "Why JUnit? any benefits of using this?}
-Even though all non-trivial methods have been tested, it was never the goal to use test driven development.\sfx{not cause -> effect}
-Therefore the system have been supplied with tests after each class have been finished. 
-The reason for waiting with tests is that the primary focus in regards to the code, was to quickly establish some functionality. 
-By doing so it have been possible to showcase what functionality we would be able to offer early in the project.%discuss the goals, specification and responsibility of our system with the other groups.
-This was relevant information for the application and database groups as they were interested in knowing what data we would be able to provide.
-Developing the system using test driven development would be a time consuming process taking up a considerable amount of time, that may be better spend on resurge in the begging of a project.
-It does however save some time when the projects reaches a later state in its development cycle.
-It would also require an excessive amount of time on changing the tests as the system will need to be changed to accommodate new functionality and goals at every sprint as the other groups discover new needs and requirements for their own systems.
-It was therefore chosen to postpone testing until the other groups had a better knowledge about what they wanted and what was expected from us.
+The tests across the project have been made using the testing library JUnit\cite{junit4}.\ofx{Bis asks: "Why JUnit? any benefits of using this?} The system has been supplied with tests after the implementation of each class. Typically each method in a class is tested using the black-box method, where actual output is compared to the expected output on a predefined input.
+
+\begin{lstlisting}[caption={Testing ContinuesPuller},label={lst:test_continuespuller},language=inc_Java, mathescape]
+@Test
+public void testContinuesPuller1() throws Exception {
+    CiscoPuller testPuller = new CiscoPuller(localIP, "test", "works");
+    assertTrue("Testing 'ContinuesPuller' with a positive integer",
+            testPuller.ContinuesPuller(localIP, 2));
+    assertFalse("Testing 'ContinuesPuller' with a negative integer",
+            testPuller.ContinuesPuller(localIP, -1));
+    assertFalse("Testing 'ContinuesPuller' with 0 value integer",
+            testPuller.ContinuesPuller(localIP, 0));
+}
+\end{lstlisting}
+\Cref{lst:test_continuespuller} shows how unit testing is performed on the method $ContinuesPuller()$. The method is tested on the second parameter, which dictates how many requests are sent to a server. First, a service is created to simulate an external server, as seen on line 2. After this initialisation, the method is calling with parameters indicating two requests, minus one request and zero requests. The former is expected to be true, whereas the latter two are expected to return false, and the test passes if this is the case. 
+
+\section{Code Documentation} \label{sec:code_documentation}
+As mentioned, we have put in additional effort to document the code for future development. This has been done by explaining all non-trivial methods in the program. Specifically, for each method we have described the general functionality as well as the method signature. In addition, links are created between methods calling classes or other methods. 
+
+As we finish documenting segments of the code, we generate a Java-Doc, which is a .pdf document listing methods and their description, and upload it to the Wiki page on GitLab for other members of the project to see. The links in the comments are transferred to the Java-doc, enabling interactive documentation. 
+Doing this is a continuous process and will be continued throughout the entire project, whenever code undergoes change as well as when additions are made.
+
+\sfx{write about testdriven development in discussion}
