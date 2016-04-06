@@ -1,5 +1,14 @@
-\section{Testing and Documentation}\label{sec:unit_test}
+\section{Software Quality Assurance}\label{sec:unit_test}
 To ensure correctness of the code and supply future developers with a better understanding of our code, all code has been tested and documented. This is seen as a necessity as there are nine other project groups depending on the code we produce.
+
+\subsection{Code Documentation} \label{sec:code_documentation}
+We have put in additional effort to document the code for future development. This has been done by explaining all non-trivial methods in the program. Specifically, for each method we have described the general functionality as well as the method signature. In addition, links are created between methods calling classes or other methods. 
+
+After a presentation of Java-Doc at the super-group meeting on March 31, Java-Doc was elected the standard tool for code documentation in the astep project.
+As we finish documenting segments of the code, we generate a Java-Doc, which is a .pdf document listing methods and their description, and upload it to the Wiki page on GitLab for other members of the project to see. The links in the comments are transferred to the Java-doc, enabling interactive documentation. 
+Doing this is a continuous process and will be continued throughout the entire project, whenever code undergoes change as well as when additions are made.
+
+\sfx{write about testdriven development in discussion}
 
 \subsection{Code Testing}
 Many of the aStep components communicate with each other by calling methods or sharing data. These dependencies introduce a requirement for correctness of code across the project. Consequently, unit tests are created to ensure functionality behaves according to the specification. The tests can be used to simulate the characteristics of the usage of the code and ensure that edge cases and unintended uses are handled properly. 
@@ -24,13 +33,4 @@ public void testContinuesPuller1() throws Exception {
             testPuller.ContinuesPuller(localIP, 0));
 }
 \end{lstlisting}
-\Cref{lst:test_continuespuller} shows how unit testing is performed on the method $ContinuesPuller()$. The method is tested on the second parameter, which dictates how many requests are sent to a server. First, a service is created to simulate an external server, as seen on line 2. After this initialisation, the method is calling with parameters indicating two requests, minus one request and zero requests. The former is expected to be true, whereas the latter two are expected to return false, and the test passes if this is the case. 
-
-\subsection{Code Documentation} \label{sec:code_documentation}
-As mentioned, we have put in additional effort to document the code for future development. This has been done by explaining all non-trivial methods in the program. Specifically, for each method we have described the general functionality as well as the method signature. In addition, links are created between methods calling classes or other methods. 
-
-After a presentation of Java-Doc at the super-group meeting on March 31, Java-Doc was elected the standard tool for code documentation in the astep project.
-As we finish documenting segments of the code, we generate a Java-Doc, which is a .pdf document listing methods and their description, and upload it to the Wiki page on GitLab for other members of the project to see. The links in the comments are transferred to the Java-doc, enabling interactive documentation. 
-Doing this is a continuous process and will be continued throughout the entire project, whenever code undergoes change as well as when additions are made.
-
-\sfx{write about testdriven development in discussion}
+\Cref{lst:test_continuespuller} shows how unit testing is performed on the method $ContinuesPuller()$. The method is tested on the second parameter, which dictates how many requests are sent to a server. First, a service is created to simulate an external server, as seen on line 3. After this initialisation, the method is calling with parameters indicating two requests, minus one request and zero requests. The former is expected to be true, whereas the latter two are expected to return false, and the test passes if this is the case. 
