@@ -1,0 +1,18 @@
+\section{Restful proxy update}
+We plan on implementing an update to the restful proxy server that is used to communicate with Aalborg University's MSE. This update is planned to fix a bug causing loss of data during conversion between different data formats. This section covers the motivation for the following changes in the update:
+
+\begin{itemize}
+\item Fixed loss of data during conversion
+\item Obfuscates new data acquired as a result of previous change
+\item The service no longer stops if it loses its connection with Cisco
+\item Now checks if MSE is online and the right account information is received at start-up.
+\end{itemize}
+
+\subsection{Loss of data}
+Global coordinates is now supported by MSE, thanks to the Cisco administrator at the Aalborg University. To perform obfuscation of personal sensitive data we convert the returned string to classes containing the information in its member variables. With this method we can easily perform obfuscation by editing the fields corresponding to the personal sensitive data. 
+
+This method utilizes a library developed by Google called gson, which affords the ability to convert strings of the json format to a class and vice versa. We can acquire the classes by using an online tool that analyses json strings and automatically generates classes with corresponding fields.
+
+Initially, the generated classes did not contain a field for the global coordinates, as they were generated based on the response string from a version of MSE where this feature was disabled. This would not be a problem for a single conversion, as generated classes for Gson have a field called additionalProperties, which contains additional information. However, in order to preserve the transparency of the intermediate server, we wish to perform a conversion back to json in order to maintain the external illusion of this intermediate server being an MSE service.
+
+Performing several conversions results in a loss of data, as any information in the additionalProperties field is lost. To avoid this data loss, we can re-generate the classes using a json string with the appropriate information. Alternatively, we could perform a search for specific substrings in the json string, which we would then obfuscate. The json string is often more than a million characters long. The class of strings in Java is immutable, meaning any changes to a string variable results in new memory being allocated and the modified content of the old memory location copied over. Performing replacements in a large string is very expensive, and it is as such desirable to perform the aforementioned conversions. 
