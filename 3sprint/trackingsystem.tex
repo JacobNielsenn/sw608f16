@@ -44,3 +44,5 @@ We did find a custom firmware for Ibiquiti, however not for D-link. The searched
 We ended up utilizing the openwrt because it supports our Ibiquiti router and allows us to gain root access and execute programs. With the new custom firmware installed we have about 8Mb of memory left on the router, this put some limitations to which language we can use, our first attempt is to use a version of python called mini-python that dose not exceed the memory limit.
 
 A program is constructed allowing us to listen on different types of networks such as LAN and WAN, this is done using the socket library. We were however not able to import the socket library which was required, to run our program on the router.
+
+/jfx{Nuværende konklusion, vi kan fange pakker, hvis devicen er forbundet til vores netwærk eller de selv har tænkt for internet deling. Det er dog ikke muligt at få RSSI (signal styrke), der er ikke fundet nogen defintive årsag til dette, men formoder at det kan skyldes driverne på routeren (openwrt).}
