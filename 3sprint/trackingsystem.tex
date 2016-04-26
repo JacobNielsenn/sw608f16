@@ -7,20 +7,13 @@ This section will include the advancements made in building and gathering of inf
 	\item Test Capabilities of the Access Points\ofx{is this all?}
 \end{itemize}
 
-An overview of the entire system can be seen in \cref{fig:OwnSetup}. One router and four access points are set up in our group rooms, such that it covers three group rooms.
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{graphics/Router-AccessPoint_Setup.pdf}
-	\label{fig:OwnSetup}
-	\caption{Illustration of how a positioning system can be set up, using routers and access point that can track devices.}
-\end{figure}
 
 \subsection*{Equipment Requirements}
 The initial requirements for the equipment, is a wireless antenna capable of supporting 2.4 GHz and optionally 5 GHz. It would be advantageously if we set up two different ILBS for the sake of comparison. We decided to buy two brands allowing us to analyse at least two ILBS and thus conclude which of the systems performed best, based on the criteria describe in section \ref{sec:monitoring}.
 
 Based on the above requirement we found two brands, Ubiquiti and D-link which in comparison is considered the cheaper brand. We ordered one router, two expensive and five cheap access points of each brand.
 
-\subsection*{Access point positioning}\ofx{we may want to move this?}
+\subsection*{The physical setup}\ofx{we may want to move this?}
 Cisco\cite{access_point_placement} have guidelines for how to place the access points in order to get the best coverage for your system. They recommend that there are placed an access point in each corner of the building and some along the perimeter, in addition if the building is large enough there should be placed some within the perimeter that can form a sub-perimeter inside which there may be additional access points, this is illustrated in \cref{access_placement} on which the red circles are access points. This means the perimeter established by the outer most access points should encapsulate the entire floor. Everything on this perimeter is called the \textit{hull}\cite{access_point_placement}.
 
 Each access point should be place 50-70 feet away from each other in order to get a high precision without a lot of unnecessary overlap\cite{access_point_range}.
@@ -32,6 +25,14 @@ The placement of the access points in \cref{fig:OwnSetup} is based on this desig
 	\includegraphics[scale=0.5]{graphics/access_placement.png}
 	\label{fig:access_placement}
 	\caption{Illustration of how access points should be placed.}
+\end{figure}
+
+An overview of our system can be seen in \cref{fig:OwnSetup}. One router is set up in the middle and four access points are set up in our group rooms, such that it covers three group rooms.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{graphics/Router-AccessPoint_Setup.pdf}
+	\label{fig:OwnSetup}
+	\caption{Illustration of how a positioning system can be set up, using routers and access point that can track devices.}
 \end{figure}
 
 \subsection*{Test Capabilities of the Equipment}

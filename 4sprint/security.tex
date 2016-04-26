@@ -1,0 +1,21 @@
+\section{Security considerations}
+In order to increase security in our system, different considerations was made. These considerations are made in order to make it more difficult for outsiders to access the system as well as hiding sensitive user information aside from the mac-address.
+
+\subsection*{HTTPS over HTTP} 
+%HTTPS and SSL certificate. May want to talk more about where we could use it in our system
+To further security against unauthorised personal a HTTPS connection could be established. HTTPS is short for \textit{Hyper Text Transfer Protocol Secure} and is the secure form of HTTP. With HTTP everything send as pure text and can be read by anyone who access the connection, but what makes HTTPS secure is that this pure text is encrypted. This means that if someone access the connection they would not be able to read the information. A secure connection is therefore very important on cites that handles sensitive information such as CPR-numbers or credit card information and this can be achieved by using HTTPS\cite{HTTPS}.
+
+At the handshake between the browser and a cite using HTTPS you are visiting, a public SSL-key (Secure Socket Layer) is exchanged. This key is unique and is what are used to encrypt the data you send, the encrypted data can then only be decrypted with a private key, which is secure on the web-server\cite{HTTPS}.
+
+\subsection*{Certificates}
+To further security against unauthorised personal, a certificate handler could be used for the connection between the Cisco system and the intermediate server  
+
+\subsection*{Hash passwords}
+\subsection*{Adding servers to client}
+\subsection*{Accessors}
+\subsection*{Hard-coded passwords}
+\subsection*{Visibility}
+As of now the most of our system is public, by decreasing the level of visibility to have more private and protected classes and methods, the system would be more secure.
+ 
+\subsection*{Obfuscate personal information}
+In order to ensure our users personal information, it have been considered to obfuscate their E-mail as well as their Ip-addresses in the same manner as it is done to the MAC-address. By doing so there will be no way for outsiders to identify people unwilling to have their information stored.
