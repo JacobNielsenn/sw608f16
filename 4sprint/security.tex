@@ -1,11 +1,11 @@
 \section{Security considerations}
-In order to increase security in our system, different considerations was made. These considerations are made in order to make it more difficult for outsiders to access the system as well as hiding sensitive user information aside from the mac-address.
+In order to increase security in our system, different considerations was made. These considerations are made in order to make it more difficult for outsiders to access the system as well hide sensitive user information except for the mac-address.
 
 \subsection*{HTTPS over HTTP} 
-%HTTPS and SSL certificate. May want to talk more about where we could use it in our system
-To further security against unauthorised personal a HTTPS connection could be established. HTTPS is short for \textit{Hyper Text Transfer Protocol Secure} and is the secure form of HTTP. With HTTP everything send as pure text and can be read by anyone who access the connection, but what makes HTTPS secure is that this pure text is encrypted. This means that if someone access the connection they would not be able to read the information. A secure connection is therefore very important on cites that handles sensitive information such as CPR-numbers or credit card information and this can be achieved by using HTTPS\cite{HTTPS}.
+%  HTTPS and SSL certificate. May want to talk more about where we could use it in our system
+To increase security against unauthorised personal a HTTPS connection could be established. HTTPS is short for \textit{Hyper Text Transfer Protocol Secure} and is the secure form of HTTP. With HTTP everything send as plain text and can be read by anyone who access the connection, but what makes HTTPS secure is that this pure text is encrypted. This means that if someone gains access the connection they would not be able to read the information. A secure connection is therefore very important on sites that handles sensitive information such as CPR-numbers or credit card information and this can be achieved by using HTTPS\cite{HTTPS}.
 
-At the handshake between the browser and a cite using HTTPS you are visiting, a public SSL-key (Secure Socket Layer) is exchanged. This key is unique and is what are used to encrypt the data you send, the encrypted data can then only be decrypted with a private key, which is secure on the web-server\cite{HTTPS}.
+The handshake between the browser and a site using HTTPS starts with an exchange of public SSL-keys (Secure Socket Layer). The SSL-key is unique and enable encrypt of the data you send, the encrypted data can then only be decrypted with your own private key\cite{HTTPS}.
 
 \subsection*{Certificates}
 To further security against unauthorised personal, a certificate handler could be used for the connection between the Cisco system and the intermediate server  
