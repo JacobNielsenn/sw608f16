@@ -17,7 +17,17 @@ To increase security against unauthorised personal a HTTPS connection could be e
 
 The handshake between the browser and a site using HTTPS starts with an exchange of public SSL-keys (Secure Socket Layer). The SSL-key is unique and enable encrypt of the data you send, the encrypted data can then only be decrypted with your own private key\cite{HTTPS}. 
 
-\subsection*{Hash passwords}
+\subsection*{Hashing}
+In order to protect sensitive information it would be adventitious to hash some of the information we get from Cisco, it would make sense to hash the passwords. 
+It have been requested by the heatmap application group to have a unique identification of all people. If we are not allowed to store the MAC-Address, a solution to this would be to hash the MAC-Address with a random, daily changing salt-value. In this way it will be possible for the heatmap to track people for as long af the salt-value is unchanged.
+
+Java have a hash-method implemented in the object class called \textit{hashCode()}, this may be used for hashing information. However hashCode() does not use a changing value and the method would therefore have to be overwritten or the value that should be hashed may be changed. E.g. if we are to hash the MAC-Address an option would be as such:
+\begin{lstlisting}[caption={Hash a MAC-Address},label={lst:hash},language=inc_Java]
+hash = MAC\_Address + salt.toString();
+hash.hashCode();
+\end{lstlisting}
+
+
 \subsection*{Adding servers to client}
 \subsection*{Accessors}
 \subsection*{Hard-coded passwords}
