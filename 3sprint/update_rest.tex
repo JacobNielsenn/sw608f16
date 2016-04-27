@@ -26,4 +26,4 @@ After the initial deployment of the service we experienced downtime as a result 
 \subsection{Paging}
 When requesting all clients from MSE the response is partitioned into pages. Each page contains a certain amount of entries, as defined in the request. If this isn't defined in the request, a default of 5000 entries per page is used. 
 
-Initially we were not aware of this feature, as the MSE test service never made use of paging. As a result, we would only receive the first page of information, missing out on thousands of entries. This update aims to implement a temporary fix, which will increase the page size tenfold. An additional update will later be deployed that handles an arbitrary amount of pages, ignoring the page size.
+Initially we were not aware of this feature, as the MSE test service never made use of paging. As a result, we would only receive the first page of information, missing out on thousands of entries. This update aims to implement a fix, which will enable the use of paging in a request. Whenever a request is sent, it is after this update possible to explicitly state which page is requested.
