@@ -1,9 +1,9 @@
 \section{Security considerations}
-In order to increase security in our system, different considerations was made. These considerations are made in order to make it more difficult for outsiders to access the system as well hide sensitive user information except for the mac-address.
-\ofx{tie this to sprint1 security}
+In order to increase the level of security in our system, different considerations should be made. These considerations are made in order to make it more difficult for intruders to break into the system as well as hide personal sensitive information. We limit the discussion to communication and how we handle personal sensitive information, as this is where we assess the system have the biggest weaknesses.
+\ofx{tie this to sprint1 security} \sfx{Is it necessary to emphasize that we aren't security experts?}
 \subsection*{HTTPS and Certificates} 
 %  HTTPS and SSL certificate. May want to talk more about where we could use it in our system
-To increase security against unauthorised personal a HTTPS connection could be established. HTTPS is short for \textit{Hyper Text Transfer Protocol Secure} and is the secure form of HTTP. With HTTP everything send as plain text and can be read by anyone who access the connection, but what makes HTTPS secure is that this pure text is encrypted. This means that if someone gains access the connection they would not be able to read the information. A secure connection is therefore very important on sites that handles sensitive information such as CPR-numbers or credit card information and this can be achieved by using HTTPS\cite{HTTPS}.
+The system currently uses HTTP, an insecure communication protocol that uses cleartext to communicate. Anybody intercepting the communication can read it with ease. We can diminish the damage from this attack by using the HTTPS protocol, short for \textit{Hyper Text Transfer Protocol Secure}, which functions as the HTTP protocol with the exception that the message is encrypted. This means that if someone were to gain access to the connection they would not be able to read the information. A secure connection is very important on sites that handle sensitive information such as CPR-numbers or credit card information and this can be achieved by using HTTPS\cite{HTTPS}.
 
 \begin{figure}[ht]
 	\begin{center}
@@ -13,9 +13,9 @@ To increase security against unauthorised personal a HTTPS connection could be e
 	\end{center} 
 \end{figure}
 
-\Cref{fig:HTTPS} shows how HTTPS works after the key exchange have taken place. First the sender sends plain text, which is encrypted using the recipients public key. The encrypted message is then send and decrypted using the recipients private key before plain text is received.
+\Cref{fig:HTTPS} shows how HTTPS works after the key exchange have taken place. First the sender sends plain text, which is encrypted using the recipients public key. The encrypted message is then sent and decrypted using the recipients private key before plain text is received.
 
-The handshake between the browser and a site using HTTPS starts with an exchange of public SSL-keys (Secure Socket Layer). The SSL-key is unique and enable encrypt of the data you send, the encrypted data can then only be decrypted with your own private key\cite{HTTPS}. 
+The handshake between the browser and a site using HTTPS starts with an exchange of public SSL-keys (Secure Socket Layer). The SSL-key is unique and enables encryption of the data sent. The encrypted data can then only be decrypted with your own private key\cite{HTTPS}. \sfx{I'm not sure it's necessary to explain how HTTPS works in this amount of detail. If it is, we need to rewrite it. It is not very clear here.}
 
 \subsection*{Hashing}
 Hash function are most commonly used to store a users password or other sensitive data. In functions as a one way function, when a message is hashed it can not be reversed again. The formal definition is shown below:
