@@ -1,18 +1,19 @@
 \section{Building our own tracking system using routers and hotspots}
-This section will cover the progress made in building and researching routers and hotspots to make our own Indoor Positioning System (IPS)\sfx{ILBS? IPS? tracking?}. A list of objectives can be seen below. The primary goal is enabling us to calculate our position in geo-coordinates, in order to compare it with the coordinates provided by Cisco MSE.
+This section will cover the progress made in building and researching routers and hotspots to make our own Indoor Positioning System (IPS). A list of objectives can be seen below. The primary goal is enabling us to calculate our position in geo-coordinates, in order to compare it with the coordinates provided by Cisco MSE.
 
 \begin{itemize}
 	\item Equipment Requirements
+	\item The physical setup
 	\item Test Capabilities of the Router
 	\item Test Capabilities of the Access Points
 \end{itemize}
 
 \subsection*{Equipment Requirements}
-The initial requirement for all equipment is that it supports wireless communication on the 2.4 GHz frequency. It would be advantageous if we set up two different ILBS for the sake of comparison. We decided to buy two brands, allowing us to analyse two ILBS and thus conclude which of the systems performed best, based on the criteria described in section \ref{sec:monitoring}.
+The initial requirement for all equipment is that it supports wireless communication on the 2.4 GHz frequency. It would be advantageous if we set up two different IPS for the sake of comparison. We decided to buy two brands, allowing us to analyse two IPS and thus conclude which of the systems performed best, based on the criteria described in section \ref{sec:monitoring}.
 
 Based on the above requirement we found two brands, Ubiquiti and D-link, the latter of which is considered the cheaper brand. We ordered one router, two expensive access points and five cheap access points from each brand.
 
-\subsection*{The physical setup}\ofx{we may want to move this?}
+\subsection*{The physical setup}
 Cisco\cite{access_point_placement} have guidelines for how to place the access points in order to get the best coverage for a system. They recommend that there is an access point in each corner of the building and some along the perimeters. In addition, if the building is large enough, access points should be placed within the perimeter to form a sub-perimeter, which itself may contain a sub-perimeter and so on. This is illustrated on figure \cref{fig:access_placement}, in which the red circles are access points. The perimeter established by the outer-most access points should encapsulate the entire floor, as illustrated by the blue line and the sub-perimeter by the red line. The outer-most perimeter is also known as the \textit{hull}\cite{access_point_placement}.
 
 The access points should be placed at an interval of 50-70 feet to get a high precision without interference and unnecessary overlap\cite{access_point_range}. This radius depends on the reach of the access points and the topology of the building.
