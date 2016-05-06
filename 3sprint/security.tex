@@ -1,5 +1,5 @@
 \section{Security considerations}
-In order to increase the level of security in our system, different considerations should be made. These considerations are made in order to make it more difficult for intruders to break into the system as well as hide personal sensitive information. We limit the discussion to communication and how we handle personal sensitive information, as this is where we assess the system have the biggest weaknesses.
+In order to increase the level of security in our system, different considerations should be made. These considerations are made in order to make it more difficult for intruders to break into the system as well as hide personal sensitive information. We limit the discussion to program communication and how we handle personal sensitive information, as this is where we assess the system have the biggest weaknesses.
 \ofx{tie this to sprint1 security} \sfx{Is it necessary to emphasize that we aren't security experts?}
 
 \subsection*{HTTPS and Certificates} 
@@ -19,26 +19,20 @@ The system currently uses HTTP, an insecure communication protocol that uses cle
 The handshake between the browser and a site using HTTPS starts with an exchange of public SSL-keys (Secure Socket Layer). The SSL-key is unique and enables encryption of the data sent. The encrypted data can then only be decrypted with your own private key\cite{HTTPS}. \sfx{I'm not sure it's necessary to explain how HTTPS works in this amount of detail. If it is, we need to rewrite it. It is not very clear here.}
 
 \subsection*{Hashing}
-Hash function are most commonly used to store a users password or other sensitive data. In functions as a one way function, when a message is hashed it can not be reversed again. The formal definition is shown below:
+Hash functions are most commonly used to store a users password or other sensitive data. It functions as a one way mapping; when a message is hashed it can not be reversed again. The formal definition is shown below:
 \begin{quote}
 \textit{'A hash function is a computationally efficient function mapping binary strings of arbitrary length to binary strings of some fixed length, called hash-values.'\cite{Hash_def}}
 \end{quote}
 
-It have been requested by the heatmap application group to have a unique identification of all people. If we are not allowed to store the MAC-Address, a solution to this would be to hash the MAC-Address with a random, daily changing salt. In this way it will be possible for the heatmap to track people for as long af the salt-value is unchanged.
+It has been requested by the Heatmap application group to have a unique identification of all people. If we are not allowed to store the MAC-Address, a solution to this would be to hash the MAC-Address with a random, changing salt. In this way it will be possible for the application to track people for as long as the salt-value is unchanged.
 
-Java have a hash-method implemented in the object class called \textit{hashCode()}, this may be used for hashing information. When using a hash function properly, you add a random generated string that extends the original message. The generated string is called a salt and make the hash function more secure. An example of how to apply the Java hashCode can be seen in \cref{lst:hash}.
-\begin{lstlisting}[caption={Hash a MAC-Address},label={lst:hash},language=inc_Java]
-String salt = UUID.randomUUID().toString();
-hash = MAC_Address + salt;
-hash.hashCode();
-\end{lstlisting}
-In \cref{lst:hash} we see that a random string is generated in line one, then concatenated with the information we wish to hash, in this case the MAC-Address. Finally we call the Java hashCode() on the string, and this gives us a string that can not be traced back to the original.
+Java has a hash-method implemented in the object class called \textit{hashCode()}, this may be used for hashing information. When using a hash function, you add a randomly generated string that extends the original message. The generated string is called a salt and makes the hash function more secure.
 
 \subsection*{Hard-coded passwords}
-In our connection to Cisco as well as to the intermediate server we are currently using hard-coded passwords, which means that everyone with access to the code can find the log-in information. These should be hashed and stored such that the log-in can not be seen in the code and is never written as plain text. 
+When communicating with MSE from the intermediate server as well as when communicating with the intermediate server, we are currently using hard-coded passwords. This means that everyone with access to the code can find the log-in information. The information should be given as arguments to the program and hashed such that the log-in can not be seen in the code and cannot be read as plain text in memory. 
 
 \subsection*{Visibility}
-As of now the most of our system is public, by decreasing the level of visibility to have more private and protected classes and methods, the system would be more secure.
+As of now many parts of the system has a higher degree of visibility than necessary. This makes it possible to use functionality in unexpected ways and possibly cause unintended behaviour. We can decrease the level of visibility by having private and protected classes and methods, which leads to a system that is more resilient towards unexpected usage.
  
 \subsection*{Obfuscate personal information}
 In order to ensure our users personal information, it have been considered to obfuscate their E-mail as well as their Ip-addresses in the same manner as it is done to the MAC-address. By doing so there will be no way for outsiders to identify people unwilling to have their information stored.
