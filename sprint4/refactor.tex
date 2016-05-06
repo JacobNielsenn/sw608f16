@@ -7,7 +7,7 @@ Due to a request from the heatmap group, to be able to track people by some uniq
 The applied function can be seen in \cref{lst:ourhash} where in line 1 the MAC-Address is concatenated with the random generated salt-value. In line two the new string is being hashed using guava-19's sha256 at last in line 3 the MAC-Address is set to the hashed value. The hashed value is a 64 signs long containing both letters and numbers.
 
 \begin{lstlisting}[caption={Hashing a MAC-Address},label={lst:ourhash},language=inc_Java]
-oldMacAddress = oldMacAddress+salt;
+oldMacAddress = oldMacAddress + salt;
 String hash = Hashing.sha256().hashString(oldMacAddress, 
 	StandardCharsets.UTF_8).toString();
 item.setMacAddress(hash);
