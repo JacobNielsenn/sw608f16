@@ -41,4 +41,4 @@ As of now many parts of the system has a higher degree of visibility than necess
 In order to ensure our users personal information, we decided to obfuscate the E-mail addresses in the same manner as it is done to the MAC-address. By doing so there will be no way for outsiders to identify people unwilling to have their information stored.
 
 \subsubsection*{IP-address}
-IP addresses are not considered personal information. This is based on the fact that IP changes each time you change access point. By not obfuscating the IP it open up possibilities to the apps, they will be able to see how many people are connected to a given access point. 
+IP addresses are not considered personal information. This is based on the fact that IP changes each time you change access point. By not obfuscating the IP it open up possibilities to the apps, they will be able to see how many people are connected to a given access point. This can be done by identifying the first 16bits for IPv4 or the first 48bits for IPv6, these are called the netbits\cite{IPnetworkID}.
