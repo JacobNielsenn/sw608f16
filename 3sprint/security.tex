@@ -1,6 +1,7 @@
 \section{Security considerations}
 In order to increase the level of security in our system, different considerations should be made. These considerations are made in order to make it more difficult for intruders to break into the system as well as hide personal sensitive information. We limit the discussion to communication and how we handle personal sensitive information, as this is where we assess the system have the biggest weaknesses.
 \ofx{tie this to sprint1 security} \sfx{Is it necessary to emphasize that we aren't security experts?}
+
 \subsection*{HTTPS and Certificates} 
 %  HTTPS and SSL certificate. May want to talk more about where we could use it in our system
 The system currently uses HTTP, an insecure communication protocol that uses cleartext to communicate. Anybody intercepting the communication can read it with ease. We can diminish the damage from this attack by using the HTTPS protocol, short for \textit{Hyper Text Transfer Protocol Secure}, which functions as the HTTP protocol with the exception that the message is encrypted. This means that if someone were to gain access to the connection they would not be able to read the information. A secure connection is very important on sites that handle sensitive information such as CPR-numbers or credit card information and this can be achieved by using HTTPS\cite{HTTPS}.
