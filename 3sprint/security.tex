@@ -35,4 +35,7 @@ When communicating with MSE from the intermediate server as well as when communi
 As of now many parts of the system has a higher degree of visibility than necessary. This makes it possible to use functionality in unexpected ways and possibly cause unintended behaviour. We can decrease the level of visibility by having private and protected classes and methods, which leads to a system that is more resilient towards unexpected usage.
  
 \subsection*{Obfuscate personal information}
-In order to ensure our users personal information, it have been considered to obfuscate their E-mail as well as their Ip-addresses in the same manner as it is done to the MAC-address. By doing so there will be no way for outsiders to identify people unwilling to have their information stored.
+In order to ensure our users personal information, We decided to obfuscate their E-mail in the same manner as it is done to the MAC-address. By doing so there will be no way for outsiders to identify people unwilling to have their information stored.
+
+\subsubsection*{IP-address}
+IP address is not considered personal information, this is based of that IP changes each time you change access point. By not obfuscating the IP it open up possibilities to the apps, they will be able to see how many people are connected to a given access point. 
