@@ -2,7 +2,7 @@
 We plan on implementing an update to the restful proxy server that is used to communicate with Aalborg University's MSE. The update is planned to remove a bug causing loss of data during conversion between different data formats. This section covers the motivation for the following changes in the update:
 
 \begin{itemize}
-\item Fixed loss of data during conversion\afx{Det ville vaere bedre hvis det var mere formelt. Undgaa at bruge Fixed}
+\item Resolved loss of data during conversion
 \item Obfuscates new data acquired as a result of aforementioned change
 \item The service no longer stops if it loses its connection with MSE
 \item Now checks if MSE is online, and the right account information is received, at start-up
@@ -10,7 +10,7 @@ We plan on implementing an update to the restful proxy server that is used to co
 \end{itemize}
 
 \subsection{Loss of Data}
-Global coordinates are now supported by MSE, thanks to the Cisco administrator at the Aalborg University. To perform obfuscation of personal sensitive data, we can convert the returned string to classes containing all information in its member variables. With this method we can easily perform obfuscation by editing the fields corresponding to the personal sensitive data.\afx{Naevn at det ikke er alle clienter som vi obfuskere, men kun dem hvor vi ikke har tilladelse til gemme deres informationer}
+Global coordinates are now supported by MSE, thanks to the Cisco administrator at the Aalborg University. To perform obfuscation of personal sensitive data, we can convert the returned string to classes containing all information in its member variables. With this method we can easily perform obfuscation by editing the fields corresponding to the personal sensitive data, that we are not authorised to keep.
 
 This method utilizes a library developed by Google called gson\cite{gson}, which affords the ability to convert strings of the JSON format to a Java class and vice versa. We can acquire the classes by using an online tool called jsonschema2pojo\cite{jsonschematwopojo}, that analyses JSON strings and automatically generates classes with corresponding fields.
 
