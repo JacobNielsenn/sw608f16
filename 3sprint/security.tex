@@ -27,11 +27,13 @@ Hash function are most commonly used to store a users password or other sensitiv
 It have been requested by the heatmap application group to have a unique identification of all people. If we are not allowed to store the MAC-Address, a solution to this would be to hash the MAC-Address with a random, daily changing salt. In this way it will be possible for the heatmap to track people for as long af the salt-value is unchanged.
 
 Java have a hash-method implemented in the object class called \textit{hashCode()}, this may be used for hashing information. When using a hash function properly, you add a random generated string that extends the original message. The generated string is called a salt and make the hash function more secure. An example of how to apply the Java hashCode can be seen in \cref{lst:hash}.
+
 \begin{lstlisting}[caption={Hash a MAC-Address},label={lst:hash},language=inc_Java]
 String salt = UUID.randomUUID().toString();
 hash = MAC_Address + salt;
 hash.hashCode();
 \end{lstlisting}
+
 In \cref{lst:hash} we see that a random string is generated in line one, then concatenated with the information we wish to hash, in this case the MAC-Address. Finally we call the Java hashCode() on the string, and this gives us a string that can not be traced back to the original.
 
 \subsection*{Hard-coded passwords}
@@ -41,4 +43,7 @@ In our connection to Cisco as well as to the intermediate server we are currentl
 As of now the most of our system is public, by decreasing the level of visibility to have more private and protected classes and methods, the system would be more secure.
  
 \subsection*{Obfuscate personal information}
-In order to ensure our users personal information, it have been considered to obfuscate their E-mail as well as their Ip-addresses in the same manner as it is done to the MAC-address. By doing so there will be no way for outsiders to identify people unwilling to have their information stored.
+In order to ensure our users personal information, We decided to obfuscate their E-mail in the same manner as it is done to the MAC-address. By doing so there will be no way for outsiders to identify people unwilling to have their information stored.
+
+\subsubsection*{IP-address}
+IP address is not considered personal information, this is based of that IP changes each time you change access point. By not obfuscating the IP it open up possibilities to the apps, they will be able to see how many people are connected to a given access point. 
