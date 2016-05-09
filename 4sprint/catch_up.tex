@@ -1,0 +1,41 @@
+\section{Catching up - Introduction to using our systems}
+This section will contain guides describing what elements to be aware of in the system and how to perform different tasks for maintenance and further development. We write this section to ease the change of ownership, such that the new owners can avoid problems we experienced and spent time resolving. 
+
+\subsection*{Transferring a program to the virtual server}
+We recommend testing new changes as thoroughly as possible before going through this as it is tiresome to do this process a lot. Before doing this you need to contact the Cisco MSE administrator of AAU and ask for passwords for the virtual proxy server and MSE. The current administrator is Per Mejdal Rasmussen from ITS.
+
+Sending the Java program to the virtual intermediate server:
+1) Compile the artifact such that you get a .jar executable file. Test it on your own system by running "java -jar FILEPATH" on your own system.
+2) Upload the .jar to a website you can download from. We used dropbox. Get the shared link on Dropbox for the file.
+3) Open putty and connect to "sshgw.aau.dk".
+4) Login with your usual moodle account.
+5) ssh to root@mon-mse-proxy.srv.aau.dk with the command "ssh root@mon-mse-proxy.srv.aau.dk".
+6) Login with password - this is something you request from the MSE administrator.
+7) Navigate to the home directory.
+8) Check if any screen session is active with "screen -ls". If this is the case, kill the process with "killall screen".
+9) Download the .jar file with the command: wget -O MSEproxy.jar "DROPBOXURL" 
+9a) Make sure to put a download=1 at the end of the url if using Dropbox.
+10) See that you have the file in the directory, run the program and make sure it runs correctly.
+11) Change user to MSE with the command "su - MSE -s /bin/sh".
+12) Type "script /dev/null".
+13) Run the program with command: "screen java -jar MSEproxy.jar https://172.18.37.70 mse-proxy PW", where PW is replaced by the password given by the MSE administrator.
+14) If all is well you get a message saying the server is up and running on some IP. This is the IP you connect to. The port is important as well, it has to be 8080.
+15) Detach from the screen by holding down CTRL+a+d.
+
+\subsection*{Intellij Debug Configurations}
+When further developing the project it is useful to share the debug configurations, such that the project setup only has to be done once. In Intellij, open the Edit Configurations screen and tick the shared box. This creates a folder in the .idea project folder called runConfigurations, which can be shared. When opening the project, Intellij will automatically detect existing debug configurations in this folder.
+
+
+\subsection*{Projects under Indoor Repository}
+The Indoor (ID) Gitlab repository contains several Intellij projects. The projects are: testingPrograms, RESTSW6, indoorLibrary, indoorCore.
+\begin{itemize}
+
+\item Testingprograms is a simple project used to debug a RESTful service. This can equally be done with a tool in Intellij (under Tools -> Test RESTful Web Service), however, we do not advice this as everything has to be input each time you want it tested. Testingprograms contains very little functionality, and is only meant to be used for HTTP get calls.
+\item RESTSW6 is the project for the intermediate proxy server. 
+\item Indoorlibrary is a static library containing much of the functionality used by our programs. We early on realised that the two systems are alike in many ways, and would have to afford the same functionality. As a consequence we decided to make a library to use for several projects, to avoid duplicate code. 
+\item IndoorCore contains the code for the client system. 
+
+\end{itemize} 
+
+ 
+different projects on gitlab
