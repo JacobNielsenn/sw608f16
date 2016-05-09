@@ -1,6 +1,6 @@
 \section{Security considerations}\label{sec:secure}
-In order to increase the level of security in our system, different considerations should be made. These considerations are made in order to make it more difficult for intruders to break into the system as well as hide personal sensitive information. We limit the discussion to program communication and how we handle personal sensitive information, as this is where we assess the system have the biggest weaknesses.
-\ofx{tie this to sprint1 security} \sfx{Is it necessary to emphasize that we aren't security experts?}
+In order to increase the level of security in our system, different considerations should be made. These considerations are made in order to make it more difficult for intruders to break into the system as well as hide personal sensitive information. We limit the discussion to program communication and how we handle personal sensitive information, as this is the most sensitive part of the system. It would also improve the robustness of the system if these parts were made secure.
+\ofx{tie this to sprint1 security}
 
 \subsection*{HTTPS} 
 %  HTTPS and SSL certificate. May want to talk more about where we could use it in our system
@@ -38,7 +38,7 @@ When communicating with MSE from the intermediate server as well as when communi
 As of now many parts of the system has a higher degree of visibility than necessary. This makes it possible to use functionality in unexpected ways and possibly cause unintended behaviour. We can decrease the level of visibility by having private and protected classes and methods, which leads to a system that is more resilient towards unexpected usage.
  
 \subsection*{Obfuscate personal information}
-In order to ensure our users personal information, we decided to obfuscate the E-mail addresses in the same manner as it is done to the MAC-address. By doing so there will be no way for outsiders to identify people unwilling to have their information stored.
+In order to ensure our users personal information, we decided to obfuscate the E-mail addresses. By doing so there will be no way for outsiders to identify people unwilling to have their information stored.
 
 \subsubsection*{IP-address}
 IP addresses are not considered personal information. This is based on the fact that IP changes each time you change access point. By not obfuscating the IP it opens up possibilities for the apps, they will be able to see how many people are connected to a given access point. This can be done by identifying the first 16bits for IPv4 or the first 48bits for IPv6, these are called the netbits\cite{IPnetworkID}.
