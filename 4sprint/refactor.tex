@@ -2,9 +2,9 @@
 In this section we describe the changes made to the code in the fourth sprint.
 
 \subsection*{Hashing of MAC-Address}
-Due to a request from the heatmap group, to be able to track people by some unique value we have elected to hash the MAC-Address of all people not on the network rather than relapsing it with "Obfuscate". In \cref{sec:secure} we explored the possibility of doing so, by using Javas hashCode(), which is implemented in the String library. However hashCode() returns only an integer which gives a higher risk of having overlap when hashing. Instead we chose to use the guava-19 library which returns a much longer value as a string, by doing so it allows for hashed MAC-Address to contain letters making it more difficult to brute-force. The salt applied is a random string for which a new is generated every twelve hour. 
+Due to a request from the Heatmap group, to be able to track people by some unique value, we have elected to hash the MAC-Address rather than obfuscate with "OBFUSCATED". In \cref{sec:secure}, we explored the possibility of doing so, by using Javas hashCode(), which is implemented in the String library. However, hashCode() returns a string consisting of only integers, which gives a higher risk of having overlap when hashing. Instead we chose to use the Guava-19 library which returns a much longer value consisting of both numbers and letters. By doing so it allows for hashed MAC-Addresses to contain letters making it more difficult to brute-force. The salt applied is a random string that is changed every twelve hour. 
 
-The applied function can be seen in \cref{lst:ourhash} where in line 1 the MAC-Address is concatenated with the random generated salt-value. In line two the new string is being hashed using guava-19's sha256 at last in line 3 the MAC-Address is set to the hashed value. The hashed value is a 64 signs long containing both letters and numbers.
+The applied function can be seen in \cref{lst:ourhash} where in line 1 the MAC-Address is concatenated with the randomly generated salt-value. In line two the new string is hashed using Guava-19's sha256. In line 4 the MAC-Address is set to the hashed value. The hashed value is 64 signs long and contain both letters and numbers.
 
 \begin{lstlisting}[caption={Hashing a MAC-Address},label={lst:ourhash},language=inc_Java]
 oldMacAddress = oldMacAddress + salt;
