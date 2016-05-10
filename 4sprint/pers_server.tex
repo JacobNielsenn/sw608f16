@@ -3,6 +3,7 @@
 \subsection*{HTTPS}
 
 \subsection*{Logging}
+The intermediate server utilizes Log4j\cite{log4j} to log error messages when it is executing. These messages are stored in a log file saved locally with the server which can be accessed and read. The log only concerns errors and alike, but we believe it would be beneficial to have an additional log the records other messages as well. We would like to log requests to the server by their time, request type and request sender. That information can be used to debug potential errors and to analyse the connectivity history. 
 
 \subsection*{Hashing}
 
