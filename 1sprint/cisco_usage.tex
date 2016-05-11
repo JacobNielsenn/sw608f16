@@ -41,5 +41,5 @@ Private static Client ObfuscateMacAddress(Client singleClient) {
 }
 \end{lstlisting}
 
-\subsection{System hierarchy}
+\subsection{System hierarchy}\label{subsec:system_hierarchy}
 With this code it is possible to create an intermediate service for the Cisco MSE RESTful service, that intercepts the response and obfuscates certain information. To use this service, a client needs to know the IP address and a login for the intermediate service. To automate the requests and create a flow of data from the Cisco systems to the aStep database, we will have to build and implement a client that fetches data at an interval. The scope of the project is beyond Aalborg University, and as such the project will need to support more then a single Cisco MSE system. A model can be seen in Future Work chapter \ref{Cha:Future_Work}. 
