@@ -14,5 +14,15 @@ item.setMacAddress(hash);
 \end{lstlisting}
 
 \subsection*{Adding servers to client}
+\Cref{subsec:system_hierarchy} and \cref{sec:data_flow} describes the server/client hierarchy between the MSE servers and the client which processes the data. 
+\begin{lstlisting}[caption={Starting multiple threads to pull data from multiple MSE servers}, label={lst:cisco_puller}, language=inc_Java]
+for (CiscoPuller thread : threadList) {
+    thread.start();
+    System.out.println("ciscoPuller started on ip: " + thread.get_ip());
+}
+\end{lstlisting}
+\Cref{lst:cisco_puller} showcases the code that is responsible for starting the threads that pulls data from several different MSE services. Each thread in the \textit{threadList} collection is configured to connect to an MSE service with an address, username and password. A thread will start to pull data as soon as it is started and will only stop if terminated or otherwise interrupted.
+
+The design reflects that we want to connect to multiple MSEs in addition to the intermediate server that we are currently using. There are no other connections between the client and other services besides the intermediate server, as of yet.
 
 \subsection*{Accessors}
