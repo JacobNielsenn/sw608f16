@@ -1,6 +1,8 @@
 \section{Code refactoring}
 In this section we describe the changes made to the code in the fourth sprint.
 
+Since this project will be developed on by other people in the future, we find it essential to improve the code as must in terms of readability, further detail will be discriped in the sub section "Code Improvement"
+
 \subsection*{Hashing of MAC-Address}
 Due to a request from the Heatmap group, to be able to track people by some unique value, we have elected to hash the MAC-Address rather than obfuscate with "OBFUSCATED". In \cref{sec:secure}, we explored the possibility of doing so, by using Javas hashCode(), which is implemented in the String library. However, hashCode() returns a string consisting of only integers, which gives a higher risk of having overlap when hashing. Instead we chose to use the Guava-19 library which returns a much longer value consisting of both numbers and letters. By doing so it allows for hashed MAC-Addresses to contain letters making it more difficult to brute-force. The salt applied is a random string that is changed every twelve hour. 
 
@@ -15,4 +17,6 @@ item.setMacAddress(hash);
 
 \subsection*{Adding servers to client}
 
-\subsection*{Accessors}
+\subsection*{Code Improvement}
+By using the IntelliJ IDEA we are able to use one of the build-in tools "Inspect code" to analyse the code and come with suggestions, this is done for the project; RESTsw6 and the two libraries; indoorCore and indoorLibrary. When inspecting code, we receive suggestion to Class structure for moving some of the global variable into a sub scoops were they are used to hide information. Declaration redundancy concerns variable access level and making variable final, This also includes empty methods and redundant parameters. Imports handles unused packages, Probable bugs finds constants conceals as variables and Spelling question the naming of variables. Important to remember it only suggestion, because inspect code is not already able to see how the class or method is used, this will result in unrealistic suggestions that are more likely to break the code.
+
