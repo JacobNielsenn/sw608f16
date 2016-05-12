@@ -1,12 +1,12 @@
 \section{Geographical Locations} \label{sec:geo_coordinates}
-There are three formats of geographical coordinates; degrees minutes seconds, degrees decimal minutes and decimal degrees\cite{geo_types}, Minutes is indicated by "'" after the number and for seconds it is "''". These are represented at such:
+There are three formats to denote geographical coordinates: degrees minutes seconds, degrees decimal minutes and decimal degrees\cite{geo_types}. Minutes are indicated by \emph{'} and seconds are denoted with \emph{''}. These are represented as such:
 \begin{itemize}
 	\item Degrees minutes seconds(DMS): 10\degree 12' 30''
 	\item Degrees decimal minutes(DDM): 10\degree 12.5'
 	\item Decimal degrees(DD): 10.2083\degree
 \end{itemize}
 
-The listing below shows the conversion between the three different types of geographical coordinates. The conversions between DMS and DD comes from\cite{geo_converter} and the remaining are derived based on these formulas. All the calculations are based on equivalent values and the results of each conversion should therefore be the input of another type.
+Typically decimal degrees are used when mapping on computers, whereas degrees minutes seconds and degrees decimal minutes are used for marking maps and by electronic navigation equipment respectively\cite{geo_types}. The listing below shows the conversion between the three different types of geographical coordinates. All the calculations are based on equivalent values and the results of each conversion should therefore be the input of another type\cite{geo_converter}.
 
 
 \begin{itemize}
@@ -66,10 +66,8 @@ The listing below shows the conversion between the three different types of geog
 	\end{itemize}
 \end{itemize}
 
-It has been requested that the data we supply for the applications are in geographical coordinates.
-As the coordinate received from Cisco MSE are in feet relative to the fixed $(0;0)$ point, it would be possible to calculate the geographical location of a device by knowing the coordinate of $(0;0)$ and the angle of the map compared to longitude and latitude. 
+It has been requested that the data we supply are in geographical coordinates.
+As the coordinate received from MSE are in feet relative to a fixed $(0;0)$ point, it would be possible to calculate the geographical location of a device by knowing the coordinate of $(0;0)$ and the angle of the map compared to longitude and latitude. 
 
-However, by using Cisco it is not necessary to perform these calculations as there is an option of getting the positions in geographical coordinates. This requires at least three geographical coordinates on each map to be calculalted. By having geographical coordinates for at least three points, Cisco can calculate the position of each device based on the relative coordinate in comparison to the inserted locations\cite{geo_cisco}. 
-Cisco can output geographical coordinates in either the DMS of the DD format\cite{cisco_geo_type}. It has been stated from other astep groups there is a preference for the DD format, but since future applications may want the DMS or DDM format, we will implement functionality to support the conversion. \ofx{we may have to correct this later on based on what we get from Cisco}
-
-%http://www.cisco.com/c/en/us/td/docs/solutions/Enterprise/Borderless_Networks/Unified_Access/CMX/CMX_Prime.html#pgfId-1019702
+However, by using MSE it is not necessary to perform these calculations as it supports retrieving the positions in geographical coordinates. This requires at least three geographical coordinates on each map to be calculalted. By having geographical coordinates for at least three points, MSE can calculate the position of each device based on the relative coordinate in comparison to the inserted locations\cite{geo_cisco}. 
+MSE can output geographical coordinates in either the DMS of the DD format\cite{cisco_geo_type}. It has been stated from other astep groups there is a preference for the DD format, but since future applications may want the DMS or DDM format, further developers may want to consider implementing functionality to support the conversion.

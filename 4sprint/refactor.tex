@@ -3,24 +3,12 @@ In this section we describe the changes made to the code in the fourth sprint.
 
 Since this project will be developed on by other people in the future, we find it essential to improve the code as must in terms of readability, further detail will be discriped in the sub section "Code Improvement"
 
-\subsection*{Hashing of MAC-Address}
-Due to a request from the Heatmap group, to be able to track people by some unique value, we have elected to hash the MAC-Address rather than obfuscate with "OBFUSCATED". In \cref{sec:secure}, we explored the possibility of doing so, by using Javas hashCode(), which is implemented in the String library. However, hashCode() returns a string consisting of only integers, which gives a higher risk of having overlap when hashing. Instead we chose to use the Guava-19 library which returns a much longer value consisting of both numbers and letters. By doing so it allows for hashed MAC-Addresses to contain letters making it more difficult to brute-force. The salt applied is a random string that is changed every twelve hour. 
-
-The applied function can be seen in \cref{lst:ourhash} where in line 1 the MAC-Address is concatenated with the randomly generated salt-value. In line two the new string is hashed using Guava-19's sha256. In line 4 the MAC-Address is set to the hashed value. The hashed value is 64 signs long and contain both letters and numbers.
-
-\begin{lstlisting}[caption={Hashing a MAC-Address},label={lst:ourhash},language=inc_Java]
-oldMacAddress = oldMacAddress + salt;
-String hash = Hashing.sha256().hashString(oldMacAddress, 
-	StandardCharsets.UTF_8).toString();
-item.setMacAddress(hash);
-\end{lstlisting}
-
 \subsection*{Adding servers to client}
 \Cref{subsec:system_hierarchy} and \cref{sec:data_flow} describes the server/client hierarchy between the MSE servers and the client which processes the data. 
 \begin{lstlisting}[caption={Starting multiple threads to pull data from multiple MSE servers}, label={lst:cisco_puller}, language=inc_Java]
 for (CiscoPuller thread : threadList) {
-    thread.start();
-    System.out.println("ciscoPuller started on ip: " + thread.get_ip());
+thread.start();
+System.out.println("ciscoPuller started on ip: " + thread.get_ip());
 }
 \end{lstlisting}
 \Cref{lst:cisco_puller} showcases the code that is responsible for starting the threads that pulls data from several different MSE services. Each thread in the \textit{threadList} collection is configured to connect to an MSE service with an address, username and password. A thread will start to pull data as soon as it is started and will only stop if terminated or otherwise interrupted.
