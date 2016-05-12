@@ -1,25 +1,26 @@
 \section{Software Quality Assurance}\label{sec:unit_test}
-To ensure correctness of the code and supply future developers with a better understanding of our code, all code has been documented and tested were it is important to ensure correct functionality. This is seen as a necessity as there are nine other project groups depending on the code we produce.
+To ensure correctness of the code and supply future developers with a better understanding of our code, all code has been documented and tested where it is important to ensure correct functionality. This is seen as a necessity as there are nine other project groups depending on the code we produce.
+
+This report seeks to explain design decisions and what the purpose of the system is as a whole, whereas the usage of individual methods is documented with unit tests, and the functionality of the individual methods is documented with comments.
 
 \subsection{Code Documentation} \label{sec:code_documentation}
 We have put in additional effort to document the code for future development. This has been done by explaining all non-trivial methods in the program. Specifically, for each method we have described the general functionality as well as the method signature. In addition, links are created between methods calling classes or other methods. 
 
 After a presentation of Java-Doc at the super-group meeting on March 31, Java-Doc was elected the standard tool for code documentation in the astep project.
-As we finish documenting segments of the code, we generate a Java-Doc, which is a .pdf document listing methods and their description, and upload it to the Wiki page on GitLab for other members of the project to see. The links in the comments are transferred to the Java-doc, enabling interactive documentation. 
+As we finish documenting segments of the code, we generate a Java-Doc, which is a PDF document listing methods and their description, and upload it to the Wiki page on GitLab for other members of the project to see. The links in the comments are transferred to the Java-doc, enabling interactive documentation. 
 Doing this is a continuous process and will be continued throughout the entire project, whenever code undergoes change as well as when additions are made.
-
+\sfx{Make sure newest code is documented properly.}
 \sfx{Write about testdriven development in discussion.}
 
 \subsection{Code Testing}
-Many of the aStep components communicate with each other by calling methods or sharing data. These dependencies introduce a requirement for correctness of code across the project. Consequently, unit tests are created to ensure functionality behaves according to the specification. The tests can be used to simulate the characteristics of the usage of the code and ensure that edge cases and unintended uses are handled properly. 
+Many of the aStep components communicate with each other by calling methods or sharing data. These dependencies introduce a requirement for correctness of code across the project. Consequently, unit tests are created to ensure functionality behaves according to the intention. The tests can be used to simulate the characteristics of the usage of the code and ensure that edge cases and unintended uses are handled properly. 
 
-Changes in an implemented component may have unforeseen obscure consequences on other components because of indirect dependencies. When such an error occurs it is helpful to have tests that catch them before the changes are shared with everyone else in the project. This is ensured by use of a common GitLab server, such that whenever a change is pushed, the entire project is compiled and all the tests will be processed. The build will be marked as erroneous if the compilation or a test fails. This increase the robustness of the program, given that unit test have been written for the program.
+Changes in an implemented component may have unforeseen obscure consequences on other components because of indirect dependencies. When such an error occurs it is helpful to have tests that catch them before the changes are shared with everyone else in the project. This is ensured by use of a common GitLab server, such that whenever a change is pushed, the entire project is compiled and all the tests will be processed. The build will be marked as erroneous if the compilation or a test fails. This increase the robustness of the program, granted that unit test have been written for the program.
 
-The code developed in this project will be further improved and expanded on by future students. Unit tests support the documentation and facilitates understanding of the code.
-By writing tests for the essential parts of the code, future developers will have an easer time understand and developing the project as well as maintain it. 
-This report seeks to explain design decisions and what the purpose of the system is as a whole, whereas the usage of individual methods are documented with unit tests, and the functionality of the individual methods are documented with comments.
+The code developed in this project will be further improved and expanded on by future students. Unit tests provide additional support for the documentation and facilitates understanding the code.
+By writing tests for the essential parts of the code, future developers will have an easier time understanding and developing the project as well as maintain it. 
 
-The tests across the project have been made using the testing library JUnit\cite{junit4}.\ofx{Bis asks: "Why JUnit? any benefits of using this?} The system has been supplied with tests after the implementation of each class. Each complex method in a class is tested using the black-box method, where actual output is compared to the expected output on a predefined input.
+The tests across the project have been made using the testing library JUnit\cite{junit4}, which was decided at a super group meeting. The system has been supplied with tests after the implementation of each class. Each complex method in a class is tested using the black-box method, where actual output is compared to the expected output on a predefined input.
 
 \begin{lstlisting}[caption={Testing ContinuesPuller},label={lst:test_continuespuller},language=inc_Java, mathescape]
 @Test
