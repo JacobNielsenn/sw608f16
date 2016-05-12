@@ -8,13 +8,13 @@ The system currently uses HTTP, an insecure communication protocol that uses cle
 
 \begin{figure}[ht]
 	\begin{center}
-		\includegraphics[scale=0.9]{graphics/HTTPS.png}
+		\includegraphics[scale=0.9]{graphics/encrypt_decrypt.png}
 		\caption{HTTPS \cite{https_pic}.}
 		\label{fig:HTTPS}
 	\end{center} 
 \end{figure}
 
-\Cref{fig:HTTPS} shows how HTTPS works after the key exchange have taken place. First the sender sends plain text, which is encrypted using the recipients public key. The encrypted message is then sent and decrypted using the recipients private key before plain text is received.
+\Cref{fig:HTTPS} shows how App sends data to aSTEP server, first App get the aSTEP's public key from aSTEP, then the App uses this key to encrypt the apps data it wants to send to aSTEP, when aSTEP receives the data it uses its private key to decrypt the data and will now be able to see the original data. Additionally if aSTEP need to send data to the app, if will need the apps public key to encrypt the message and the app will use its own private key to decrypt the data. this sum up the basics of HTTPS.
 
 The handshake between the browser and a site using HTTPS starts with an exchange of public SSL-keys (Secure Socket Layer). The SSL-key is unique and enables encryption of the data sent. The encrypted data can then only be decrypted with your own private key\cite{HTTPS}. \sfx{I'm not sure it's necessary to explain how HTTPS works in this amount of detail. If it is, we need to rewrite it. It is not very clear here.}
 
