@@ -1,4 +1,4 @@
-\section{Class Design}
+\section{Class Design}\label{sec:class_design}
 We have collaborated with one of the database groups and one of the outdoor core groups with the goal to create a \textit{Location} class that contains the necessary information about devices and their locations. 
 
 Our group and the outdoor group handles locations differently as we have access to various information from our respective sources of data. It was a common goal for the aSTEP project to make the indoor and outdoor locations interchangeable such that the database and API will not have to handle them differently. In order to achieve this, the three aforementioned groups designed the \textit{Location} class together such that both core groups would be able to properly instantiate it. The database group was involved in the design as they had another perspective on the usage of the class. They are interested in being able to effortlessly work with the class in the database, which in turn means that properties such as the timestamp, should be on the same form as the other timestaps that are saved on the database from other groups. 
