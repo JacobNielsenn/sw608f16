@@ -8,18 +8,18 @@ The system currently uses HTTP, an insecure communication protocol that uses cle
 
 \begin{figure}[ht]
 	\begin{center}
-		\includegraphics[scale=0.9]{graphics/HTTPS.png}
-		\caption{HTTPS \cite{https_pic}.}
+		\includegraphics[scale=0.9]{graphics/encrypt_decrypt.png}
+		\caption{HTTPS.}
 		\label{fig:HTTPS}
 	\end{center} 
 \end{figure}
 
-\Cref{fig:HTTPS} shows how HTTPS works after the key exchange have taken place. First the sender sends plain text, which is encrypted using the recipients public key. The encrypted message is then sent and decrypted using the recipients private key before plain text is received.
+\Cref{fig:HTTPS} shows how App sends data to aSTEP server, first App get the aSTEP's public key from aSTEP, then the App uses this key to encrypt the apps data it wants to send to aSTEP, when aSTEP receives the data it uses its private key to decrypt the data and will now be able to see the original data. Additionally if aSTEP need to send data to the app, if will need the apps public key to encrypt the message and the app will use its own private key to decrypt the data. this sum up the basics of HTTPS.
 
 The handshake between the browser and a site using HTTPS starts with an exchange of public SSL-keys (Secure Socket Layer). The SSL-key is unique and enables encryption of the data sent. The encrypted data can then only be decrypted with your own private key\cite{HTTPS}. \sfx{I'm not sure it's necessary to explain how HTTPS works in this amount of detail. If it is, we need to rewrite it. It is not very clear here.}
 
-\subsection*{Certificates}
-Initially we created an empty certificate-handler which is still in use. This means that the certificates are accepted no matter what, which is very insecure. An alternative, more secure solution, would be to download the certificates and insert them in the JVM keystore, which is a collection of all accepted certificates. By freely accepting all certificates it is possible for attackers to input dirty data in the system by adding a server pretending to be an MSE service.
+%\subsection*{Certificates}
+%Initially we created an empty certificate-handler which is still in use. This means that the certificates are accepted no matter what, which is very insecure. An alternative, more secure solution, would be to download the certificates and insert them in the JVM keystore, which is a collection of all accepted certificates. By freely accepting all certificates it is possible for attackers to input dirty data in the system by adding a server pretending to be an MSE service.
 
 \subsection*{Hashing}
 Hash functions are most commonly used to store a users password or other sensitive data. It functions as a one way mapping; when a message is hashed it can not be reversed again. The formal definition is shown below:
@@ -28,6 +28,16 @@ Hash functions are most commonly used to store a users password or other sensiti
 \end{quote}
 
 It has been requested by the Heatmap application group to have a unique identification of all people. If we are not allowed to store the MAC-Address, a solution to this would be to hash the MAC-Address with a random, changing salt. In this way it will be possible for the application to track people for as long as the salt-value is unchanged.
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[scale=0.9]{graphics/salt.png}
+		\caption{salting and hashing a MAC-Address.}
+		\label{fig:salt}
+	\end{center} 
+\end{figure}
+
+\Cref{fig:salt} illustrate how a MAC-Address is first salted and then hashed.
 
 Java has a hash-method implemented in the object class called \textit{hashCode()}, this may be used for hashing information. When using a hash function, you add a randomly generated string that extends the original message. The generated string is called a salt and makes the hash function more secure.
 
