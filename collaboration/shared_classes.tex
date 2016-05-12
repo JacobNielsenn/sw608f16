@@ -1,0 +1,11 @@
+\section{Class Design}
+We have collaborated with one of the database and outdoor core groups with the goal to create an \textit{Location} class that contains the necessary information about a device's location. 
+
+Our group and the outdoor group handles the locations differently as we have access to various information from data sources. It was a goal for the common aSTEP project to make the indoor and outdoor locations interchangeable such that the database and API will not have to handle them differently. In order to achieve this, the three aforementioned groups designed the \textit{Location} class together such that both core groups would be able to properly instantiate it. The database group was involved in the design as they had another perspective on the usage of the class. They are interested in being able to effortless work with the class in the database, which in turn means that properties such as the timestamp, should be on the same form as the other timestaps that are saved on the database from other groups. 
+
+The implemented class was placed in a shared model folder on the aSTEP server %and was later moved to a shared model library,
+where it could be imported into the projects that needed it, such as our own. 
+
+A issue that arose, because of the different data sources that the two core groups works with, was that the precision of the locations form the two sources had a minor difference. The Cisco MSE we work with supplies a \textit{confidenceFactor} which is the radius from a location, in feet, which the system is $95\%$ sure that the device is inside\cite{MSE_faq}. The outdoor core group has a similar variable, \textit{accuracy}, for determining the precision of an location within a radius. The difference is that the percentage is at $68\%$ instead of the $95\%$ that our source provides\cite{android_getAccuracy}. 
+
+In order to combat this difference the \textit{Location} class was designed to keep both the radius length and certainty percentage. This design choice means that it is easier to use other data sources in the future that uses a third percentage, and it allows us keep the two forms of location seemliness interchangeable as you will have to read the percentage in order to know who supplied the location.
