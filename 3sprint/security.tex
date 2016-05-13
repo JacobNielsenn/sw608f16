@@ -1,10 +1,9 @@
 \section{Security considerations}\label{sec:secure}
-In order to increase the level of security in our system, different considerations should be made. These considerations are made in order to make it more difficult for intruders to break into the system as well as hide personal sensitive information. We limit the discussion to program communication and how we handle personal sensitive information, as this is the most sensitive part of the system. It would also improve the robustness of the system if these parts were made secure.
-\ofx{tie this to sprint1 security}
+In order to increase the level of security in our system, different considerations should be made. These considerations are made in order to make it more difficult for intruders to break into the system as well as protect sensitive information. We limit the discussion to program communication and the way sensitive information is handled, as this is the most sensitive part of the system. It would also improve the robustness of the system if these parts were made secure, as these are the parts of the program where it is possible to introduce erroneous, dirty data.
 
 \subsection*{HTTPS} 
 %  HTTPS and SSL certificate. May want to talk more about where we could use it in our system
-The system currently uses HTTP, an insecure communication protocol that uses cleartext to communicate. Anybody intercepting the communication can read it with ease. We can diminish the damage from this attack by using the HTTPS protocol, short for \textit{Hyper Text Transfer Protocol Secure}, which functions as the HTTP protocol with the exception that the message is encrypted. This means that if someone were to gain access to the connection they would not be able to read the information. A secure connection is very important on sites that handle sensitive information such as CPR-numbers or credit card information and this can be achieved by using HTTPS\cite{HTTPS}.
+The system currently uses HTTP, an insecure communication protocol that uses cleartext to communicate. Anybody intercepting the communication can read it with ease. We can diminish the damage from this type of attack by using the HTTPS protocol, short for \textit{Hyper Text Transfer Protocol Secure}, which functions as the HTTP protocol with the exception that the message is encrypted. This means that if someone were to gain access to the connection they would not be able to read the information. A secure connection is very important on sites that handle sensitive information such as CPR-numbers or credit card data and this can be achieved by using the HTTPS protocol\cite{HTTPS}.
 
 \begin{figure}[ht]
 	\begin{center}
@@ -18,8 +17,8 @@ The system currently uses HTTP, an insecure communication protocol that uses cle
 
 The handshake between the browser and a site using HTTPS starts with an exchange of public SSL-keys (Secure Socket Layer). The SSL-key is unique and enables encryption of the data sent. The encrypted data can then only be decrypted with your own private key\cite{HTTPS}. \sfx{I'm not sure it's necessary to explain how HTTPS works in this amount of detail. If it is, we need to rewrite it. It is not very clear here.}
 
-%\subsection*{Certificates}
-%Initially we created an empty certificate-handler which is still in use. This means that the certificates are accepted no matter what, which is very insecure. An alternative, more secure solution, would be to download the certificates and insert them in the JVM keystore, which is a collection of all accepted certificates. By freely accepting all certificates it is possible for attackers to input dirty data in the system by adding a server pretending to be an MSE service.
+\subsection*{Certificates}
+Initially we created an empty certificate-handler which is still in use. This means that the certificates are accepted no matter what, which is very insecure. An alternative, more secure solution, would be to download the certificates and insert them in the JVM keystore, which is a collection of all accepted certificates. By freely accepting all certificates it is possible for attackers to input dirty data in the system by adding a server pretending to be an MSE service.
 
 \subsection*{Hashing}
 Hash functions are most commonly used to store a users password or other sensitive data. It functions as a one way mapping; when a message is hashed it can not be reversed again. The formal definition is shown below:
