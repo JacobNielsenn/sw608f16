@@ -6,8 +6,8 @@ This report seeks to explain design decisions and what the purpose of the system
 \subsection{Code Documentation} \label{sec:code_documentation}
 We have put in additional effort to document the code for future development. This has been done by explaining all non-trivial methods in the program. Specifically, for each method we have described the general functionality as well as the method signature. In addition, links are created between methods calling classes or other methods. 
 
-After a presentation of Java-Doc at the super-group meeting on March 31, Java-Doc was elected the standard tool for code documentation in the astep project.
-As we finish documenting segments of the code, we generate a Java-Doc, which is a PDF document listing methods and their description, and upload it to the Wiki page on GitLab for other members of the project to see. The links in the comments are transferred to the Java-doc, enabling interactive documentation. 
+After a presentation of Java-Doc at the super-group meeting on March 31, Java-Doc was elected the standard tool for code documentation in the aSTEP project.
+As we finish documenting segments of the code, we generate a Java-Doc, which is a PDF document listing methods and their description, and upload it to the Wiki page \cite{dokumentation_astep} on GitLab for other members of the project to see. The links in the comments are transferred to the Java-doc, enabling interactive documentation. 
 Doing this is a continuous process and will be continued throughout the entire project, whenever code undergoes change as well as when additions are made.
 \sfx{Make sure newest code is documented properly.}
 \sfx{Write about testdriven development in discussion.}
@@ -20,7 +20,7 @@ Changes in an implemented component may have unforeseen obscure consequences on 
 The code developed in this project will be further improved and expanded on by future students. Unit tests provide additional support for the documentation and facilitates understanding the code.
 By writing tests for the essential parts of the code, future developers will have an easier time understanding and developing the project as well as maintain it. 
 
-The tests across the project have been made using the testing library JUnit\cite{junit4}, which was decided at a super group meeting. The system has been supplied with tests after the implementation of each class. Each complex method in a class is tested using the black-box method, where actual output is compared to the expected output on a predefined input.
+The tests across the project have been made using the testing library JUnit \cite{junit4}, which was decided at a super group meeting. The system has been supplied with tests after the implementation of each class. Each complex method in a class is tested using the black-box method, where actual output is compared to the expected output on a predefined input.
 
 \begin{lstlisting}[caption={Testing ContinuesPuller},label={lst:test_continuespuller},language=inc_Java, mathescape]
 @Test

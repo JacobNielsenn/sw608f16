@@ -34,7 +34,7 @@ server.createContext("/api/contextaware/v1/location/clients", httpExchange -> {
         });
 \end{lstlisting}
 
-In order to accommodate the privacy concern, we implement some simple methods to obfuscate the MAC-address and user name, one of which can be seen in \cref{lst:obfuscating_mac}. It might be the case that users allow for us to store their personal information, and as such we will have to make a check to see if this has been allowed. To store this information we use a TreeSet, which guarantees $log(n)$ time cost for adding, deleting and searching \cite{treeset}. On line 2 we obtain the MAC-address of the user, which is used in line 3 to perform a search in the TreeSet. If the search returns empty we obfuscate the MAC-address, as seen on line 4. This is done in a similar way for the user name.
+In order to accommodate the privacy concern, we implement some simple methods to obfuscate the MAC-address and user name, one of which can be seen in \cref{lst:obfuscating_mac}. It might be the case that users allow for us to store their personal information, and as such we will have to make a check to see if this has been allowed. To store this information we use a TreeSet, a Java implementation of a Red-black tree, which guarantees $O(log(n))$ worst case time complexity for adding, deleting and searching \cite{aa_book}\cite{treeset}. On line 2 we obtain the MAC-address of the user, which is used in line 3 to perform a search in the TreeSet. If the search returns empty we obfuscate the MAC-address, as seen on line 4. This is done in a similar way for the user name.
 
 \begin{lstlisting}[caption={Obfuscating mac-address},label={lst:obfuscating_mac},language=inc_Java]
 Private static Client ObfuscateMacAddress(Client singleClient) {
