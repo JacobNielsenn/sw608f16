@@ -1,14 +1,15 @@
 \chapter{Sprint 3}\label{cha:sprint3}
-This sprint aims to explore the possibilities of building our own tracking system as well as updating the restful intermediate service. Furthermore, we will examine our systems in regards to the aspect of security.
-\input{3sprint/trackingsystem}
+This sprint aims to explore the possibilities of building our own tracking system as well as updating the restful intermediate service to support the needed functionality described in \cref{sec:s2_eval}. Furthermore, we will examine our systems in regards to the aspect of security.
+
 \input{3sprint/update_rest}
+\input{3sprint/trackingsystem}
 \input{3sprint/security}
 
-\section{Sprint review}
+\section{Sprint Evaluation}
 To perform an evaluation of the sprint we iterate over the sprint goals and comment on whether or not they were fulfilled.
 
-During this sprint we examined the possibility of building a small tracking system utilising access points. The goal was to have a system that is comparable with MSE in terms of the precision of the geo-coordinates. We were not able to make a functional IPS as we were unable to retrive the RSSI from the routers and access points. \Cref{sec:future_system} will function as a guidance and proposal section for how to continue the development of the system.
+During this sprint we examined the possibility of building a small tracking system utilising access points. The goal was to have a system that is comparable with MSE in terms of the precision of the geographical coordinates. We were not able to make a functional IPS as we were unable to retrieve the RSSI from the routers and access points. \Cref{sec:future_system} will function as a guidance and proposal section for how to continue the development of the system.
 
-We deployed an update for the intermediate service communicating with MSE, fixing several issues and creating support for global coordinates. The update was successfully installed and deployed.
+We deployed an update for the intermediate service communicating with MSE, fixing several issues and creating support for geographical coordinates opposed to the relative once we got before. The update was successfully installed and deployed.
 
-The security considerations lead us to be wary of different security pitfalls and sensitive areas of the system. There have been made some decisions regarding what information to obfuscate and what information to keep. It was decided to obfuscate the mac address and E-mail, by hashing the address and deleting the mail information.
+The security considerations lead us to be wary of different security pitfalls and sensitive areas of the system. We have made some decisions regarding what information to obfuscate and what information to keep. It was decided to obfuscate the MAC address and e-mail, by hashing the MAC address and deleting the e-mail address.
