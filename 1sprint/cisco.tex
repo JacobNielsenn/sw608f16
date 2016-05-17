@@ -1,6 +1,5 @@
-\section{Methods for Monitoring Mobile Devices}\label{sec:monitoring} 
-
-When monitoring electronic devices in indoor spaces, a set of obstacles are presented. Some of the popular techniques used in outdoor environments prove themselves obsolete or severely hindered when applied in an indoor environment. This can be seen when working with the Global Positioning System(GPS) technology, as obstacles such as walls, roofs and floors will disrupt the signals received from satellites, leading to large imprecisions in the position measurement \cite{gps_indoor}. As a consequence we need to explore specialized methods for determining positions in indoor spaces.
+\section{Monitoring Wireless Devices}\label{sec:monitoring} 
+When monitoring wireless devices in indoor spaces, a set of obstacles are presented. Some of the popular techniques used in outdoor environments prove themselves obsolete or severely hindered when applied in an indoor environment. This can be seen when working with the Global Positioning System(GPS) technology, as obstacles such as walls, roofs and floors will disrupt the signals received from satellites, leading to large imprecisions in the position measurement \cite{gps_indoor}. As a consequence we need to explore specialized methods for determining positions in indoor spaces.
 
 In this section we will explore different approaches for indoor positioning and monitoring mobile devices, and examine systems using these.
 
@@ -62,11 +61,11 @@ Location Patterning & Depends on calibration phase       & When device communica
 
 
 \subsection{Technologies}
-In this section we examine some systems using different tracking approaches that aStep can use to integrate indoor positioning.
+In this section we examine some systems using different tracking approaches that aSTEP can use to integrate indoor positioning.
 
 Zonith Indoor Positioning System is a system that uses the cell of origin approach. As mentioned in \cref{sec:tracking_approach}, this technique requires auxiliary hardware. Zonith offers Bluetooth Beacons, which serve as checkpoint nodes, and allow for any device with Bluetooth to be discovered and tracked \cite{zonith}. Because of the nature of the approach we expect the location precision to be excellent at the moment the device is registered, and the quality of the data decays as it ages. However, the most recent registration of a device is an approximation of its location, at best it tells us what room the device is in.
 
-Redpin is an open source indoor positioning system that uses location patterning. The system requires a calibration phase, where the connectivity fingerprint of different key locations is measured. A user location is calculated on request, and, with enough fingerprint measurements, the system will be able to provide the user with at least room-level accuracy \cite{redpin}. Location precision is as such dependent on the calibration phase, but is expected to be better than a cell of origin approach. 
+Redpin is an open source indoor positioning system that uses location patterning. The system requires a calibration phase, where the connectivity fingerprint of different key locations is measured. A user's location is calculated on request, and, with enough fingerprint measurements, the system will be able to provide the user with at least room-level accuracy \cite{redpin}. Location precision is as such dependent on the calibration phase, but is expected to be better than a cell of origin approach. 
 
 Google have also developed their own positioning system. They have made indoor navigation and tracking possible trough their Indoor Maps project \cite{IPSoverGPS}, which lets users map a building by uploading a floor plan of said building. After the floor plan has been accepted, the system will request information about the location of the WI-FI access points in the building \cite{googleindoormaps}. A user can then see their own location on Google maps at any time. Google have been very secretive in regards to what tracking approaches they use, as such it is difficult to evaluate the technology.
 
@@ -81,4 +80,4 @@ We have presented four technologies using different tracking approaches. We impo
 
 There are several arguments pointing towards Cisco MSE rather than Redpin. First and foremost, Cisco MSE is in comparison a lot more convenient, as it already affords the desired functionality and requires substantially less set-up time. Secondly, the amount of documentation for Cisco MSE far outweighs what little documentation there is for Redpin. Cisco MSE is a commercial system, and is therefore updated regularly. As of 7/3/2016, Redpin had its most recent update in May 2013. Lastly, Redpin only claims to be able to position devices at room-level precision, while Cisco claims to position devices within rooms. As a consequence of these arguments we chose to integrate MSE for the indoor positioning system for aStep.
 
-Aalborg University uses the standard version of MSE to position wireless devices across all their campuses. We plan on using the data available from this system as mock data for the aStep project.
+Aalborg University uses the standard version of MSE to position wireless devices across all their campuses. We plan on using the data available from this system as mock data for the aSTEP project.
