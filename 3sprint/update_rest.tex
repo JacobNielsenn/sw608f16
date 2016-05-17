@@ -21,7 +21,7 @@ Performing several conversions results in a loss of data, as any information in 
 As a result of the update we now receive specific information that were previously unattainable through the MSE developer test system. This information includes personal sensitive data, which is now being obfuscated when necessary needed. 
 
 \subsection*{Connectivity With MSE}
-After the initial deployment of the service we experienced downtime as a result of MSE being under maintenance. This was an unexpected event, and as such the program reacted in an unforeseen fashion. Part of the update integrates elements from the client, described in \ref{sec:fetch_data}, in an effort to increase robustness and as such uptime of the service. As a result, the service now sends an initial request to MSE, to confirm the MSE IP-address and account info. Furthermore, the service is able to handle MSE being unresponsive.
+After the initial deployment of the service we experienced downtime as a result of MSE being under maintenance. This was an unexpected event, and as such the program reacted in an unforeseen fashion. Part of the update integrates elements from the client, described in \ref{sec:fetch_data}, in an effort to increase robustness and as such uptime of the service. As a result, the service now sends an initial request to MSE, to confirm the MSE IP address and account info. Furthermore, the service is able to handle MSE being unresponsive.
 
 \subsection*{Paging}
 When requesting all clients from MSE the response is partitioned into pages. Each page contains a certain amount of entries, as defined in the request. If this is not defined in the request, a default of 5000 entries per page is used. 

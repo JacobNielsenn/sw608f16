@@ -10,12 +10,12 @@ Since we have chosen to utilize MSE, which is available for us through Aalborg U
 \section{Sprint evaluation}\label{sec:s2_eval}
 To perform an evaluation of the sprint we iterate over the sprint goals and comment on whether or not they were fulfilled.
 
-First, we wanted to fetch the data from MSE and send it to the aSTEP database. This goal has only partly been achieved because of several factors. First, it requires an agreement on the uniformity of the data for the whole project, which has not been settled yet. Secondly, we found that the intermediate server requires a few changes, which have not been possible to implement as the Cisco MSE administrator has been unavailable. However, we built a largely finished client service capable of fetching data from different sources and sending it to a database. We cover the implementation of the client in \cref{sec:fetch_data}.
+First, we wanted to fetch the data from MSE and send it to the aSTEP database. This goal has only partly been achieved because of several factors. First, it requires an agreement on the schemas of the database for the multi-project, which has not been settled yet. Secondly, we found that the intermediate server requires a few changes, which have not been possible to implement as the Cisco MSE administrator has been unavailable. However, we built a largely finished client service capable of fetching data from different sources and sending it to a database. We cover the implementation of the client in \cref{sec:fetch_data}.
 
 We implemented a significant amount of unit tests to ensure correctness of our code. Furthermore, we thoroughly documented the code to decrease future development and maintenance costs. The unit tests are described in \cref{sec:unit_test}.
 
-We looked into the possibilities of retrieving geographical data in \cref{sec:geo_coordinates}, and we are currently awaiting the local Cisco administrator to allow for this.
+We looked into the possibilities of retrieving geographical data in \cref{sec:geo_coordinates}, however this is delayed as we are waiting for the local Cisco administrator to allow for it.
 
 Finally we have described several collaborations we participated in during the sprint. These range from server administration to various meetings with different groups. This can be found in \cref{sec:collaboration}. 
 
-In conclusion, the goals for the second sprint have been partially fulfilled and further work will therefore be needed.
+In conclusion, the goals for the second sprint have been partially fulfilled and further work will therefore be needed, we will aim to finish these shortcomings in the next sprint.
