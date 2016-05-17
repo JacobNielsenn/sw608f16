@@ -43,8 +43,8 @@ Java has a hash-method implemented in the object class called \textit{hashCode()
 \subsection*{Hard-coded Passwords}
 When communicating with MSE from the intermediate server as well as when communicating with the intermediate server, we are currently using hard-coded passwords. This means that everyone with access to the code can find the log-in information. The information should be given as arguments to the program and hashed such that the log-in can not be seen in the code and cannot be read as plain text in memory. 
 
-\subsection*{Visibility}
-As of now many parts of the system has a higher degree of visibility than necessary. This makes it possible to use functionality in unexpected ways and possibly cause unintended behaviour. We can decrease the level of visibility by having private and protected classes and methods, which leads to a system that is more resilient towards unexpected usage.
+%\subsection*{Visibility}
+%As of now many parts of the system has a higher degree of visibility than necessary. This makes it possible to use functionality in unexpected ways and possibly cause unintended behaviour. We can decrease the level of visibility by having private and protected classes and methods, which leads to a system that is more resilient towards unexpected usage.
  
 \subsection*{Obfuscating Personal Information}
 In order to ensure our users personal information, we decided to obfuscate the e-mail addresses. By doing so there will be no way for outsiders to identify people unwilling to have their information stored.
