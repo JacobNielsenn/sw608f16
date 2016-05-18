@@ -1,24 +1,24 @@
 \section{aSTEP Meetings}
-In this section there will be described some of the meeting held with other groups in the aSTEP project. There will be focused on the weekly super-group meetings and the smaller meetings held with only a few groups
+In this section we describe some of the meeting held with other groups in the aSTEP multi-project. The focus will be on the weekly super-group meetings and the smaller meetings held with only a few groups.
 
 \subsection{Super-group Meetings}\label{subsec:supergroup_meetings}
-In the aSTEP project ten groups are working together to make one large system with multiple applications. To keep track of all groups progress and their needs i regard to other parts of the system, being developed by other groups, there are being held weekly meetings with one representative from each group.
+In the aSTEP multi-project, ten groups are working together to make one large system with multiple applications. To keep track of progress and requirements in regards to individual parts of the system, weekly meetings are held with one representative from each group.
 
-At the large meetings our representative have been responsible for taking notes after which he writes a summary and makes it available for everyone. During these meetings there is a live chat on Slack \cite{slack}such that everyone in the project can see what happens and come with input if there are something they wish to be taken up. In mid March it was decided at a meeting that there should be a mid-sprint meeting, where the goals for the sprint was presented and the progress thereof evaluated.
+At the super-group meetings our representative has been responsible for taking notes and prepare a summary for everyone to see. During these meetings there is a live chat on Slack \cite{slack}, such that everyone participating in the multi-project can see what is being discussed and add their input if necessary. In March it was decided at a super-group meeting that there should be a mid-sprint meeting, where the goals for the sprint was presented and the progress thereof evaluated.
 
 \subsection{Small Meetings}\label{subsec:small_meetings}
 In addition to the super-group meetings there are being held smaller meetings, where only a few groups participate, in order to specify needs, present ideas and possible solutions.
 
-We have had multiple smaller meetings with respectively the groups responsible for the database, the application group utilizing indoor positioning, the user management group and the other group working with indoor positioning.
+We have had multiple of these meetings with respectively the groups responsible for the database, the application group utilizing indoor positioning, the user management group and the other group working with indoor positioning.
  
-\paragraph{Application Meetings}
-At meetings with the application group they have specified what data they need and we have explained how we can provide it. The application using indoor positioning are making a heatmap, and they wish for geographical coordinates in the decimal degree format, a unique identifier and the confidence factor for each device.
+\subsubsection*{Application Meetings}
+At meetings with the application group they have specified what data they need and we have explained how we can provide it. The application group we have had meetings with are making a heatmap, and they require geographical coordinates and confidence factor for each device.
 
-\paragraph{Database meetings}
+\subsubsection*{Database meetings}
 At meetings with the database groups there have been talked about what data we want to be stored, based on what we have been told by the application group and the database groups have then specified how they would like to receive the data. At the initial meeting with the database groups it was requested by them that all locations are to be stored as geographical coordinates, rather than relative.% We told them our initial ideas for what we would like to store, these requirements have since then changed, see \cref{sec:data_store}, and these have been passed on to the database groups through GitLab.
 
-\paragraph{Indoor meetings}
+\subsubsection*{Indoor meetings}
 Meetings with the other indoor positioning group have been about what possibilities there have been for our part of the project, the work have then been distributed between our two groups. This is where it have been decided that we should be the group handling Cisco whereas the other group would get started on the indoor API. There have been a continuous communication between our two groups to keep track of progress and difficulties. 
 
-\paragraph{UM meetings}
-There was held several meetings with the UM group concerning HTTP vs HTTPS and how to incorporate it with our RESTful service. Initially we and the UM group were not able to setup the HTTPS correctly in the estimated time, when the problems was raises over slack aSTEP, a member form the Hotmap application group said he had experience with this and knows how to do it. He were then giving a task to work on how to change the previous code so that aSTEP can run using HTTPS. The next task was to create the keystore to HTTPS, in this we need a third party to ensure that when client connect to our RESTful services it is not a scam or being emulated by a a third party. We initialized to on the task of doing this, but realize the we do not a access to the server, so the task was forwarded to the group in charge of the aSTEP service server. 
+\subsubsection*{UM meetings}
+There was held several meetings with the UM group concerning HTTP and HTTPS and how to incorporate it with our RESTful service. Initially we and the UM group were not able to setup the HTTPS correctly in the estimated time, when the problems was raises over slack aSTEP, a member from the Hotmap application group said he had experience with this and knows how to do it. He were then giving a task to work on how to change the previous code so that aSTEP can run using HTTPS. The next task was to create the keystore to HTTPS, in this we need a third party to ensure that when client connect to our RESTful services it is not a scam or being emulated by a a third party. We initialized to on the task of doing this, but realize the we do not a access to the server, so the task was forwarded to the group in charge of the aSTEP service server. 

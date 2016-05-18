@@ -46,5 +46,14 @@ Private static Client ObfuscateMacAddress(Client singleClient) {
 }
 \end{lstlisting}
 
-\subsection{System hierarchy}\label{subsec:system_hierarchy}
-With this code it is possible to create an intermediate service for the Cisco MSE RESTful service, that intercepts the response and obfuscates certain information. To use this service, a client needs to know the IP address and a login for the intermediate service. To automate the requests and create a flow of data from the MSE systems to the aSTEP database, we will have to build and implement a client that fetches data at an interval. The scope of the project is beyond Aalborg University, and as such the project will need to support more then a single MSE system. A model can be seen in Future Work chapter \ref{Cha:Future_Work}.\sfx{move to appendix}
+\subsection{System Flow}\label{subsec:system_hierarchy}
+With this code it is possible to create an intermediate service for the Cisco MSE RESTful api, that is able to intercept a response and obfuscate certain information. To use this service, all that is requires is knowledge of the IP address and login information. To automate the requests and create a flow of data from the MSE systems to the aSTEP database, we will have to build and implement a client that fetches data at an interval. The scope of the project is beyond Aalborg University, and as such we require the client to be capable of handling more then a single MSE system. A model showing how the systems interact can be seen on \cref{fig:system_flow}.
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[scale=0.7]{graphics/ciscoNew.pdf}
+		\caption{System data flow}
+		\label{fig:system_flow}
+	\end{center}
+\end{figure}
+The model shows how information is collected by the client from an arbitrary number of MSE services. After collecting the data, the client performs some operations and redirects the data to the database. The obfuscation will likewise also be performed by the client, as we wish to obfuscate person sensitive information from all MSE systems. It is possible for the database to communicate back to the client. For instance, a user may have agreed that we store their MAC address, which has to be communicated back to the client, such that the obfuscation algorithm takes this into account.
+
