@@ -14,15 +14,15 @@ The initial requirement for all equipment is that it supports wireless communica
 Based on the above requirement we have found two brands, Ubiquiti and D-link, the latter of which is considered the cheaper brand. We ordered one router, two expensive access points and five cheap access points from each brand.
 
 \subsection*{The Physical Setup}
-Cisco\cite{access_point_placement} have guidelines for how to place the access points in order to get the best coverage for a system. They recommend an access point in each corner of the building as well as some along the perimeters. In addition, if the building is large enough, access points should be placed within the perimeter to form a sub-perimeter, which itself may contain a sub-perimeter and so forth. This is illustrated on \cref{fig:access_placement}, in which the red circles are access points. The perimeter established by the outer-most access points should encapsulate the entire floor, as illustrated by the blue line and the sub-perimeter by the red line. The outer-most perimeter is also known as the \textit{hull}\cite{access_point_placement}.
+Cisco \cite{access_point_placement} have guidelines for how to place the access points in order to get the best coverage for a system. They recommend an access point in each corner of the building as well as some along the perimeters. In addition, if the building is large enough, access points should be placed within the perimeter to form a sub-perimeter, which itself may contain a sub-perimeter and so forth. This is illustrated on \cref{fig:access_placement}, in which the red circles are access points. The perimeter established by the outer-most access points should encapsulate the entire floor, as illustrated by the blue line and the sub-perimeter by the red line. The outer-most perimeter is also known as the \textit{hull} \cite{access_point_placement}.
 
-The access points should be placed within a range of 50-70 feet to get a high precision without unnecessary interference and overlap\cite{access_point_range}. This radius depends on the reach of the access points and the topology of the building.
+The access points should be placed within a range of 50-70 feet to get a high precision without unnecessary interference and overlap \cite{access_point_range}. This radius depends on the reach of the access points and the topology of the building.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{graphics/access_placement.png}
 	\label{fig:access_placement}
-	\caption{Illustration of how access points should be placed\cite{access_point_placement}}
+	\caption{Illustration of how access points should be placed \cite{access_point_placement}}
 \end{figure}
 
 An overview of our system setup can be seen in \cref{fig:OwnSetup}. This setup follows the previous design guidelines. One router is set up in the middle and four access points are set up in our group rooms, such that the system covers three group rooms.
@@ -39,7 +39,7 @@ We tested the Ubiquiti equipment with the original firmware. At first glance we 
 
 This caused us to research custom firmware for the router. By installing new firmware on the router we will be able to get root access to the router, and thereby manipulate it at a lower level than the routers original firmware allows. This is necessary if we are to capture every RX signal the router gets.
 
-We did find custom firmware for Ubiquiti, however not for D-link. The sites we used cover thousands of routers and the fact that we were not able to find a custom firmware for D-link might be because of that particular model, as other routers from the same brand is supported. No conclusion was found as to why it is not covered on any of the websites\cite{firmware_1}\cite{firmware_2}\cite{firmware_3}\cite{firmware_4}\cite{firmware_5}\cite{firmware_6}.
+We did find custom firmware for Ubiquiti, however not for D-link. The sites we used cover thousands of routers and the fact that we were not able to find a custom firmware for D-link might be because of that particular model, as other routers from the same brand is supported. No conclusion was found as to why it is not covered on any of the websites \cite{firmware_1}\cite{firmware_2}\cite{firmware_3}\cite{firmware_4}\cite{firmware_5}\cite{firmware_6}.
 
 We ended up utilizing custom firmware from the homepage openwrt because it supports our Ubiquiti router and allows us to gain root access and execute programs. With the new custom firmware installed there is roughly 8Mb of free memory left on the router. This put some limitations on which language we can use. Our first attempt is to use a minimalistic version of Python called Mini-Python that does not exceed the memory limit.
 
