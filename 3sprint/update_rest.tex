@@ -1,4 +1,4 @@
-\section{Restful Proxy Update}\label{sec:proxy_update1}
+\section{RESTful Proxy Update}\label{sec:proxy_update1}
 We plan on implementing an update to the RESTful proxy server that is used to communicate with Aalborg University's MSE. This update is a consequence of MSE being updated to support geographic coordinates. The update is planned to remove a bug causing loss of data during conversion between different data formats. This section covers the motivation for the following changes in the update:
 
 \begin{itemize}
@@ -12,7 +12,7 @@ We plan on implementing an update to the RESTful proxy server that is used to co
 \subsection*{Loss of Data}
 Geographical coordinates are now supported by MSE, thanks to the MSE administrator at Aalborg University. To perform obfuscation of personal sensitive data, we can convert the returned string to classes containing all information in its member variables. With this method we can easily perform obfuscation of the data we are disallowed to keep by editing the fields corresponding to the personal sensitive data.
 
-This method utilizes a library developed by Google called gson\cite{gson}, which affords the ability to convert strings of the JSON format to a Java class and vice versa. We can acquire the classes by using an online tool called jsonschema2pojo\cite{jsonschematwopojo}, that analyses JSON strings and automatically generates classes with corresponding fields.
+This method utilizes a library developed by Google called gson \cite{gson}, which affords the ability to convert strings of the JSON format to a Java class and vice versa. We can acquire the classes by using an online tool called jsonschema2pojo \cite{jsonschematwopojo}, that analyses JSON strings and automatically generates classes with corresponding fields.
 
 Initially, the generated classes did not contain fields for the global coordinates, as they were based on the response string from a version of MSE where this feature was disabled. This would not be a problem for a single conversion, as the generated classes have a field called \textit{additionalProperties}, which contains additional information that could store the coordinates. However, in order to preserve the transparency of the intermediate server, we wish to perform a conversion back to JSON in order to maintain the external illusion of this intermediate server being an MSE service.
 

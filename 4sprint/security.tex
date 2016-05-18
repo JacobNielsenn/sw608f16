@@ -1,0 +1,17 @@
+\section*{Security}
+To increase security we decided from sprint 3 evaluation to hash the MAC addresses and get switch from http to https on the intermediate server.
+
+\subsection*{Hashing of MAC Address}
+Due to a request from the Heatmap group, to be able to track people by some unique value, we have elected to hash the MAC address rather than obfuscate with "OBFUSCATED". In \cref{sec:secure}, we explored the possibility of doing so, by using Javas hashCode(), which is implemented in the String library. However, hashCode() returns a string consisting of only integers, which gives a higher risk of having overlap when hashing. Instead we chose to use the Guava-19 library which returns a much longer value consisting of both numbers and letters. By doing so it allows for hashed MAC addresses to contain letters making it more difficult to brute-force. The salt applied is a random string that is changed every twelve hour. 
+
+\begin{lstlisting}[caption={Hashing a MAC address},label={lst:ourhash},language=inc_Java]
+oldMacAddress = oldMacAddress + salt;
+String hash = Hashing.sha256().hashString(oldMacAddress, 
+StandardCharsets.UTF_8).toString();
+item.setMacAddress(hash);
+\end{lstlisting}
+
+The applied function can be seen in \cref{lst:ourhash} where in line 1 the MAC address is concatenated with the randomly generated salt-value. In line two the new string is hashed using Guava-19's sha256. In line 4 the MAC address is set to the hashed value. The hashed value is 64 signs long and contain both letters and numbers.
+
+\subsection*{Enable Https on Intermediate Server}
+Using "lets encrypt" we can enable https, this was done to the aSTEP server, so we contacted one of the people that ended up doing to final work. He said it took about 3 weeks and the reason why it took so long was because of them not being able to open port and setup a domain which is required for lets encrypt. So we will not be able to do this task duo to our deadline. A section under future work will explain this task to accommodate, because it seen as essential to reach the minimum concerning security
