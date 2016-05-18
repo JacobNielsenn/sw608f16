@@ -3,17 +3,7 @@
 \subsection*{Logging}
 The intermediate server utilizes Log4j\cite{log4j} to log error messages when it is executing. These messages are stored in a log file saved locally with the server which can be accessed and read. The log only concerns errors and alike, but we believe it would be beneficial to have an additional log the records other messages as well. We would like to log requests to the server by their time, request type and request sender. That information can be used to debug potential errors and to analyse the connectivity history. 
 
-\subsection*{Hashing of MAC Address}
-Due to a request from the Heatmap group, to be able to track people by some unique value, we have elected to hash the MAC address rather than obfuscate with "OBFUSCATED". In \cref{sec:secure}, we explored the possibility of doing so, by using Javas hashCode(), which is implemented in the String library. However, hashCode() returns a string consisting of only integers, which gives a higher risk of having overlap when hashing. Instead we chose to use the Guava-19 library which returns a much longer value consisting of both numbers and letters. By doing so it allows for hashed MAC addresses to contain letters making it more difficult to brute-force. The salt applied is a random string that is changed every twelve hour. 
 
-\begin{lstlisting}[caption={Hashing a MAC address},label={lst:ourhash},language=inc_Java]
-oldMacAddress = oldMacAddress + salt;
-String hash = Hashing.sha256().hashString(oldMacAddress, 
-StandardCharsets.UTF_8).toString();
-item.setMacAddress(hash);
-\end{lstlisting}
-
-The applied function can be seen in \cref{lst:ourhash} where in line 1 the MAC address is concatenated with the randomly generated salt-value. In line two the new string is hashed using Guava-19's sha256. In line 4 the MAC address is set to the hashed value. The hashed value is 64 signs long and contain both letters and numbers.
 
 
 
