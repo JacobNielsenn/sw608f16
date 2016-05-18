@@ -1,9 +1,13 @@
 \section{Security considerations}\label{sec:secure}
 In order to increase the level of security in our system, different considerations should be made. These considerations are made in order to make it more difficult for intruders to break into the system as well as protect sensitive information. We limit the discussion to program communication and the way sensitive information is handled, as this is the most sensitive part of the system. It would also improve the robustness of the system if these parts were made secure, as these are the parts of the program where it is possible to introduce erroneous, dirty data.
 
-\subsection*{HTTPS} 
-%  HTTPS and SSL certificate. May want to talk more about where we could use it in our system
-The system currently uses HTTP, an insecure communication protocol that uses cleartext to communicate. Anybody intercepting the communication can read it with ease. We can diminish the damage from this type of attack by using the HTTPS protocol, short for \textit{Hyper Text Transfer Protocol Secure}, which functions as the HTTP protocol with the exception that the message is encrypted. This means that if someone were to gain access to the connection they would not be able to read the information. A secure connection is very important on sites that handle sensitive information such as CPR-numbers or credit card data and this can be achieved by using the HTTPS protocol \cite{HTTPS}.
+\subsection*{Certificates}
+Certificates are used when communicating over the HTTPS protocol as a way to ensure the identity of a website as well as hand out the public key and encryption method. Once a certificate for a website is downloaded to a computer, the identity of the website can be verified against this certificate on subsequent visits. All communication with MSE uses the HTTPS protcol, and as such we have to consider how we treat certificates. 
+
+Initially we created an empty certificate-handler which is still in use. This means that the identity of a website is accepted no matter what, potentially allowing for scam websites to copy the certificate and alter it slightly to pose as another website. An alternative, more secure solution, would be to download the certificates MSE uses and insert them in the JVM keystore, which is a collection of all accepted certificates. By freely accepting all certificates it is possible for attackers to input dirty data in the system by adding a server pretending to be an MSE service.
+
+\subsection*{HTTPS}
+The system currently communicates internally over HTTP, an insecure communication protocol that uses cleartext to communicate. Anybody intercepting the communication can read it with ease. We can diminish the damage from this type of attack by using the HTTPS protocol, short for \textit{Hyper Text Transfer Protocol Secure}, which functions as the HTTP protocol with the exception that the message is encrypted. This means that if someone were to gain access to the connection, they would not be able to read the information. A secure connection is very important on sites that handle sensitive information such as CPR-numbers or credit card data and this can be achieved by using the HTTPS protocol \cite{HTTPS}.
 
 \begin{figure}[ht]
 	\begin{center}
@@ -13,12 +17,7 @@ The system currently uses HTTP, an insecure communication protocol that uses cle
 	\end{center} 
 \end{figure}
 
-\Cref{fig:HTTPS} shows how an app sends data to aSTEP server via the HTTPS protocol. First the app retrieves the aSTEP's public key from aSTEP, which is then used to encrypt the data that is going to be transferred to aSTEP. When aSTEP receives the data, the private key is used to decrypt the data, which can then be read as plain text. Additionally, if aSTEP needs to send data back to the app, it will need the apps public key to encrypt the message and the app will use its own private key to decrypt the data \cite{HTTPS}.
-
-\subsection*{Certificates}
-Certificates are used when communicating over the HTTPS protocol as a way to ensure the identity of a website as well as hand out the public key and encyption method. Once a certificate for a website is downloaded to a computer, the identity of the website can be verified against this certificate on following visits. All communication with MSE happens with the HTTPS protcol, and as such we have to consider how we treat certificates. 
-
-Initially we created an empty certificate-handler which is still in use. This means that the identity of a website is accepted no matter what, allowing or scam websites to copy the certificate and alter it slightly to pose as another website. An alternative, more secure solution, would be to download the certificates and insert them in the JVM keystore, which is a collection of all accepted certificates. By freely accepting all certificates it is possible for attackers to input dirty data in the system by adding a server pretending to be an MSE service.
+\Cref{fig:HTTPS} shows how HTTPS is used. In this example an app is sending data to the aSTEP server via the HTTPS protocol. First the app retrieves aSTEP's public key from the downloaded certificate. This public key is then used to encrypt all the data that is going to be sent to aSTEP. When aSTEP receives the data, the private key is used to decrypt the data, which can then be read as plain text. Additionally, if aSTEP needs to send data back to the app, it will need the apps public key to encrypt the message and the app will use its own private key to decrypt the data \cite{HTTPS}.
 
 \subsection*{Hashing}
 Hash functions are most commonly used to store a users password or other sensitive data. It functions as a one way mapping; when a message is hashed it can not be reversed again. The formal definition is shown below:

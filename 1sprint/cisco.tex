@@ -59,7 +59,6 @@ Location Patterning & Depends on calibration phase       & When device communica
 \label{tab:evaluating_approaches}
 \end{table}
 
-
 \subsection{Technologies}
 In this section we examine some systems using different tracking approaches that aSTEP can use to integrate indoor positioning.
 
@@ -74,7 +73,9 @@ The building is modelled by the use of an outline of the floor plan. The image i
 Cisco claim to have a location precision of less than 1 meter, refresh rate of 10-120 updates per minute and a system latency of 2-4 seconds \cite{dimensions}. 
 
 \subsection{Choice of Technology}\label{subsec:cisco}
-We have presented four technologies using different tracking approaches. We impose two requirements for the technology. First, we largely prefer a system with an accurate location precision. In practice this means being able to position people within rooms, as indoor environments can differ greatly in room size. For instance, an airport is difficult to partition into rooms, as it normally exhibits very large open spaces. Secondly, we wish to harvest as much data, in terms of positions, as possible. This allows for predictions on crowd movements, path-finding to circumvent crowded areas and analysing typical movements in a building. 
+We have presented four technologies using different tracking approaches. We impose two requirements for the technology. First, we largely prefer a system with an accurate location precision. In practice this means being able to position people within rooms, as indoor environments can differ greatly in room size. For instance, an airport is difficult to partition into rooms, as it normally exhibits very large open spaces. We do not initially have any requirements for the refresh rate and system latency as typical indoor movement has such a pace that even a slow system would be sufficient. Furthermore, imposing requirements for the refresh rate and system latency implicitly imposes hardware requirements, which we want to avoid. 
+
+Our second requirement is that we wish to harvest as much data, in terms of positions, as possible. This allows for predictions on crowd movements, path-finding to circumvent crowded areas and analysing typical movements in a building. This is strictly system-specific functionality, and is not related to to the tracking approach a system uses. As opposed to system latency, the amount of data available to harvest may vary depending on user privilege, hence we do not explicitly denote data availability in \cref{tab:evaluating_approaches}.
 
 \Cref{tab:evaluating_approaches} displayed that the location precision for the Cell of Origin approach depends on the cell size. The precision will at best be within a cell, which in the case of the Zonith Indoor Positioning System is equivalent to a room. Our first requirement therefore excludes the Zonith Indoor Positioning System. To accommodate the second requirement, we examine the obtainable data from the systems. Redpin affords the possibility to request the position of a single device. Given that it is open source, it will be possible to alter the system in such a way that all devices on the network is provided. Google Indoor Maps only allows requesting a single user. Cisco MSE has the functionality to provide a list of devices registered along with their most recent position.
 
