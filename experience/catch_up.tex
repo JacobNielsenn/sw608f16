@@ -24,17 +24,19 @@ Sending the Java program to the virtual intermediate server:
 \item 15) Detach from the screen by holding down CTRL+a+d.
 \end{itemize}
 
-\subsection*{Intellij Debug Configurations}
-When further developing the project it is useful to share the debug configurations, such that the project setup only has to be done once. In Intellij, open the Edit Configurations screen and tick the shared box. This creates a folder in the .idea project folder called runConfigurations, which can be shared. When opening the project, Intellij will automatically detect existing debug configurations in this folder.
+\subsection*{IntelliJ Debug Configurations}
+When further developing the project it is useful to share the debug configurations, such that the project setup only has to be done once. In IntelliJ, open the Edit Configurations screen and tick the shared box. This creates a folder in the .idea project folder called runConfigurations, which can be shared. When opening the project, IntelliJ will automatically detect existing debug configurations in this folder.
 
 \subsection*{Projects under Indoor Repository}
-The Indoor (ID) Gitlab repository contains several Intellij projects. The projects are: testingPrograms, RESTSW6, indoorLibrary, indoorCore.
+The Indoor (ID) Gitlab repository contains several IntelliJ projects. The projects are: testingPrograms, RESTSW6, indoorLibrary, indoorCore.
 
 \begin{itemize}
-\item Testingprograms is a simple project used to debug a RESTful service. This can equally be done with a tool in Intellij (under Tools -> Test RESTful Web Service), however, we do not advice this as everything has to be input each time you want it tested. Testingprograms contains very little functionality, and is only meant to be used for HTTP get calls.
+\item Testingprograms is a simple project used to debug a RESTful service. This can equally be done with a tool in IntelliJ (under Tools -> Test RESTful Web Service), however, we do not advice this as everything has to be input each time it is to be tested. Testingprograms contains very little functionality and is only meant to be used for HTTP get calls.
 \item RESTSW6 is the project for the intermediate proxy server. 
 \item Indoorlibrary is a static library containing much of the functionality used by our programs. We early on realised that the two systems are alike in many ways, and would have to afford the same functionality. As a consequence we decided to make a library to use for several projects, to avoid duplicate code. 
 \item IndoorCore contains the code for the client system. 
 \end{itemize} 
 
 \sfx{useful links to wiki and all that}
+
+\subsection{Our System}\ofx{What have we done without success Jacob?}
