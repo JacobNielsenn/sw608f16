@@ -5,8 +5,28 @@ The intermediate server utilizes Log4j \cite{log4j} to log error messages when i
 
 
 
-
+$\vdots$
 
 
 \subsubsection*{Password}
+Changing the password from being static to being dynamic was done using the programs parameters, so previouesly we had 3 parameter, ip, cisco user and cisco password. we add an additionally two parameter, MSE user and MSE password.
 
+\begin{lstlisting}[caption={Failed Connection snapshot},label={lst:dynamic_password},language=inc_Java, mathescape]
+public class RestfulMSE {
+	$\vdots$
+	private static String MSEusername;
+    private static String MSEpassword;
+    $\vdots$
+    public static void main(String[] args) throws IOException {
+    	$\vdots$
+   		MSEusername = args[3];
+    	MSEpassword = args[4];
+    	$\vdots$
+    	CiscoNetwork.GeneratePassphrase(MSEusername, MSEpassword);
+    	$\vdots$
+    }
+}
+\end{lstlisting}
+
+In \cref{lst:dynamic_password} the new changes are showed to 
+The new parameter are stored in line 7 and 8. 
