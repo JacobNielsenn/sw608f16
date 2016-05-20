@@ -1,27 +1,33 @@
-\section{Intermediate server update}
+\section{Intermediate Server Update}
+An update has been implemented for the intermediate server to expedite debugging and accommodate for some of the considerations made in \cref{sec:secure}. The changes are as following:
+\begin{itemize}
+\item Logging implemented
+\item Hardcoded passwords are now program arguments
+\item MAC addresses are now hashed
+\item Added context to see if MSE is online
+\end{itemize}
 
 \subsection*{Logging}
-The intermediate server utilizes Log4j \cite{log4j} to log error messages when it is executing. These messages are stored in a log file saved locally on the server which can be accessed and read. The log only concerns errors and alike, but we believe it would be beneficial to have an additional log that records other messages as well. We would like to log requests to the server by their time, request type and request sender. That information can be used to debug potential errors and to analyse the connectivity history. 
+During the course of the third and fourth sprint we encountered sporadic downtime on our intermediate server in the form of erroneous response of complete lack thereof. Upon further investigation, we have found that this is a consequence of MSE being down for maintenance. We have implemented two tools that will assist developers in debugging in these situations.
+First, the intermediate server now utilizes Log4j \cite{log4j} to log error messages during execution. These error logs are stored in log files saved locally, which can be accessed and read as cleartext. The log only concerns errors and alike, and each log entry contains a timestamp, error message, error level and exception type. We believe it would be beneficial for future development to have an additional log that records other messages as well. That information can be used to debug potential errors and to analyse the connectivity history.
 
+Secondly, we have implemented an additional context to specifically query if the MSE is online. When requesting this URI, the system will attempt to connect to MSE and the response will depend on whether it retrieves a HTTP response code from MSE. Using this URI, it is very easy to learn that a problem stems from MSE being unresponsive, and is not a consequence of an error internally in our system.
 
-\subsubsection*{Password}
-Changing the password from being static to being dynamic was done using the programs parameters, so previouesly we had 3 parameter, IP, Cisco user and Cisco password. we add an additionally two parameter, MSE user and MSE password.
+\subsection*{Hardcoded Passwords}
+In \cref{sec:secure} it was argued that login details should not be hardcoded, as anyone with access to the source code would be able to connect to the system. We have changed the password from being static to being dynamic using the programs arguments. Previously the program had 3 arguments, IP address for MSE, MSE username and MSE password. As of this update, we have added an additional two arguments, intermediate server username and intermediate server password.
 
-\begin{lstlisting}[caption={Failed Connection snapshot},label={lst:dynamic_password},language=inc_Java, mathescape]
-public class RestfulMSE {
-	$\vdots$
-	private static String MSEusername;
-    private static String MSEpassword;
-    $\vdots$
-    public static void main(String[] args) throws IOException {
-    	$\vdots$
-   		MSEusername = args[3];
-    	MSEpassword = args[4];
-    	$\vdots$
-    	CiscoNetwork.GeneratePassphrase(MSEusername, MSEpassword);
-    	$\vdots$
-    }
-}
+\subsection*{Hashing of MAC Address}
+Due to a request from the Heatmap group, to be able to track people by some unique value, we have elected to hash the MAC address rather than obfuscate with "OBFUSCATED". In \cref{sec:secure}, we explored the possibility of doing so, by using Javas hashCode(), which is implemented in the String library. However, hashCode() returns a string consisting of only integers, which gives a higher risk of having overlap when hashing. Instead we chose to use the Guava-19 library which returns a much longer value consisting of both numbers and letters. By doing so it allows for hashed MAC addresses to contain letters making it more difficult to brute-force. The salt applied is a random string that is changed every twelve hour. 
+
+\begin{lstlisting}[caption={Hashing a MAC address},label={lst:ourhash},language=inc_Java]
+oldMacAddress = oldMacAddress + salt;
+String hash = Hashing.sha256().hashString(oldMacAddress, 
+StandardCharsets.UTF_8).toString();
+item.setMacAddress(hash);
 \end{lstlisting}
 
-In \cref{lst:dynamic_password} the new changes are shown. the new parameter are stored in line 7 and 8, These are use as parameters for GeneratePassphrase, which is used to ensure that the user has the correct username and password when they try to login.
+The applied function can be seen in \cref{lst:ourhash} where in line 1 the MAC address is concatenated with the randomly generated salt-value. In line two the new string is hashed using Guava-19's sha256. In line 4 the MAC address is set to the hashed value. The hashed value is 64 signs long and contain both letters and numbers.
+
+
+\subsection*{Enable HTTPS on the Intermediate Server}
+Using "lets encrypt" we can enable https, this was done to the aSTEP server, so we contacted one of the people that ended up doing to final work. He said it took about 3 weeks and the reason why it took so long was because of them not being able to open port and setup a domain which is required for lets encrypt. So we will not be able to do this task duo to our deadline. A section under future work will explain this task to accommodate, because it seen as essential to reach the minimum concerning security
