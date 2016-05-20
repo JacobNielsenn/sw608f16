@@ -1,0 +1,47 @@
+\begin{lstlisting}[caption={Failed Connection snapshot},label={lst:data_dump},mathescape]
+***********************TCP Packet*************************
+IP Header
+|-IP Version        : 4
+|-IP Header Length  : 5 DWORDS or 20 Bytes
+|-Type Of Service   : 0
+|-IP Total Length   : 140  Bytes(Size of Packet)
+|-Identification    : 28418
+|-TTL      : 128
+|-Protocol : 6
+|-Checksum : 33246
+|-Source IP        : 172.26.120.216
+|-Destination IP   : 172.26.120.126
+
+TCP Header
+|-Source Port      : 10523
+|-Destination Port : 445
+|-Sequence Number    : 1193890339
+|-Acknowledge Number : 2211150917
+|-Header Length      : 5 DWORDS or 20 BYTES
+|-Urgent Flag          : 0
+|-Acknowledgement Flag : 1
+|-Push Flag            : 1
+|-Reset Flag           : 0
+|-Synchronise Flag     : 0
+|-Finish Flag          : 0
+|-Window         : 251
+|-Checksum       : 22600
+|-Urgent Pointer : 0
+
+DATA Dump                         
+IP Header
+45 00 00 8C 6F 02 00 00 80 06 81 DE AC 1A 78 D8         E...o...\euro.....x.
+AC 1A 78 7E                                             ..x~
+TCP Header
+29 1B 01 BD 47 29 52 23 83 CB 7C 45 50 18 00 FB         )...G)R#..|EP...
+58 48 00 00                                             XH..
+Data Payload
+00 00 00 60 FE 53 4D 42 40 00 01 00 00 00 00 00         ...`.SMB@.......
+0F 00 01 00 30 00 00 00 00 00 00 00 2E 00 00 00         ....0...........
+00 00 00 00 FF FE 00 00 B5 F6 4C 26 43 44 3D 31         ..........L\&CD=1
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00         ................
+00 00 00 00 20 00 01 00 20 00 00 00 58 36 6D 8E         .... ... ...X6m.
+00 00 00 00 E8 98 D8 7D 00 00 00 00 03 00 00 00         .......}........
+00 00 00 00                                             ....
+###########################################################
+\end{lstlisting}
