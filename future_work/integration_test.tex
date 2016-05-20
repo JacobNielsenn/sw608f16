@@ -1,2 +1,10 @@
-\section{Integration Test}
-As of now the main part of our tests are made as unit tests, which is insufficient \ofx{Anders do u know of this?}
+\section{Integration Test}\label{int_testing}
+As of now the tests are made as unit tests, as described at \cref{subsec:unit_testing}, which is insufficient because of how the components of the system interacts.
+
+An integration test is multiple unit tests that are aggregated to form a component \cite{msdn_it}. This type of tests would be beneficial for the system as all of the network communication methods are heavily intertwined within each other. This is apparent when analysing the data flow throughout the components that utilises these methods. It is possible to continue using the JUnit test suite for these tests, which means that one should not be weariful % weariful--> worryful/fearful
+of conflicting test environments.
+
+One could argue that instead of relying on integration tests, it would be better to refactor the methods and components such that they are more atomic. By doing so, it would be easier to create likewise atomic unit tests that accompany the new refactored methods. This would now remove the need of integration tests as they are th next logical step in the software's life cycle as they are useful for testing major parts of the system. 
+
+
+%Har vi husket at nævne de manglende unit tests i konklusionen?w

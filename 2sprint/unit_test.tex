@@ -12,7 +12,7 @@ Doing this is a continuous process and will be continued throughout the entire p
 \sfx{Make sure newest code is documented properly.}
 \sfx{Write about testdriven development in discussion.}
 
-\subsection{Code Testing}
+\subsection{Code Testing}\label{subsec:unit_testing}
 Many of the aSTEP components communicate with each other by calling methods or sharing data. These dependencies introduce a requirement for correctness of code across the project. Consequently, unit tests are created to ensure functionality behaves according to the intention. The tests can be used to simulate the characteristics of the usage of the code and ensure that edge cases and unintended uses are handled properly. 
 
 Changes in an implemented component may have unforeseen obscure consequences on other components because of indirect dependencies. When such an error occurs it is helpful to have tests that catch them before the changes are shared with everyone else in the project. This is ensured by use of a common GitLab server, such that whenever a change is pushed, the entire project is compiled and all the tests will be processed. The build will be marked as erroneous if the compilation or a test fails. This increase the robustness of the program, granted that unit test have been written for the program.
