@@ -1,4 +1,22 @@
 \section{Our System}\ofx{What have we done without success Jacob?}
+When building our system we ran into a few problems, this section's purpose is to explain what we did to resolve the problem and which problems we were not able to solve, lastly we will explain what needed to further be done, in order to get a working system.
+
+\subsection*{Routers}
+How to make a program run with root access on the Ubiquiti router? In \cref{sec:ourSys} we explained that in order to gain root access, a custom firmware is required. The firmware we use is named openwrt-ar71xx-generic-ubnt-airrouter-squashfs-factory.bin and allow us to get root access. With the new firmware that is based on Unix, we are able to run program and use dpkg to install programs on the routers. with the new firmware we were able to develop c and python programs, when programming a c program for the router it is preferably to be on a Unix system yourself, because the libraries for Windows and Unix are not the same. So a program that can run on a Windows system might not run on a Unix system. Orginially python compiler requires about 250 MB to run python programs but with tiny python it only requires 64k, the tiny version has fewer libraries. This leads to us not having the socket library and we were not successfully in importing the library.
+
+We ended up using a c program from BinaryTides website\cite{SnifferCode},
+
+
+Routers and hotspots
+- Firmware (gain root access(run programs))
+- get signal strength (to be used in algorithms described in approaches to indoor location)
+-- what programs have we tried so far, and what was their results.
+--- What might be the problem?
+- what should we do further to make a complete system
+-- hotspots have not been configured and hopefully they will not need to be, if the data that gets forwarded to the routes contain some information about what hotspot it was gathered for.
+-- forwarding of data.
+-- storage or realtime data feed.
+
 
 What programs have we made and what worked and what did not work, furthermore what would have been the next step in order to get the programs functioning as they were intended too.
 
