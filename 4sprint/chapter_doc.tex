@@ -1,9 +1,14 @@
 \chapter{Sprint 4}
 This is the last sprint and will be dedicated to implementing some final features discovered in sprint 3 and improving the overall code quality. This includes implementing some of the functionality discussed in \cref{sec:secure} as well as preparing the code for handing over to the new developers. Additionally, a section will be prepared for future developers to ease the transition and make it easier to get up to speed.
 
+\subsection*{Code Improvement}
+Since this project will be developed on by other people in the future, we find it essential to improve the code as must in terms of readability, further detail will be discriped in the sub section "Code Improvement"
+
+By using the IntelliJ IDEA we are able to use one of the build-in tools "Inspect code" to analyse the code and come with suggestions, this is done for the project; RESTsw6 and the two libraries; indoorCore and indoorLibrary. When inspecting code, we receive suggestion to Class structure for moving some of the global variable into a sub scoops were they are used to hide information. Declaration redundancy concerns variable access level and making variable final, This also includes empty methods and redundant parameters. Imports handles unused packages, Probable bugs finds constants conceals as variables and Spelling question the naming of variables. Important to remember it only suggestion, because inspect code is not already able to see how the class or method is used, this will result in unrealistic suggestions that are more likely to break the code.
+
+
 \input{4sprint/client_server_update}
 \input{4sprint/intermediate_server_update}
-\input{4sprint/refactor}
 \input{4sprint/catch_up}
 
 \section{Sprint Evaluation}
