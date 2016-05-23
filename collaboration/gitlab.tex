@@ -10,7 +10,7 @@ The reason for updating GitLab is in order to increase performance, which have b
 
 To do so the program VirtualBox \cite{vbox} was used to emulate an Ubuntu Server operation system, where the GitLab service was installed. In addition PuTTY \cite{putty} is used to allow connection and communication with the aSTEP server.
 
-In order to install a 64-bit architecture one must; turn on Intel (R) Virtualization Technology and Intel (R) VT-d Feature in Basic Input Output System (BIOS). Then disable Hyper-V in Windows Features, restart the machine and updated the setting. VirtualBox will now show the option for 64-bit. 
+In order to install a 64-bit architecture one must; turn on Intel (R) Virtualisation Technology and Intel (R) VT-d Feature in Basic Input Output System (BIOS). Then disable Hyper-V in Windows Features, restart the machine and updated the setting. VirtualBox will now show the option for 64-bit. 
 GitLab is now ready to be installed on the test machine by following the guide from GitLab's website \cite{gitlab_guide}.
 
 %The installation process have an architectural conflict as GitLab runs on a 64-bit architecture and the standard configuration of VirtualBox on the test machine only shows the option for installing 32-bit systems. This is problematic as the update will fail if the version is 32-bit. It is possible to allow the 64-bit option to be displayed by changing the following setting on the test machine; turn on Intel (R) Virtualization Technology and Intel (R) VT-d Feature in Basic Input Output System (BIOS). Then disable Hyper-V in Windows Features, restart the machine and updated the setting. VirtualBox will now show the option for 64-bit. 
