@@ -20,7 +20,7 @@ for (CiscoPuller thread : threadList) {
 \end{lstlisting}
 \Cref{lst:cisco_puller} showcases the code that is responsible for starting the threads that pull data from several different MSE services. Each thread in the \textit{threadList} collection is configured to connect to an MSE service with an address, username and password. A thread will start to pull data as soon as it is started and will only stop if terminated or otherwise interrupted.
 
-The design reflects that we wish to connect to multiple MSEs in addition to the intermediate server that we are currently using. As of now the client is only connected to Aalborg University's MSE, but with this update it is now capable of communicating with an arbitrary number of servers.
+The design reflects that we wish to connect to multiple MSEs in addition to the intermediate server that we are currently using. As of now the client is only connected to AAU's MSE, but with this update it is now capable of communicating with an arbitrary number of servers.
 
 \subsection{Logging}
 Following the intermediate server update, we decided to implement logging on the client too. This decision has been made to facilitate debugging. It is not strictly necessary, as we have direct access to the aSTEP server, where the program is running. However, to being able to retrieve an error log whenever the program crashes is valuable for development. Consequently the client server now utilizes Log4j \cite{log4j} using the same configuration as the intermediate server.
