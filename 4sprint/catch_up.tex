@@ -1,29 +1,29 @@
 \section{Catching Up - Introduction to Using Our Project}\label{sec:catchup}
-This section will contain guides describing what elements to be aware of in the system and how to perform different tasks for maintenance and further development. We write this section to ease the change of ownership, such that the new owners can avoid problems we experienced and spent time resolving. 
+This section will contain guides describing select elements to be aware of in the system and how to perform different tasks for maintenance and further development. We write this section to ease the change of ownership, such that the new owners can avoid problems we experienced and spent time resolving. 
 
 \subsection*{Transferring a Program to the Virtual Server}
-We recommend testing new changes as thoroughly as possible before going through this as this process is tiresome to do a lot. Before doing this you need to contact the Cisco MSE administrator of AAU and ask for passwords for the virtual proxy server and MSE. The current administrator is Per Mejdal Rasmussen from ITS. Let him know that you are continuing development of the proxy server connecting us to MSE.
+We recommend testing new changes as thoroughly as possible before going through this as this process is tiresome to do a lot. Before doing this you need to contact the MSE administrator of AAU and ask for passwords for the virtual proxy server and MSE. The current administrator is Per Mejdal Rasmussen from ITS. Let him know that you are continuing development of the proxy server connecting us to MSE.
 
 Sending the Java program to the virtual intermediate server:
-\begin{itemize}
-\item 1) Compile the artifact such that you get a .jar executable file. Test it on your own system by running "java -jar FILEPATH" on your own system.
-\item 2) Upload the .jar to a website you can download from. We used dropbox. Get the shared link on Dropbox for the file.
-\item 3) Open putty and connect to "sshgw.aau.dk".
-\item 4) Login with your usual moodle account.
-\item 5) ssh to root@mon-mse-proxy.srv.aau.dk with the command "ssh root@mon-mse-proxy.srv.aau.dk".
-\item 6) Login with password - this is something you request from the MSE administrator.
-\item 7) Navigate to the home directory. This directory contains directories for current and previous versions of the program. Move current version and other files to another folder. 
-\item 8) Check if any screen session is active with "screen -ls". If this is the case, kill the process with "killall screen".
-\item 9) Download the .jar file with the command: wget -O MSEproxy.jar "DROPBOXURL" 
-\item 9a) Make sure to put a download=1 at the end of the url if using Dropbox.
-\item 10) See that you have the file in the directory, run the program and make sure it runs correctly. Command to run the program is on step 14.
-\item 11) Change user to MSE with the command "su - MSE -s /bin/sh".
-\item 12) Type "script /dev/null".
-\item 13) Check if any screen session is active with "screen -ls". If this is the case, kill the process with "killall screen".
-\item 14) Navigate to home folder containing .jar and run the program with command: "screen java -jar MSEproxy.jar https://172.18.37.70 mse-proxy PW", where PW is replaced by the password given by the MSE administrator.
-\item 15) If all is well you get a message saying the server is up and running on some IP. This is the IP you connect to. The port is important as well, it has to be 8080.
-\item 16) Detach from the screen by holding down CTRL+a+d.
-\end{itemize}
+\begin{enumerate}
+\item Compile the artifact such that you get a .jar executable file. Test it on your own system by running "java -jar FILEPATH" on your own system.
+\item Upload the .jar to a website you can download from. We used Dropbox. Get the shared link on Dropbox for the file.
+\item Open putty and connect to "sshgw.aau.dk".
+\item Login with your usual moodle account.
+\item ssh to root@mon-mse-proxy.srv.aau.dk with the command "ssh root@mon-mse-proxy.srv.aau.dk".
+\item Login with password - this is something you request from the MSE administrator.
+\item Navigate to the home directory. This directory contains directories for current and previous versions of the program. Move current version and other files to another folder. 
+\item Check if any screen session is active with "screen -ls". If this is the case, kill the process with "killall screen".
+\item Download the .jar file with the command: wget -O MSEproxy.jar "DROPBOXURL" 
+\item Make sure to put a download=1 at the end of the url if using Dropbox.
+\item See that you have the file in the directory, run the program and make sure it runs correctly. Command to run the program is on step 15.
+\item Change user to MSE with the command "su - MSE -s /bin/sh".
+\item Type "script /dev/null".
+\item Check if any screen session is active with "screen -ls". If this is the case, kill the process with "killall screen".
+\item Navigate to home folder containing .jar and run the program with command: "screen java -jar MSEproxy.jar https://172.18.37.70 mse-proxy PW", where PW is replaced by the password given by the MSE administrator.
+\item If all is well you get a message saying the server is up and running on some IP. This is the IP you connect to. The port is important as well, it has to be 8080.
+\item Detach from the screen by holding down CTRL+a+d.
+\end{enumerate}
 
 \subsection*{IntelliJ Debug Configurations}
 When further developing the project it is useful to share the debug configurations, such that the project setup only has to be done on one computer. In IntelliJ, open the Edit Configurations screen and tick the shared box. This creates a folder in the .idea project folder called runConfigurations, which can be shared. When opening the project, IntelliJ will automatically detect existing debug configurations in this folder.
@@ -41,8 +41,8 @@ The Indoor (ID) Gitlab repository contains several IntelliJ projects. The projec
 \subsection*{First Time Opening the Program}
 This is a step guide to setup the IntelliJ IDE with the project.
 \begin{itemize}
-\item Files -> Open, and select on of the projects in the indoor repository.
-\item If Non-managed pom.xml file found appears, select Add as Maven Project.
-\item If Project SDK is not definded apperars, select Setup SDK and choose java version 1.8.
+\item Files -> Open, and select one of the projects in the indoor repository.
+\item If \emph{Non-managed pom.xml file found} appears, select Add as Maven Project.
+\item If \emph{Project SDK is not defined} appears, select Setup SDK and choose Java version 1.8.
 \item If the Alogger or Module class is missing, add astep to the library.
 \end{itemize}
