@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 \section{Intermediate Server Update}\label{sec:proxy_update1}
 We plan on implementing an update to the intermediate server that is used to communicate with Aalborg University's MSE. This update is a consequence of MSE being updated to support geographic coordinates. The update is planned to remove a bug causing loss of data during conversion between different data formats. This section covers the motivation for the following changes in the update:
+=======
+\section{RESTful Proxy Update}\label{sec:proxy_update1}
+We plan on implementing an update to the RESTful proxy server that is used to communicate with AAU's MSE. This update is a consequence of MSE being updated to support geographic coordinates. The update is planned to remove a bug causing loss of data during conversion between different data formats. This section covers the motivation for the following changes in the update:
+>>>>>>> cb45546f81f65930cc29025f17f397fea3d9fee7
 
 \begin{itemize}
 \item Resolved loss of data during conversion
@@ -10,7 +15,7 @@ We plan on implementing an update to the intermediate server that is used to com
 \end{itemize}
 
 \subsection{Loss of Data}
-Geographical coordinates are now supported by MSE, thanks to the MSE administrator at Aalborg University. To perform obfuscation of personal sensitive data, we can convert the returned string to classes containing all information in its member variables. With this method we can easily perform obfuscation of the data we are disallowed to keep by editing the fields corresponding to the personal sensitive data.
+Geographical coordinates are now supported by MSE, thanks to the MSE administrator at AAU. To perform obfuscation of personal sensitive data, we can convert the returned string to classes containing all information in its member variables. With this method we can easily perform obfuscation of the data we are disallowed to keep by editing the fields corresponding to the personal sensitive data.
 
 This method utilizes a library developed by Google called gson \cite{gson}, which affords the ability to convert strings of the JSON format to a Java class and vice versa. We can acquire the classes by using an online tool called jsonschema2pojo \cite{jsonschematwopojo}, that analyses JSON strings and automatically generates classes with corresponding fields.
 

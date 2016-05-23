@@ -7,10 +7,10 @@ A small update has been implemented for the client server with the goal of suppo
 \item Logging implemented
 \end{itemize}
 
-\subsection*{Paging}
+\subsection{Paging}
 We previously implemented an update on the intermediate server to support paging, as described in \cref{sec:proxy_update1}. With this update in place, it is possible to select page number and page size when retrieving data. We wish to automate this process with the client server, and this update integrates code to retrieve data several times to obtain all pages. It is done by sequentially requesting data while incrementing the page number until a request returns empty because of a non-existing page. When the program reaches such a state, it assumes that it has retrieved all available data.
 
-\subsection*{Adding servers to client}
+\subsection{Adding Servers to Client}
 \Cref{subsec:system_hierarchy} and \cref{sec:data_flow} describes the hierarchy and data flow between the MSE servers and the client which processes the data. 
 \begin{lstlisting}[caption={Starting threads to pull data from multiple MSE servers}, label={lst:cisco_puller}, language=inc_Java]
 for (CiscoPuller thread : threadList) {
@@ -20,7 +20,7 @@ for (CiscoPuller thread : threadList) {
 \end{lstlisting}
 \Cref{lst:cisco_puller} showcases the code that is responsible for starting the threads that pull data from several different MSE services. Each thread in the \textit{threadList} collection is configured to connect to an MSE service with an address, username and password. A thread will start to pull data as soon as it is started and will only stop if terminated or otherwise interrupted.
 
-The design reflects that we wish to connect to multiple MSEs in addition to the intermediate server that we are currently using. As of now the client is only connected to Aalborg University's MSE, but with this update it is now capable of communicating with an arbitrary number of servers.
+The design reflects that we wish to connect to multiple MSEs in addition to the intermediate server that we are currently using. As of now the client is only connected to AAU's MSE, but with this update it is now capable of communicating with an arbitrary number of servers.
 
-\subsection*{Logging}
+\subsection{Logging}
 Following the intermediate server update, we decided to implement logging on the client too. This decision has been made to facilitate debugging. It is not strictly necessary, as we have direct access to the aSTEP server, where the program is running. However, to being able to retrieve an error log whenever the program crashes is valuable for development. Consequently the client server now utilizes Log4j \cite{log4j} using the same configuration as the intermediate server.
