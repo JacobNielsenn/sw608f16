@@ -1,4 +1,4 @@
-\section{Building our own tracking system using routers and hotspots} \label{sec:ourSys}
+\section{Building our Own Tracking System Using Routers and Hotspots} \label{sec:ourSys}
 This section will cover the progress made in building and researching routers and hotspots to make our own Indoor Positioning System (IPS). A list of objectives can be seen below. The primary goal is enabling us to calculate our position in geographical coordinates, in order to compare it with the coordinates provided by MSE.
 
 \begin{itemize}
@@ -41,7 +41,7 @@ This caused us to research custom firmware for the router. By installing new fir
 
 We did find custom firmware for Ubiquiti, however not for D-link. The sites we used cover thousands of routers and the fact that we were not able to find a custom firmware for D-link might be because of that particular model, as other routers from the same brand is supported. No conclusion was found as to why it is not covered on any of the websites \cite{firmware_1}\cite{firmware_2}\cite{firmware_3}\cite{firmware_4}\cite{firmware_5}\cite{firmware_6}.
 
-We ended up utilizing custom firmware from the homepage openwrt because it supports our Ubiquiti router and allows us to gain root access and execute programs. With the new custom firmware installed there is roughly 8Mb of free memory left on the router. This put some limitations on which language we can use. Our first attempt is to use a minimalistic version of Python called Mini-Python that does not exceed the memory limit.
+We ended up utilising custom firmware from the homepage openwrt because it supports our Ubiquiti router and allows us to gain root access and execute programs. With the new custom firmware installed there is roughly 8Mb of free memory left on the router. This put some limitations on which language we can use. Our first attempt is to use a minimalistic version of Python called Mini-Python that does not exceed the memory limit.
 
 A program can be constructed allowing us to listen on different types of networks such as LAN and WAN. This is done using the socket library which is a standard library in Python. However, it is not part of the minimalistic version, meaning we had to import it ourselves. We were not able to do this without problems and moving the socket library from the lib folder under python to the minimalistic version did not work. Lastly we looked at SmartCampusAAU that is an indoor positioning and navigation system, unfortunately it only covers the mobile apps and not the router set up or firmwares to use.
 
