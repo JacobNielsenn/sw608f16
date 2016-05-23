@@ -3,7 +3,7 @@ A small update has been implemented for the client server with the goal of suppo
 
 \begin{itemize}
 \item Paging supported
-\item Servers communication utilizes threading
+\item Servers communication utilises threading
 \item Logging implemented
 \end{itemize}
 
@@ -23,4 +23,4 @@ for (CiscoPuller thread : threadList) {
 The design reflects that we wish to connect to multiple MSEs in addition to the intermediate server that we are currently using. As of now the client is only connected to AAU's MSE, but with this update it is now capable of communicating with an arbitrary number of servers.
 
 \subsection*{Logging}
-Following the intermediate server update, we decided to implement logging on the client too. This decision has been made to facilitate debugging. It is not strictly necessary, as we have direct access to the aSTEP server, where the program is running. However, to being able to retrieve an error log whenever the program crashes is valuable for development. Consequently the client server now utilizes Log4j \cite{log4j} using the same configuration as the intermediate server.
+Following the intermediate server update, we decided to implement logging on the client too. This decision has been made to facilitate debugging. It is not strictly necessary, as we have direct access to the aSTEP server, where the program is running. However, to being able to retrieve an error log whenever the program crashes is valuable for development. Consequently the client server now utilises Log4j \cite{log4j} using the same configuration as the intermediate server.
