@@ -5,7 +5,7 @@ The client has to afford the flexibility of maintaining a list of connected serv
 
 In this initial design and implementation of the client we do not wish to focus on security nor efficiency as they add another layer of complexity. Hence, certain security and efficiency-related aspects have been omitted in favour of robustness and flexibility. In particular, handling sensitive data such as IP addresses and passwords is something that has to be reconsidered in the future. %The dimension of robustness is a measurement of how resilient a program is to erroneous input whereas the aspect of flexibility translates to the degree a program can adapt to changes. For this specific program, flexibility manifests itself in being able to handle an external service's sporadic behaviour during runtime and being capable of handling additional external MSE services during runtime.
 
-\subsection*{Creating robustness}
+\subsection{Creating Robustness}
 In order to make a robust client we have to make sure that it can handle erroneous input and external errors when connecting to MSE services. This is largely handled by the $try...catch$ keywords in Java, which allow the executing program to catch exceptions during runtime and execute code according to the exception without exiting. In particular, a common exception type when working with networking is the $IOException$, which is a general term for the group of exceptions that can be encountered when performing I/O operations such as connecting to an IP address. There are several different exceptions that can be thrown when sending a request to an MSE service, depending on the state of the service. Consequently we use $try... catch(IOException)$ when performing networking requests, as resulting exceptions have to be handled in the same way no matter the subtype.
 
 \begin{lstlisting}[caption={Failed Connection snapshot},label={lst:failed_connect},language=inc_Java, mathescape]
@@ -38,7 +38,7 @@ private void failedConnection(){
 
 When attempting to connect to a service and an $IOException$ is thrown, the program changes state and the method called failedConnection, which can be seen in \cref{lst:failed_connect}, is executed. Instead of fetching data and sending it to the database at an interval, the program now simply attempts reconnecting to the erroneous service. This is attempted on line 18, and is done at an interval, first every 10 minutes and later every 30 minutes until 12 hours have passed, as decided by sequentially incrementing the variable \emph{tries}. This variable is incremented as more reconnects are attempted. After 48 tries, equivalent to 12 hours, the service is disregarded, and it is removed from the fetch list. Lines 6 and 19 are examples of the usage of the $try...catch$ keywords.
 
-\subsection*{Creating flexibility}
+\subsection{Creating Flexibility}
 We wish to afford the possibility of adding services to the fetch list during runtime. We can implement this functionality with a RESTful service while using HTTP POST requests to communicate with this service. When receiving a POST request, the service has to verify the parameters to ensure that the data received is of the correct form. 
 
 \begin{lstlisting}[caption={Adding a server to the fetch list},label={lst:add_server},language=inc_Java, mathescape]
