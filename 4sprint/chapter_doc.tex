@@ -1,19 +1,21 @@
 \chapter{Sprint 4}
-This is the last sprint and will be dedicated to implementing some final features discovered in sprint 3 and improving the overall code quality. This includes implementing some of the functionality discussed in \cref{sec:secure} as well as preparing the code for handing over to the new developers. Additionally, a section will be prepared for future developers to ease the transition and make it easier to get up to speed.
-
-\subsection*{Code Inspection}
-Since this project will be developed on by other people in the future, we find it essential to improve the code as must in terms of readability.
-
-By using the IntelliJ IDEA we are able to use one of the build-in tools "Inspect code" to analyse the code and come with suggestions, this is done for the project; RESTsw6 and the two libraries; indoorCore and indoorLibrary. When inspecting code, we receive suggestion to Class structure for moving some of the global variable into a sub scoops were they are used to hide information. Declaration redundancy concerns variable access level and making variable final, This also includes empty methods and redundant parameters. Imports handles unused packages, Probable bugs finds constants conceals as variables and Spelling question the naming of variables. Important to remember it only suggestion, because inspect code is not already able to see how the class or method is used, this will result in unrealistic suggestions that are more likely to break the code.
+This is the last sprint and will be dedicated to implementing final features discovered in \cref{cha:sprint3} and improving the overall code quality. This includes implementing some of the functionality discussed in \cref{sec:secure}, and preparing the code for handing over to the new developers. Additionally, a section will be prepared for future developers to ease the transition and make it easier to get started.
 
 
-\input{4sprint/client_server_update}
 \input{4sprint/intermediate_server_update}
+\input{4sprint/client_server_update}
 \input{4sprint/catch_up}
+
+\section{Code Inspection}
+Since this project will be further developed by other people, we find it essential to perform a final review of the code to improve readability.
+
+By using the IntelliJ IDEA we are able to use one of the built-in tools, called \emph{Inspect code}, to analyse the code and suggest improvements. This is done for RESTsw6, indoorCore and indoorLibrary. When inspecting code, we receive suggestions in different categories: Class structure, declaration redundancy, Imports, etc. Class structure concerns suggestions related to moving global variable into a sub scope where they are used to hide information. Declaration redundancy concerns variable access level and removing redundant code such as empty methods and unused parameters. Imports relates to unused packages. We also receive notifications in regards to possible bugs as a result of constants concealed as variables.
+
+It is important to remember that the tool only gives suggestions. Inspect code is a static review of the code, and does not perform an analysis of the code under execution. Consequently it is not able to see how a class or method is used, which sometimes results in unrealistic suggestions that are more likely to break the code.
 
 \section{Sprint Evaluation}
 To perform an evaluation of the sprint we iterate over the sprint goals and comment on whether or not they were fulfilled.
 
-We set out to update both the intermediate server and the client server following the security considerations made in \cref{sec:secure}. These updates successfully implemented several features as well as refactored code to streamline the code style.
+We set out to update both the intermediate server and the client server following the security considerations made in \cref{sec:secure}. These updates successfully implemented several features as well as refactored the code to streamline style and improve the overall code quality with the help of a inspection tool.
 
 Finally, we planned on preparing a section dedicated to ease the transitioning for future developers. \Cref{sec:catchup} contains information on how to perform different tasks and solve problems that are essential for the project.

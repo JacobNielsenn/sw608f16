@@ -1,13 +1,13 @@
 \chapter{Sprint 2} \label{cha:sprint2}
 In this chapter we describe the work to be done in the second sprint. 
 
-Since we have chosen to utilise MSE, which is available for us through Aalborg University, the main goal for this sprint is to create a client responsible for fetching data from MSE and sending it to the aSTEP database. We will also focus on testing and thoroughly documenting existing and new code. Furthermore, we will look into the possibilities of finding geographical locations rather than relative positions within a building. Finally, we plan on describing our collaborations with other groups working on the aSTEP project, as can be seen in \cref{sec:collaboration}, \nameref{sec:collaboration}.
+Since we have chosen to utilise MSE, which is available for us through AAU, the main goal for this sprint is to create a client responsible for fetching data from MSE and sending it to the aSTEP database. We will also focus on testing and thoroughly documenting existing and new code. Furthermore, we will look into the possibilities of finding geographical locations rather than relative positions within a building. Finally, we plan on describing our collaborations with other groups working on the aSTEP project, as can be seen in \cref{sec:collaboration}, \nameref{sec:collaboration}.
 
 \input{2sprint/geo_locations}
 \input{2sprint/client}
 \input{2sprint/unit_test}
 
-\section{Sprint evaluation}\label{sec:s2_eval}
+\section{Sprint Evaluation}\label{sec:s2_eval}
 To perform an evaluation of the sprint we iterate over the sprint goals and comment on whether or not they were fulfilled.
 
 First, we wanted to fetch the data from MSE and send it to the aSTEP database. This goal has only partly been achieved because of several factors. First, it requires an agreement on the schemas of the database for the multi-project, which has not been settled yet. Secondly, we found that the intermediate server requires a few changes, which have not been possible to implement as the MSE administrator has been unavailable. However, we built a largely finished client service capable of fetching data from different sources and sending it to a database. We cover the implementation of the client in \cref{sec:fetch_data}.
