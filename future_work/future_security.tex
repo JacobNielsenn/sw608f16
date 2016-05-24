@@ -1,11 +1,11 @@
 \section{Security}\label{sec:fucture_secure}
-More features could be implemented to further security in our system, as discussed in \cref{sec:secure}. We believe this is something for future students to focus on and to implement, as we handle sensitive information which should be handled sufficiently.
+More features could be implemented to further security in our system, as discussed in \cref{sec:secure}. We believe this is something for future students to focus on and to implement, as we work with sensitive information which should be handled sufficiently.
 
 \subsection*{HTTPS on the Intermediate Server}
 We believe the most significant improvement future students can make to further security in this system would be to implement HTTPS on the intermediate server.
 
-Using "lets encrypt" HTTPS can be enabled, this was done to the aSTEP server so we contacted one of the persons responsible for doing so. He told us it took approximately 3 weeks and the reason why it took so long was because they were unable to open a port and set up a domain which is required for lets encrypt. 
+Using \emph{lets encrypt}, HTTPS can be enabled. This was done on the aSTEP server, so we contacted one of the persons responsible for doing so. He told us it took approximately 3 weeks and the reason why it took so long was because they were unable to open a port and set up a domain which is required for lets encrypt. 
 Based on this information we estimated that we would be unable to implement HTTPS within the time limit.
 
 \subsection*{Certificate}
-The intermediate server does not use the certificate to verify that the data is coming from the Cisco server running at Cassiopeia. This is categorised as a security risk and should be fixed in future development.
+The intermediate server does not use the certificate to verify that the data is coming from the MSE server running at Cassiopeia. This is categorised as a security risk and should be fixed in future development.
